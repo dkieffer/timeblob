@@ -10,6 +10,7 @@ Time Blob is a time tracker
 ### Stopwatch Feature Ideas
 * Autofill metadata fields with previous work session
 * Auto Fill Suggestions
+* Form field select all on click
 
 ## A Database to store your records
 * A Table of Work session entries

@@ -1,0 +1,74 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: rgba(45,14,38,1);
+    color: rgba(160,60,139,1);
+    font-family: Montserrat;
+}
+
+.wrapper {
+    max-width: 60em;
+    margin: 5em auto;
+}
+
+.timer-area {
+    vertical-align: top;
+    text-align: center
+}
+
+#stopwatch {
+    display: inline-block;
+    width: 20em;
+    margin: 2em;
+    background-image: url(img/clock-face.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+#clock-hand {
+    width: 100%;
+    transform: rotate(23deg)
+}
+
+#current-entry-form {
+    width: 30em;
+    display: inline-block;
+    margin: 2em;
+}
+
+#current-entry-form label {
+    display: inline-block;
+    width: 5em;
+    text-align: right;
+}
+
+#current-entry-form input {
+    display: inline-block;
+    width: 20em;
+    text-align: left;
+    background-color: none;
+    border: none;
+    border-bottom: 1px solid rgba(90,90,90,0);
+    padding: 0.2em;
+    background-color: rgba(45,14,38,1);
+    color: rgba(244,145,28,1);
+    font-family: Montserrat;
+    font-size: 1em;
+    padding: 0.2em;
+    margin: 0.5em;
+    transition: border 0.5s, color 0.5s;
+}
+
+#current-entry-form input:focus {
+    border-bottom: 1px solid rgba(255,255,255,1);
+    color: rgba(255,255,255,1);
+    outline: none;
+}
+
+#current-entry-form input:focus ~ input {
+    border-bottom: 1px solid rgba(244,145,28,0.5);
+}
+
+input#input-start-time, input#input-start-date, input#input-end-time, input#input-end-date {
+    width: 9.5em;
+}
