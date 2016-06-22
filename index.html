@@ -2,14 +2,84 @@
 <head>
 <link rel="stylesheet" href="style.css">
 <title>Time Blob</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
 <div class="wrapper">
+
 <div class="timer-area">
 <div id="stopwatch">
+    <h1 id="stopwatch-time"></h1>
     <img id="clock-hand" src="img/clock-hand-active.svg">
     <p id="stopwatch-message">click to start</p>
 </div>
+
+<script>
+//sizing the stopwatch
+resizeStopwatch ();
+function resizeStopwatch () {
+    var stopwatchWidth = $('#stopwatch').width();
+    var stopwatchHeight = $('#stopwatch').height();
+    $('#stopwatch-time').css('width', stopwatchWidth + 'px');
+    $('#stopwatch-time').css('font-size', stopwatchHeight / 128 + 'em');
+    var stopwatchTimeSize = $('#stopwatch-time').css('font-size').replace(/[^-\d.]/g, '');
+    $('#stopwatch-time').css('top', stopwatchHeight / 2 - stopwatchTimeSize / 2 + 'px');
+}
+$(window).resize(resizeStopwatch);
+
+//click to start and stop the clock
+var degree = 0, timer, isRunning = false;
+$('#clock-hand').click(function() {
+    if (!isRunning) {
+        rotate();
+        stopwatchRun();
+        isRunning = true;
+        $('#stopwatch-message').text('click to pause');
+    } else {
+        isRunning = false;
+        $('#stopwatch-message').text('click to start');
+    }
+});
+
+//the stopwatch time tracker starts at zero and adds a seconds every 1000 milliseconds
+var totalSessionTime = 0, stopwatch, totalSessionTimeFormated;
+function stopwatchRun () {
+    stopwatch = setTimeout(function() {
+        if (!isRunning) {
+            return;
+        } else {
+            totalSessionTime = ++totalSessionTime;
+            stopwatchRun();
+        }
+    },1000);
+    //format total session time for stopwatch face
+    if (totalSessionTime < 60) {
+        totalSessionTimeFormatted =  totalSessionTime +'s';
+    } else if (totalSessionTime < 3600) {
+        totalSessionTimeFormatted = Math.floor(totalSessionTime / 60) + 'm ' + totalSessionTime % 60 + 's';
+    } else if (totalSessionTime >= 3600) {
+        totalSessionTimeFormatted = Math.floor(totalSessionTime / 360) + 'h ' + Math.floor(totalSessionTime) % 360 + 'm';
+    }
+    //output total time on stopwatch face
+    $('#stopwatch-time').text(totalSessionTimeFormatted);
+}
+
+//rotate the clock hand 0.24 degrees every 40 milliseconds (25fps)
+function rotate() {
+    $('#clock-hand').css({ 'transform': 'rotate(' + degree + 'deg)'});                      
+    timer = setTimeout(function() {
+        degree = degree + 0.24;
+        if (!isRunning) {
+            return;
+        } else {
+            rotate();
+        }
+    },40);
+}
+
+
+</script>
+
 <form id="current-entry-form">
     <label for="input-activity">Activity</label>
     <input size="" title="" type="text" name="activity" value="" placeholder="" id="input-activity">
@@ -35,8 +105,10 @@
     <input size="" title="" type="text" name="end-date" value="" placeholder="" id="input-end-date">
 </form>
 </div>
+
 <h2>Work Session Entries</h2>
 <p>###</p>
+
 </div>
 </body>
 </html>

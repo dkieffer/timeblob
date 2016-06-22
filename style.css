@@ -12,28 +12,47 @@ body {
 }
 
 .timer-area {
-    vertical-align: top;
-    text-align: center
+    text-align: center;
+    margin: 2em;
 }
 
 #stopwatch {
     display: inline-block;
-    width: 20em;
-    margin: 2em;
+    min-width: 256px;
+    min-height: 256px;
+    box-sizing: border-box;
     background-image: url(img/clock-face.svg);
     background-size: 100%;
     background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+#stopwatch-time {
+    color: white;
+    text-align: center;
+    z-index: 50;
+    position: absolute;
 }
 
 #clock-hand {
     width: 100%;
-    transform: rotate(23deg)
+}
+
+#stopwatch-message {
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+#stopwatch-message:hover {
+    color: white;
+    z-index: 100;
 }
 
 #current-entry-form {
     width: 30em;
     display: inline-block;
     margin: 2em;
+    vertical-align: top;
 }
 
 #current-entry-form label {
@@ -71,4 +90,10 @@ body {
 
 input#input-start-time, input#input-start-date, input#input-end-time, input#input-end-date {
     width: 9.5em;
+}
+
+@media only screen and (max-width: 400px) {
+    #stopwatch {
+        width: 100%;
+    }
 }

@@ -1,16 +1,28 @@
 # Time Blob
 Time Blob is a time tracker
 
-## A Stopwatch to record the time spent on work sessions
-* Click to start & stop
-* Create database entry after stopwatch is started then stopped
-* A form to attach meta data about work session
+## An Entry Form to Submit New Work Session Time & Metadata
+* Form fields for every column
+* Start & Stop time and date autofill with stopwatch data
+* Submit new entry button
+
+### New Entry Form Feature Ideas
+* Autofill fields with previous work session data (except time data)
+* Autofill Suggestions based on other database entries
+* Form field select entire field on tap
+* Form field label select entire field on tap
+* Auto focus on first form field after stopwatch starts
+
+
+## A Stopwatch to track the time spent on work sessions
 * Clock hand animation to show when the stopwatch is running
+* Tap to start & pause
+* A numerical display of total time elapsed
 
 ### Stopwatch Feature Ideas
-* Autofill metadata fields with previous work session
-* Auto Fill Suggestions
-* Form field select all on click
+* 2 state clock hand- glowing while on, and darkened while stopped and paused
+* A quick submit button (for small screens) that adds entry without having to scroll down to press submit
+
 
 ## A Database to store your records
 * A Table of Work session entries
