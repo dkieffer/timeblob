@@ -15,7 +15,7 @@ body {
 
 /* ================================
     Stopwatch Styles 
-=================================*/
+================================= */
 
 .timer-area {
     margin: 2em;
@@ -59,7 +59,7 @@ body {
 
 /* ================================
     Current Entry Form Styles
-=================================*/
+================================= */
 
 #current-form-area {
     padding: 1em;
@@ -121,7 +121,7 @@ input#input-start-time, input#input-start-date, input#input-end-time, input#inpu
 
 /* ================================
     Session List Table Styles 
-=================================*/
+================================= */
 
 table#sessions-table {
     width: 100%;

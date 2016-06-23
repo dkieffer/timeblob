@@ -20,17 +20,17 @@
     <label for="input-activity">Activity</label>
     <input size="" title="" type="text" name="activity" value="" placeholder="" id="input-activity">
 
-    <label for="input-activity">Project</label>
+    <label for="input-project">Project</label>
     <input size="" title="" type="text" name="project" value="" placeholder="" id="input-project">
 
-    <label for="input-activity">Client</label>
+    <label for="input-client">Client</label>
     <input size="" title="" type="text" name="client" value="" placeholder="" id="input-client">
-
-    <label for="input-activity">Rate</label>
-    <input size="" title="" type="text" name="rate" value="" placeholder="" id="input-rate">
 
     <label for="input-activity">Org.</label>
     <input size="" title="" type="text" name="organization" value="" placeholder="" id="input-organization">
+
+    <label for="input-total-time">Time</label>
+    <input size="" title="" type="text" name="total-time" value="" placeholder="" id="input-total-time">
 
     <label for="input-activity">Start</label>
     <input size="" title="" type="text" name="start-time" value="" placeholder="" id="input-start-time">
@@ -124,8 +124,9 @@ function stopwatchRun () {
     } else if (totalSessionTime >= 3600) {
         totalSessionTimeFormatted = Math.floor(totalSessionTime / 360) + 'h ' + Math.floor(totalSessionTime) % 360 + 'm';
     }
-    //output total time on stopwatch face
+    //output total time on stopwatch face, and form field
     $('#stopwatch-time').text(totalSessionTimeFormatted);
+    $('input#input-total-time').val(totalSessionTimeFormatted);
 }
 
 //rotate the clock hand 0.24 degrees every 40 milliseconds (25fps)
