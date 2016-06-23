@@ -4,20 +4,28 @@ body {
     background-color: rgba(45,14,38,1);
     color: rgba(160,60,139,1);
     font-family: Montserrat;
+    font-weight: 300;
 }
 
 .wrapper {
-    max-width: 60em;
-    margin: 5em auto;
+    max-width: 64em;
+    margin: 0 auto 5em auto;
+    text-align: center;
 }
 
+/* ================================
+    Stopwatch Styles 
+=================================*/
+
 .timer-area {
-    text-align: center;
     margin: 2em;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 #stopwatch {
     display: inline-block;
+    position: relative;
     min-width: 256px;
     min-height: 256px;
     box-sizing: border-box;
@@ -32,6 +40,7 @@ body {
     text-align: center;
     z-index: 50;
     position: absolute;
+    margin: 0;
 }
 
 #clock-hand {
@@ -48,34 +57,52 @@ body {
     z-index: 100;
 }
 
-#current-entry-form {
-    width: 30em;
+/* ================================
+    Current Entry Form Styles
+=================================*/
+
+#current-form-area {
+    padding: 1em;
+    max-width: 30em;
     display: inline-block;
-    margin: 2em;
+    vertical-align: middle;
+}
+
+#current-entry-form {
+    width: 100%;
+    display: inline-block;
     vertical-align: top;
 }
 
 #current-entry-form label {
     display: inline-block;
-    width: 5em;
+    width: 16%;
+    box-sizing: border-box;
     text-align: right;
+    text-overflow: ellipsis;
+    cursor: pointer;
 }
 
 #current-entry-form input {
     display: inline-block;
-    width: 20em;
+    width: 74%;
     text-align: left;
     background-color: none;
     border: none;
+    box-sizing: border-box;
     border-bottom: 1px solid rgba(90,90,90,0);
     padding: 0.2em;
     background-color: rgba(45,14,38,1);
-    color: rgba(244,145,28,1);
+    //color: rgba(244,145,28,1);
+    color: rgba(255,174,44,1);
     font-family: Montserrat;
+    font-weight: 200;
     font-size: 1em;
     padding: 0.2em;
     margin: 0.5em;
     transition: border 0.5s, color 0.5s;
+    text-overflow: ellipsis;
+    cursor: pointer;
 }
 
 #current-entry-form input:focus {
@@ -89,7 +116,71 @@ body {
 }
 
 input#input-start-time, input#input-start-date, input#input-end-time, input#input-end-date {
-    width: 9.5em;
+    width: 34%;
+}
+
+/* ================================
+    Session List Table Styles 
+=================================*/
+
+table#sessions-table {
+    width: 100%;
+    background-color: rgba(81,61,77,1);
+    color: rgba(239,175,227,1);
+    font-weight: 200;
+    padding: 0;
+    margin-top: 4em;
+    border-spacing: 0;
+    border-collapse: collapse;    
+    border: none;
+    padding: 1em;
+}
+
+tr {
+    background-color: rgba(81,61,77,1);
+    transition: background-color 0.3s, color 0.3s;
+    // table row padding does not work
+    //padding: 1em;
+}
+
+tr:hover {
+    background-color: rgba(91,71,87,1);
+    color: white;
+    cursor: pointer;
+}
+
+td {
+    padding: 0.5em;
+}
+
+td:first-child {
+    width: 2.5em;
+    color: rgba(239,175,227,0.2);
+    padding: 0 0.5em 0 1em;
+}
+
+td:last-child {
+    text-align: right;
+    width: 4em;
+    padding: 0 1em 0 0.5em;
+}
+
+td:nth-child(2n+2) {
+    position: relative;
+}
+
+td:nth-child(2n+2):before {
+    content: '&nbsp;';
+    visibility: hidden;
+}
+
+td:nth-child(2n+2) span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 @media only screen and (max-width: 400px) {
