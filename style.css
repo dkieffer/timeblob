@@ -81,6 +81,7 @@ body {
     text-align: right;
     text-overflow: ellipsis;
     cursor: pointer;
+    font-weight: 100em;
 }
 
 #current-entry-form input {
