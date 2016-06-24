@@ -124,8 +124,10 @@ function stopwatchRun () {
         totalSessionTimeFormatted =  totalSessionTime +'s';
     } else if (totalSessionTime < 3600) {
         totalSessionTimeFormatted = Math.floor(totalSessionTime / 60) + 'm ' + totalSessionTime % 60 + 's';
-    } else if (totalSessionTime >= 3600) {
-        totalSessionTimeFormatted = Math.floor(totalSessionTime / 360) + 'h ' + Math.floor(totalSessionTime) % 360 + 'm';
+    } else if (totalSessionTime < 3660) {
+        totalSessionTimeFormatted = Math.floor(totalSessionTime / 3600) + 'h ' + Math.floor(totalSessionTime % 3600) + 's';
+    } else if (totalSessionTime >=3660) {
+        totalSessionTimeFormatted = Math.floor(totalSessionTime / 3600) + 'h ' + Math.floor((totalSessionTime % 3600) / 60) + 'm';
     }
     //output total time on stopwatch face, and form field
     $('#stopwatch-time').text(totalSessionTimeFormatted);
