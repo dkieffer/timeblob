@@ -188,7 +188,7 @@ td:nth-child(2n+2):before {
     visibility: hidden;
 }
 
-td:nth-child(2n+2) span {
+tr:not(.edit) td:nth-child(2n+2) span {
     position: absolute;
     left: 0;
     right: 0;
@@ -196,6 +196,53 @@ td:nth-child(2n+2) span {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+tr.edit {
+    background-color: blue;
+}
+
+/* ================================
+    Edit Entry Form Styles
+================================= */
+
+tr.edit td {
+    padding: 0 1em 1em 0;
+    font-size: 0.9em;
+    background: linear-gradient(to bottom, rgba(81,61,77,1), rgba(43,20,48,1) 33%);
+}
+
+#edit-entry-form label {
+    display: block;
+    float: left;
+    clear: left;
+    padding: 0.5em 0;
+    margin-bottom: 0.5em;
+}
+
+#edit-entry-form input {
+    float: right;
+    clear: right;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    border: none;
+    border-radius: 2px;
+    text-align: left;
+    font-family: Montserrat;
+    font-size: 0.9em;
+    display: none;
+}
+
+#edit-entry-form span {
+    display: inline-block;
+    float: right;
+    clear: right;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    background-color: rgba(239,175,227,0.5);
+    color: white;
+    border-radius: 2px;
+}
+
 
 @media only screen and (max-width: 400px) {
     #stopwatch {
