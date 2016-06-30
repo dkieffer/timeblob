@@ -228,15 +228,18 @@ var selectedColumnActivity;
 var selectedColumnTime;
 $('tr.list-entry-row').click(function() {
     if (!isInEditMode) {
+        // Enter edit mode
         isInEditMode = true;
         $(this).addClass('selected-entry');
         $(this).after('<tr class="edit"><td colspan="2"></td></tr>');
         // Load in the edit form
         $('tr.edit td').load('edit-form.html', function () {
-            $('#entry-edit-form').css('height', '1000px');
-            $('#entry-edit-form').css('overflow', 'visible');
-            $('#entry-edit-form').css('background-color', 'blue');
+            $('#edit-entry-form').animate({'max-height': '1000px'}, 200, "linear");
+            //$('#edit-entry-form').css('transition', 'max-height 1s');
+            //$('#edit-entry-form').css('max-height', '1000px');
+            //$('tr.edit td').css('height', '170px');
         });
+        
         // Remember the entry's data
         selectedColumnActivity = $('tr.selected-entry td:first-child').html();
         selectedColumnTime = $('tr.selected-entry td:last-child').html();
@@ -245,11 +248,15 @@ $('tr.list-entry-row').click(function() {
         $('tr.selected-entry').html('<td colspan="2" class="open-entry"><img src="img/white-menu-triangle.svg"></td>');
     } else {
         // Exit edit mode
+        
+        //$('#edit-entry-form').css('max-height', '0px');
+        $('#edit-entry-form').animate({'max-height': '0px'}, 200, "linear", function(){
+            $('tr.edit').remove().empty();
+            $('tr.selected-entry').addClass('list-entry-row');
+            $('tr.selected-entry').html('<td>' + selectedColumnActivity + '</td><td>' + selectedColumnTime + '</td>');
+            $('tr.selected-entry').removeClass('selected-entry');
+        });
         isInEditMode = false;
-        $('tr.edit').remove().empty();
-        $(this).addClass('list-entry-row');
-        $('tr.selected-entry').html('<td>' + selectedColumnActivity + '</td><td>' + selectedColumnTime + '</td>');
-        $('tr.selected-entry').removeClass('selected-entry');
     }
 });
 </script>

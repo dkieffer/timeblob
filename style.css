@@ -237,7 +237,7 @@ tr.edit td {
 #edit-entry-form {
     max-height: 0px;
     overflow: hidden;
-    transition: max-height 0.3s
+    transition: max-height 1s;
 }
 
 #edit-entry-form label {
