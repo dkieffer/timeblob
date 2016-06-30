@@ -100,8 +100,7 @@ body {
     border-bottom: 1px solid rgba(90,90,90,0);
     padding: 0.2em;
     background-color: rgba(45,14,38,1);
-    //color: rgba(244,145,28,1);
-    color: rgba(255,174,44,1);
+    color: rgba(255,149,77,1);
     font-family: Montserrat;
     font-weight: 200;
     font-size: 1em;
@@ -119,7 +118,7 @@ body {
 }
 
 #current-entry-form input:focus ~ input {
-    border-bottom: 1px solid rgba(244,145,28,0.5);
+    border-bottom: 1px solid rgba(255,149,77,0.5);
 }
 
 input#input-start-time, input#input-start-date, input#input-end-time, input#input-end-date {
@@ -145,7 +144,7 @@ input#input-start-time, input#input-start-date, input#input-end-time, input#inpu
 
 table#sessions-table {
     width: 100%;
-    background-color: rgba(81,61,77,1);
+    background-color: rgba(96,37,81,1);
     color: rgba(239,175,227,1);
     font-weight: 200;
     padding: 0;
@@ -157,14 +156,14 @@ table#sessions-table {
 }
 
 tr {
-    background-color: rgba(81,61,77,1);
+    background-color: rgba(96,37,81,1);
     transition: background-color 0.3s, color 0.3s;
     // table row padding does not work
     //padding: 1em;
 }
 
 tr.list-entry-row:hover {
-    background-color: rgba(91,71,87,1);
+    background-color: rgba(106,47,91,1);
     color: white;
     cursor: pointer;
 }
@@ -212,6 +211,12 @@ td.date-line span {
 .open-entry {
     text-align: center;
 }
+
+.open-entry img {
+    transform: rotate(-90deg);
+    transition: transform 0.2s;
+}
+
 td.open-entry:before {
     content: none;
 }
@@ -222,7 +227,7 @@ td.open-entry:before {
 ================================= */
 
 tr.selected-entry {
-    background-color: rgba(91,71,87,1);
+    background-color: rgba(106,47,91,1);
     color: white;
 }
 
@@ -231,7 +236,7 @@ tr.edit {
 
 tr.edit td {
     font-size: 0.9em;
-    background: linear-gradient(to bottom, rgba(81,61,77,1), rgba(43,20,48,1) 33%);
+    background: linear-gradient(to bottom, rgba(96,37,81,1), rgba(43,20,48,1) 33%);
 }
 
 #edit-entry-form {
@@ -273,8 +278,12 @@ tr.edit td {
 }
 
 
+/* ================================
+    Responsive Extras
+================================= */
+
 @media only screen and (max-width: 400px) {
     #stopwatch {
-        width: 100%;
+        max-width: 100%;
     }
 }

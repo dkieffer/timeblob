@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" width="401px" height="400px" viewBox="-0.5 0 401 400" enable-background="new -0.5 0 401 400"
+	 xml:space="preserve">
+<defs>
+</defs>
+<polygon fill="#863EA2" points="199.965,231.158 206.977,229.557 206.938,184.702 202.63,41.172 197.521,41.176 192.914,184.713 
+	192.952,229.566 "/>
+<polygon opacity="0.5" fill="#863EA2" enable-background="new    " points="200.961,231.139 207.919,229.316 206.46,184.484 
+	197.612,41.164 192.505,41.328 192.444,184.94 193.901,229.771 "/>
+<polygon opacity="0.3" fill="#863EA2" enable-background="new    " points="201.956,231.088 208.854,229.047 205.977,184.282 
+	192.596,41.315 187.497,41.642 191.981,185.181 194.856,229.943 "/>
+<polygon opacity="0.2" fill="#863EA2" enable-background="new    " points="202.95,231.008 209.775,228.748 205.484,184.097 
+	187.586,41.624 182.502,42.111 191.526,185.439 195.817,230.088 "/>
+<polygon opacity="0.1" fill="#863EA2" enable-background="new    " points="203.938,230.893 210.689,228.416 204.988,183.928 
+	182.589,42.092 177.524,42.74 191.079,185.709 196.782,230.201 "/>
+<polygon opacity="0.08" fill="#863EA2" enable-background="new    " points="204.927,230.746 211.596,228.062 204.486,183.773 
+	177.61,42.716 172.567,43.526 190.642,185.996 197.749,230.283 "/>
+<polygon opacity="0.06" fill="#863EA2" enable-background="new    " points="205.904,230.573 212.486,227.674 203.98,183.635 
+	172.653,43.5 167.637,44.468 190.212,186.291 198.72,230.334 "/>
+<polygon opacity="0.04" fill="#863EA2" enable-background="new    " points="206.881,230.366 213.368,227.262 203.473,183.513 
+	167.725,44.438 162.74,45.566 189.794,186.604 199.689,230.354 "/>
+<filter id="blur-25" x="-40%" width="180%">
+	<feGaussianBlur in="SourceGraphic" stdDeviation="25" />
+</filter>
+<filter id="blur-10" x="-50%" width="190%">
+	<feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+</filter>
+<filter id="blur-3" x="-80%" width="210%">
+	<feGaussianBlur in="SourceGraphic" stdDeviation="3" />
+</filter>	
+<polygon opacity="0.75" fill="#FF45DC" points="199.965,231.158 160.768,148.144 201.662,21.631 246.96,162.516 " filter="url(#blur-25)"/>
+<polygon opacity="0.2" fill="#FF45DC" points="199.965,231.158 196.969,171.535 201.512,40.202 206.111,172.074 " filter="url(#blur-10)"/>
+<polygon fill="#FFFFFF" points="199.965,231.158 196.969,171.535 201.512,40.202 206.111,172.074 " filter="url(#blur-3)"/>
+<circle fill="#FFFFFF" fill-opacity="0" cx="200" cy="200" r="200"/>
+</svg>

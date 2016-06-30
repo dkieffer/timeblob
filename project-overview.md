@@ -41,6 +41,10 @@ Time Blob is a time tracker
 * User Preferences (eg: time formatting, theme colors, etc.)
 * UI Sound Effects
 * Accessibility for visually impaired
+* Stopwatch, Entry Form, and Database List viewed as three screens on mobile devices
+* Simple one-click install
+* Standalone App (use w/o browser)
+* Server install / Cloud Syncing
 
 #### Form Feature Ideas
 * Autofill fields with previous work session data (except time data)

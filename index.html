@@ -11,7 +11,7 @@
 <div class="timer-area">
 <div id="stopwatch">
     <h1 id="stopwatch-time"></h1>
-    <img id="clock-hand" src="img/clock-hand-active.svg">
+    <img id="clock-hand" src="img/clock-hand.svg">
     <p id="stopwatch-message">tap to start</p>
 </div>
 </div>
@@ -238,6 +238,7 @@ $('tr.list-entry-row').click(function() {
             //$('#edit-entry-form').css('transition', 'max-height 1s');
             //$('#edit-entry-form').css('max-height', '1000px');
             //$('tr.edit td').css('height', '170px');
+            $('.open-entry img').css('transform', 'rotate(0deg)');
         });
         
         // Remember the entry's data
@@ -248,7 +249,7 @@ $('tr.list-entry-row').click(function() {
         $('tr.selected-entry').html('<td colspan="2" class="open-entry"><img src="img/white-menu-triangle.svg"></td>');
     } else {
         // Exit edit mode
-        
+        $('.open-entry img').css('transform', 'rotate(-90deg)');
         //$('#edit-entry-form').css('max-height', '0px');
         $('#edit-entry-form').animate({'max-height': '0px'}, 200, "linear", function(){
             $('tr.edit').remove().empty();
