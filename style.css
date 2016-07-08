@@ -42,15 +42,21 @@ body {
 }
 
 #stopwatch-time {
-    color: white;
+    color: rgba(160,60,139,0);
     text-align: center;
     z-index: 50;
     position: absolute;
     margin: 0;
+    transition: color 1s;
 }
 
 #clock-hand {
     width: 100%;
+}
+
+#clock-hand-inner-glow, #clock-hand-big-back-glow {
+    opacity: 0;
+    transition: opacity 2s;
 }
 
 #stopwatch-message {
@@ -72,6 +78,7 @@ body {
     max-width: 30em;
     display: inline-block;
     vertical-align: middle;
+    box-sizing: border-box;
 }
 
 #current-entry-form {
@@ -229,6 +236,7 @@ td.open-entry:before {
 tr.selected-entry {
     background-color: rgba(106,47,91,1);
     color: white;
+    cursor: pointer;
 }
 
 tr.edit {

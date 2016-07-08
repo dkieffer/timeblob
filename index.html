@@ -8,11 +8,29 @@
 <body>
 <div class="wrapper">
 
-<div class="timer-area">
-<div id="stopwatch">
-    <h1 id="stopwatch-time"></h1>
-    <img id="clock-hand" src="img/clock-hand.svg">
-    <p id="stopwatch-message">tap to start</p>
+<div class="timer-area stopwatch-component">
+<div id="stopwatch" class="stopwatch-component">
+    <h1 id="stopwatch-time" class="stopwatch-component"></h1>
+    <svg id="clock-hand" version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" width="400px" height="400px" viewBox="0 0 400 400" enable-background="new 0 0 400 400"
+	 xml:space="preserve">
+    <polygon fill="#863EA2" points="199.965,231.158 206.977,229.557 206.938,184.702 202.63,41.172 197.521,41.176 192.914,184.713 
+	192.952,229.566 "/>
+    <filter id="blur-25" x="-40%" width="180%">
+	    <feGaussianBlur in="SourceGraphic" stdDeviation="25" />
+    </filter>
+    <filter id="blur-10" x="-50%" width="190%">
+	    <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+    </filter>
+    <filter id="blur-3" x="-80%" width="210%">
+	    <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
+    </filter>
+    <polygon id="clock-hand-big-back-glow" opacity="0.75" fill="#FF45DC" points="199.965,231.158 160.768,148.144 201.662,21.631 246.96,162.516 " filter="url(#blur-25)"/>
+    <polygon opacity="0.2" fill="#FF45DC" points="199.965,231.158 196.969,171.535 201.512,40.202 206.111,172.074 " filter="url(#blur-10)"/>
+    <polygon id="clock-hand-inner-glow" opacity="0.7" fill="#FFFFFF" points="199.965,231.158 196.969,171.535 201.512,40.202 206.111,172.074 " filter="url(#blur-3)"/>
+    </svg>
+    <p id="stopwatch-message" class="stopwatch-component">tap to start</p>
 </div>
 </div>
 
@@ -41,7 +59,7 @@
     <input size="" title="" type="text" name="end-time" value="" placeholder="" id="input-end-time">
     <input size="" title="" type="text" name="end-date" value="" placeholder="" id="input-end-date">
 
-    <button type="submit" value="Send" id="entry-form-submit-button">Submit</button>
+    <button type="submit" value="Send" id="entry-form-submit-button">Add Record</button>
 </form>
 </div>
 </div>
@@ -166,20 +184,60 @@ function resizeStopwatch () {
 }
 $(window).resize(resizeStopwatch);
 
-//click to start and stop the clock
-var degree = 0, timer, isRunning = false;
-$('#clock-hand').click(function() {
+// Click to start and stop the clock
+var degree = 0, timer, isRunning = false, nowTime;
+$('#stopwatch-message').click(function() {
+    var dt = new Date();
     if (!isRunning) {
         rotate();
         stopwatchRun();
         isRunning = true;
         $('#stopwatch-message').text('tap to pause');
+        $('#stopwatch-time').css('color', 'rgba(255,255,255,1)')
+        $('#clock-hand-inner-glow').css('opacity', '1');
+        $('#clock-hand-big-back-glow').css('opacity', '0.7');
+        
+        // Input Time & Date of Stopwatch Start
+        if (!$('#input-start-time').val()) {
+            nowTime = dt.getHours() + ":" + dt.getMinutes();
+            nowDate = dt.getDay() + "/" + dt.getMonth() + "/" + dt.getFullYear();
+            $('#input-start-time').css('color', 'rgba(255,255,255,1)');
+            $('#input-start-date').css('color', 'rgba(255,255,255,1)');
+            $('#input-start-time').val(nowTime);
+            $('#input-start-date').val(nowDate);
+            $('#input-start-time').css('color', 'rgba(255,149,77,1)');
+            $('#input-start-date').css('color', 'rgba(255,149,77,1)');      
+        }
+        if (!$('#input-end-date').val('')) {
+            $('#input-end-date').val('');
+        }
+
+        $('#input-end-time').val('...');
+        $('#input-end-time').css('opacity', '0.5');
     } else if (isRunning && totalSessionTime != 0) {
         isRunning = false;
-        $('#stopwatch-message').text('tap to resume');        
+        $('#stopwatch-message').text('tap to resume');
+        $('#clock-hand-inner-glow').css('opacity', '0');
+        $('#clock-hand-big-back-glow').css('opacity', '0');
+
+        // Input Time & Date of Stopwatch End
+        if ($('#input-end-time').val('...')) {
+            nowTime = dt.getHours() + ":" + dt.getMinutes();
+            nowDate = dt.getDay() + "/" + dt.getMonth() + "/" + dt.getFullYear();
+            $('#input-end-time').css('color', 'rgba(255,255,255,1)');
+            $('#input-end-date').css('color', 'rgba(255,255,255,1)');
+            $('#input-end-time').val(nowTime);
+            $('#input-end-date').val(nowDate);
+            $('#input-end-time').css('color', 'rgba(255,149,77,1)');
+            $('#input-end-date').css('color', 'rgba(255,149,77,1)'); 
+            $('#input-end-time').css('opacity', '1');   
+        }
+       
     } else {
         isRunning = false;
         $('#stopwatch-message').text('tap to start');
+        $('#clock-hand-inner-glow').css('opacity', '0');
+        $('#clock-hand-big-back-glow').css('opacity', '0');
     }
 });
 
