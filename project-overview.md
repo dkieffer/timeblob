@@ -21,8 +21,9 @@ Time Blob is a time tracker
 ## A Stopwatch
 * track the time spent on a work session
 * Clock hand animation to show when the stopwatch is running
-* Tap to start & pause
+* Tap to start & end
 * A numerical display of total time elapsed
+* 2 state clock hand- glowing while on, and darkened while stopped & paused
 
 
 ## A Database to store your records
@@ -56,8 +57,7 @@ Time Blob is a time tracker
 * Time field should be able to handle multiple forms of entry, eg: "2:30", "2h 30m" etc.
 
 #### Stopwatch Feature Ideas
-* 2 state clock hand- glowing while on, and darkened while stopped & paused
-* A quick submit button (for small screens) that adds entry without having to scroll down to press submit
+
 
 #### DB Feature Ideas
 * Add Custom Columns
@@ -67,6 +67,3 @@ Time Blob is a time tracker
 * Filtering: display entries that match specific criteria
 * Non destructive DB editing
 * Totalling: Show the total amount of hours for selected entries
-
-## UX Questions
-* Should we allow for stopwatch "pausing"? If not then we can combine stopping the stopwatch and adding a record into a single action. If we do allow pausing, then it decouples the session's elapsed time, from the start and end time. Is this a bad thing? Would we need to add another hidden column for 'paused time'? The ability to pause might encourage sloppy time tracking practices.

@@ -280,13 +280,13 @@ function stopwatchRun () {
 
 //rotate the clock hand 0.24 degrees every 40 milliseconds (25fps)
 function rotate() {
-    $('#clock-hand').css({ 'transform': 'rotate(' + degree + 'deg)'});                      
-    timer = setTimeout(function() {
+                        
+    timer = setInterval(function() {
         degree = degree + 0.24;
         if (!isRunning) {
             return;
         } else {
-            rotate();
+            $('#clock-hand').css({ 'transform': 'rotate(' + degree + 'deg)'});  
             // Reset Degree count to 0 everytime it does a full 360 degree spin
             if (degree >= 360) {
                 degree = 0;
