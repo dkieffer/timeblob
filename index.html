@@ -186,14 +186,15 @@ $(window).resize(resizeStopwatch);
 
 // Click to start and stop the clock
 var degree = 0, timer, isRunning = false, nowTime;
-$('#stopwatch-message').click(function() {
+$('.stopwatch-component:first').on('click', function() {
+    console.log('click registered');
     var dt = new Date();
     if (!isRunning) {
         rotate();
         stopwatchRun();
         isRunning = true;
-        $('#stopwatch-message').text('tap to pause');
-        $('#stopwatch-time').css('color', 'rgba(255,255,255,1)')
+        $('#stopwatch-message').text('tap to finish');
+        $('#stopwatch-time').css('color', 'rgba(255,255,255,1)');
         $('#clock-hand-inner-glow').css('opacity', '1');
         $('#clock-hand-big-back-glow').css('opacity', '0.7');
         
@@ -214,7 +215,7 @@ $('#stopwatch-message').click(function() {
 
         $('#input-end-time').val('...');
         $('#input-end-time').css('opacity', '0.5');
-    } else if (isRunning && totalSessionTime != 0) {
+    } /*else if (isRunning && totalSessionTime != 0) {
         isRunning = false;
         $('#stopwatch-message').text('tap to resume');
         $('#clock-hand-inner-glow').css('opacity', '0');
@@ -233,13 +234,29 @@ $('#stopwatch-message').click(function() {
             $('#input-end-time').css('opacity', '1');   
         }
        
-    } else {
+    }*/ else {
         isRunning = false;
         $('#stopwatch-message').text('tap to start');
         $('#clock-hand-inner-glow').css('opacity', '0');
         $('#clock-hand-big-back-glow').css('opacity', '0');
+        $('#stopwatch-time').css('color', 'rgba(160,60,139,0)');
+        resetClockHand();
+        totalSessionTime = 0;
     }
 });
+
+// Reset clock hand position to beginning
+function resetClockHand () {
+    $('#clock-hand').css({ 'transform': 'rotate(' + degree + 'deg)'});                   
+    timer = setTimeout(function() {
+        degree = degree - 1;
+        if (!isRunning && degree >= 0) {
+            resetClockHand();
+        } else {
+            return;
+        }
+    },10);
+}
 
 //the stopwatch time tracker starts at zero and adds a seconds every 1000 milliseconds
 var totalSessionTime = 0, stopwatch, totalSessionTimeFormated;
@@ -276,6 +293,10 @@ function rotate() {
             return;
         } else {
             rotate();
+            // Reset Degree count to 0 everytime it does a full 360 degree spin
+            if (degree >= 360) {
+                degree = 0;
+            }
         }
     },40);
 }
@@ -285,6 +306,7 @@ var isInEditMode = false;
 var selectedColumnActivity;
 var selectedColumnTime;
 $('tr.list-entry-row').click(function() {
+    console.log('click worked');
     if (!isInEditMode) {
         // Enter edit mode
         isInEditMode = true;
