@@ -51,7 +51,7 @@ body {
 }
 
 #clock-hand {
-    width: 100%;
+    max-width: 400px;
 }
 
 #clock-hand-inner-glow, #clock-hand-big-back-glow {
@@ -165,8 +165,6 @@ table#sessions-table {
 tr {
     background-color: rgba(96,37,81,1);
     transition: background-color 0.3s, color 0.3s;
-    // table row padding does not work
-    //padding: 1em;
 }
 
 tr.list-entry-row:hover {
@@ -239,9 +237,6 @@ tr.selected-entry {
     cursor: pointer;
 }
 
-tr.edit {
-}
-
 tr.edit td {
     font-size: 0.9em;
     background: linear-gradient(to bottom, rgba(96,37,81,1), rgba(43,20,48,1) 33%);
@@ -292,6 +287,10 @@ tr.edit td {
 
 @media only screen and (max-width: 400px) {
     #stopwatch {
+        max-width: 100%;
+    }
+
+    #clock-hand {
         max-width: 100%;
     }
 }
