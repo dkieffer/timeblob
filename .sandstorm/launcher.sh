@@ -42,4 +42,3 @@ done
 
 # Start nginx.
 /usr/sbin/nginx -c /opt/app/.sandstorm/service-config/nginx.conf -g "daemon off;"
-

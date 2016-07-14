@@ -116,6 +116,8 @@ opt/app/env/lib/python2.7/types.pyc
 opt/app/env/lib/python2.7/warnings.py
 opt/app/env/lib/python2.7/warnings.pyc
 opt/app/env/local/lib
+opt/app/main.py
+opt/app/manage.py
 proc/cpuinfo
 sandstorm-http-bridge
 sandstorm-http-bridge-config
