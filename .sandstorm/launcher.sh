@@ -27,6 +27,8 @@ while [ ! -e $MYSQL_SOCKET_FILE ] ; do
     sleep .2
 done
 
+echo "CREATE DATABASE IF NOT EXISTS app; GRANT ALL on app.* TO 'app'@'localhost' IDENTIFIED BY 'app';" | mysql -uroot
+
 # Spawn uwsgi
 HOME=/var uwsgi \
         --socket $UWSGI_SOCKET_FILE \

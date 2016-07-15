@@ -8,6 +8,7 @@ set -euo pipefail
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
 apt-get install -y nginx mysql-server libmysqlclient-dev uwsgi uwsgi-plugin-python build-essential python-dev python-virtualenv git
+apt-get build-dep python-mysqldb
 # patch mysql conf to not change uid
 sed --in-place='' \
         --expression='s/^user\t\t= mysql/#user\t\t= mysql/' \

@@ -1,3 +1,4 @@
 Django==1.9.7
 djangorestframework==3.4.0
 Markdown==2.6.6
+MySQL-python==1.2.5
