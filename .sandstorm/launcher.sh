@@ -32,7 +32,8 @@ HOME=/var uwsgi \
         --socket $UWSGI_SOCKET_FILE \
         --plugin python \
         --virtualenv /opt/app/env \
-        --wsgi-file /opt/app/main.py &
+        --chdir=/opt/app/ \
+        --wsgi-file timeblobsite/wsgi.py &
 
 # Wait for uwsgi to bind its socket
 while [ ! -e $UWSGI_SOCKET_FILE ] ; do
