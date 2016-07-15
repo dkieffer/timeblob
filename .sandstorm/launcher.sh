@@ -28,14 +28,28 @@ while [ ! -e $MYSQL_SOCKET_FILE ] ; do
 done
 
 echo "CREATE DATABASE IF NOT EXISTS app; GRANT ALL on app.* TO 'app'@'localhost' IDENTIFIED BY 'app';" | mysql -uroot
+export DJANGO_SETTINGS_MODULE=timeblobsite.settings.production
 
+
+set +o nounset
+source /opt/app/env/bin/activate
+set -o nounset
+HOME=/var python /opt/app/manage.py migrate
+echo 'after migrate '
+set +o nounset
+deactivate
+set -o nounset
 # Spawn uwsgi
+echo 'before uwsgi'
+#set +o nounset
 HOME=/var uwsgi \
         --socket $UWSGI_SOCKET_FILE \
         --plugin python \
         --virtualenv /opt/app/env \
         --chdir=/opt/app/ \
         --wsgi-file timeblobsite/wsgi.py &
+
+#set -o nounset
 
 # Wait for uwsgi to bind its socket
 while [ ! -e $UWSGI_SOCKET_FILE ] ; do
