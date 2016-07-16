@@ -1,0 +1,343 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<title>Time Blob</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div>
+
+<div class="wrapper">
+
+<div class="timer-area stopwatch-component">
+<div id="stopwatch" class="stopwatch-component">
+    <h1 id="stopwatch-time" class="stopwatch-component"></h1>
+    <svg id="clock-hand" viewBox="0 0 400 400" enable-background="new 0 0 400 400"
+	 xml:space="preserve">
+    <polygon fill="#863EA2" points="199.965,231.158 206.977,229.557 206.938,184.702 202.63,41.172 197.521,41.176 192.914,184.713
+	192.952,229.566 "/>
+    <filter id="blur-25" x="-40%" width="180%">
+	    <feGaussianBlur in="SourceGraphic" stdDeviation="25" />
+    </filter>
+    <filter id="blur-3" x="-80%" width="210%">
+	    <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
+    </filter>
+    <polygon id="clock-hand-big-back-glow" opacity="0.75" fill="#FF45DC" points="199.965,231.158 160.768,148.144 201.662,21.631 246.96,162.516 " filter="url(#blur-25)"/>
+    <polygon opacity="0.2" fill="#FF45DC" points="199.965,231.158 196.969,171.535 201.512,40.202 206.111,172.074 " filter="url(#blur-10)"/>
+    <polygon id="clock-hand-inner-glow" opacity="0.7" fill="#FFFFFF" points="199.965,231.158 196.969,171.535 201.512,40.202 206.111,172.074 " filter="url(#blur-3)"/>
+    </svg>
+    <p id="stopwatch-message" class="stopwatch-component">tap to start</p>
+</div>
+</div>
+
+<div id="current-form-area">
+<form id="current-entry-form">
+    <label for="input-activity">Activity</label>
+    <input size="" title="" type="text" name="activity" value="" placeholder="" id="input-activity">
+
+    <label for="input-project">Project</label>
+    <input size="" title="" type="text" name="project" value="" placeholder="" id="input-project">
+
+    <label for="input-client">Client</label>
+    <input size="" title="" type="text" name="client" value="" placeholder="" id="input-client">
+
+    <label for="input-activity">Org.</label>
+    <input size="" title="" type="text" name="organization" value="" placeholder="" id="input-organization">
+
+    <label for="input-total-time">Time</label>
+    <input size="" title="" type="text" name="total-time" value="" placeholder="" id="input-total-time">
+
+    <label for="input-start-time">Start</label>
+    <input size="" title="" type="text" name="start-time" value="" placeholder="" id="input-start-time">
+    <input size="" title="" type="text" name="start-date" value="" placeholder="" id="input-start-date">
+
+    <label for="input-end-time">End</label>
+    <input size="" title="" type="text" name="end-time" value="" placeholder="" id="input-end-time">
+    <input size="" title="" type="text" name="end-date" value="" placeholder="" id="input-end-date">
+
+    <button type="submit" value="Send" id="entry-form-submit-button">Add Record</button>
+</form>
+</div>
+</div>
+
+<div class="table-wrapper">
+<table id="sessions-table">
+    <tr>
+        <td colspan="2" class="date-line"><span></span>6/23<span></span></td>
+    </td>
+    <tr class="list-entry-row">
+        <td><span>Head Meta Tag Updates</span></td>
+        <td>1h 43m</td>
+    </tr>
+    <tr class="list-entry-row">
+        <td><span>Minor Style Sheet Adjustments</span></td>
+        <td>39m</td>
+    </tr>
+    <tr class="list-entry-row">
+        <td><span>Git Cleanup</span></td>
+        <td>3h 2m</td>
+    </tr>
+    <tr>
+        <td colspan="2" class="date-line"><span></span>6/22<span></span></td>
+    </tr>
+    <tr class="list-entry-row">
+        <td><span>Creating Identity Concepts</span></td>
+        <td>4h 11m</td>
+    </tr>
+    <tr>
+        <td colspan="2" class="date-line"><span></span>6/21<span></span></td>
+    </tr>
+    <tr class="list-entry-row">
+        <td><span>Identity Discovery</span></td>
+        <td>1h 31m</td>
+    </tr>
+    <tr class="list-entry-row">
+        <td><span>Identity Discovery</span></td>
+        <td>2h 14m</td>
+    </tr>
+    <tr class="list-entry-row">
+        <td><span>Client Consultation</span></td>
+        <td>1h</td>
+    </tr>
+    <tr class="list-entry-row">
+        <td><span>UX Design</span></td>
+        <td>2h 34m</td>
+    </tr>
+    <tr>
+        <td colspan="2" class="date-line"><span></span>6/18<span></span></td>
+    </tr>
+    <tr class="list-entry-row">
+        <td><span>Client Call</span></td>
+        <td>15m</td>
+    </tr>
+    <tr class="list-entry-row">
+        <td><span>Design Comittee Presentation</span></td>
+        <td>1h 17m</td>
+    </tr>
+    <tr class="list-entry-row">
+        <td><span>Presentation Prep</span></td>
+        <td>4h 7m</td>
+    </tr>
+    <tr class="list-entry-row">
+        <td><span>Concept Prep</span></td>
+        <td>24m</td>
+    </tr>
+    <tr class="list-entry-row">
+        <td><span>Identity Concept Design</span></td>
+        <td>3h 23m</td>
+    </tr>
+    <tr>
+        <td colspan="2" class="date-line"><span></span>6/17<span></span></td>
+    </tr>
+    <tr class="list-entry-row">
+        <td><span>Identity Concept Design</span></td>
+        <td>3h 23m</td>
+    </tr>
+    <tr class="list-entry-row">
+        <td><span>Identity Concept Design</span></td>
+        <td>1h 47m</td>
+    </tr>
+    <tr class="list-entry-row">
+        <td><span>Client Phone Call</span></td>
+        <td>1h 3m</td>
+    </tr>
+    <tr class="list-entry-row">
+        <td><span>Identity Concept Design</span></td>
+        <td>2h 23m</td>
+    </tr>
+    <tr class="list-entry-row">
+        <td><span>Rework of Form Front End</span></td>
+        <td>1h 14m</td>
+    </tr>
+    <tr>
+        <td colspan="2" class="date-line"><span></span>6/16<span></span></td>
+    </tr>
+    <tr class="list-entry-row">
+        <td><span>UX Consultation</span></td>
+        <td>2h 10m</td>
+    </tr>
+    <tr class="list-entry-row">
+        <td><span>Identity Concept Design</span></td>
+        <td>1h 19m</td>
+    </tr>
+    <tr>
+        <td colspan="2" class="date-line">Scroll to load 20 more</td>
+    </tr>
+</table>
+</div>
+
+<script>
+//sizing the stopwatch
+resizeStopwatch ();
+function resizeStopwatch () {
+    var stopwatchWidth = $('#stopwatch').width();
+    var stopwatchHeight = $('#stopwatch').height();
+    $('#stopwatch-time').css('width', stopwatchWidth + 'px');
+    $('#stopwatch-time').css('font-size', stopwatchHeight / 128 + 'em');
+    var stopwatchTimeSize = $('#stopwatch-time').css('font-size').replace(/[^-\d.]/g, '');
+    $('#stopwatch-time').css('top', stopwatchWidth / 2 - stopwatchTimeSize / 2 + 'px');
+}
+$(window).resize(resizeStopwatch);
+
+// Click to start and stop the clock
+var degree = 0, timer, isRunning = false, nowTime;
+$('.stopwatch-component:first').on('click', function() {
+    console.log('click registered');
+    var dt = new Date();
+    if (!isRunning) {
+        rotate();
+        stopwatchRun();
+        isRunning = true;
+        $('#stopwatch-message').text('tap to finish');
+        $('#stopwatch-time').css('color', 'rgba(255,255,255,1)');
+        $('#clock-hand-inner-glow').css('opacity', '1');
+        $('#clock-hand-big-back-glow').css('opacity', '0.7');
+
+        // Input Time & Date of Stopwatch Start
+        if (!$('#input-start-time').val()) {
+            nowTime = dt.getHours() + ":" + dt.getMinutes();
+            nowDate = dt.getDay() + "/" + dt.getMonth() + "/" + dt.getFullYear();
+            $('#input-start-time').css('color', 'rgba(255,255,255,1)');
+            $('#input-start-date').css('color', 'rgba(255,255,255,1)');
+            $('#input-start-time').val(nowTime);
+            $('#input-start-date').val(nowDate);
+            $('#input-start-time').css('color', 'rgba(255,149,77,1)');
+            $('#input-start-date').css('color', 'rgba(255,149,77,1)');
+        }
+        if (!$('#input-end-date').val('')) {
+            $('#input-end-date').val('');
+        }
+
+        $('#input-end-time').val('...');
+        $('#input-end-time').css('opacity', '0.5');
+    } /*else if (isRunning && totalSessionTime != 0) {
+        isRunning = false;
+        $('#stopwatch-message').text('tap to resume');
+        $('#clock-hand-inner-glow').css('opacity', '0');
+        $('#clock-hand-big-back-glow').css('opacity', '0');
+
+        // Input Time & Date of Stopwatch End
+        if ($('#input-end-time').val('...')) {
+            nowTime = dt.getHours() + ":" + dt.getMinutes();
+            nowDate = dt.getDay() + "/" + dt.getMonth() + "/" + dt.getFullYear();
+            $('#input-end-time').css('color', 'rgba(255,255,255,1)');
+            $('#input-end-date').css('color', 'rgba(255,255,255,1)');
+            $('#input-end-time').val(nowTime);
+            $('#input-end-date').val(nowDate);
+            $('#input-end-time').css('color', 'rgba(255,149,77,1)');
+            $('#input-end-date').css('color', 'rgba(255,149,77,1)');
+            $('#input-end-time').css('opacity', '1');
+        }
+
+    }*/ else {
+        isRunning = false;
+        $('#stopwatch-message').text('tap to start');
+        $('#clock-hand-inner-glow').css('opacity', '0');
+        $('#clock-hand-big-back-glow').css('opacity', '0');
+        $('#stopwatch-time').css('color', 'rgba(160,60,139,0)');
+        resetClockHand();
+        totalSessionTime = 0;
+    }
+});
+
+// Reset clock hand position to beginning
+function resetClockHand () {
+    $('#clock-hand').css({ 'transform': 'rotate(' + degree + 'deg)'});
+    timer = setTimeout(function() {
+        degree = degree - 1;
+        if (!isRunning && degree >= 0) {
+            resetClockHand();
+        } else {
+            return;
+        }
+    },10);
+}
+
+//the stopwatch time tracker starts at zero and adds a seconds every 1000 milliseconds
+var totalSessionTime = 0, stopwatch, totalSessionTimeFormated;
+function stopwatchRun () {
+    stopwatch = setTimeout(function() {
+        if (!isRunning) {
+            return;
+        } else {
+            totalSessionTime = ++totalSessionTime;
+            stopwatchRun();
+        }
+    },1000);
+    //format total session time for stopwatch face
+    if (totalSessionTime < 60) {
+        totalSessionTimeFormatted =  totalSessionTime +'s';
+    } else if (totalSessionTime < 3600) {
+        totalSessionTimeFormatted = Math.floor(totalSessionTime / 60) + 'm ' + totalSessionTime % 60 + 's';
+    } else if (totalSessionTime < 3660) {
+        totalSessionTimeFormatted = Math.floor(totalSessionTime / 3600) + 'h ' + Math.floor(totalSessionTime % 3600) + 's';
+    } else if (totalSessionTime >=3660) {
+        totalSessionTimeFormatted = Math.floor(totalSessionTime / 3600) + 'h ' + Math.floor((totalSessionTime % 3600) / 60) + 'm';
+    }
+    //output total time on stopwatch face, and form field
+    $('#stopwatch-time').text(totalSessionTimeFormatted);
+    $('input#input-total-time').val(totalSessionTimeFormatted);
+}
+
+//rotate the clock hand 0.24 degrees every 40 milliseconds (25fps)
+function rotate() {
+
+    timer = setInterval(function() {
+        degree = degree + 0.24;
+        if (!isRunning) {
+            return;
+        } else {
+            $('#clock-hand').css({ 'transform': 'rotate(' + degree + 'deg)'});
+            // Reset Degree count to 0 everytime it does a full 360 degree spin
+            if (degree >= 360) {
+                degree = 0;
+            }
+        }
+    },40);
+}
+
+//Edit Mode for List Entries
+var isInEditMode = false;
+var selectedColumnActivity;
+var selectedColumnTime;
+$('tr.list-entry-row').click(function() {
+    console.log('click worked');
+    if (!isInEditMode) {
+        // Enter edit mode
+        isInEditMode = true;
+        $(this).addClass('selected-entry');
+        $(this).after('<tr class="edit"><td colspan="2"></td></tr>');
+        // Load in the edit form
+        $('tr.edit td').load('edit-form.html', function () {
+            $('#edit-entry-form').animate({'max-height': '1000px'}, 200, "linear");
+            //$('#edit-entry-form').css('transition', 'max-height 1s');
+            //$('#edit-entry-form').css('max-height', '1000px');
+            //$('tr.edit td').css('height', '170px');
+            $('.open-entry img').css('transform', 'rotate(0deg)');
+        });
+
+        // Remember the entry's data
+        selectedColumnActivity = $('tr.selected-entry td:first-child').html();
+        selectedColumnTime = $('tr.selected-entry td:last-child').html();
+        $('tr.selected-entry').empty();
+        $(this).removeClass('list-entry-row');
+        $('tr.selected-entry').html('<td colspan="2" class="open-entry"><img src="img/white-menu-triangle.svg"></td>');
+    } else {
+        // Exit edit mode
+        $('.open-entry img').css('transform', 'rotate(-90deg)');
+        //$('#edit-entry-form').css('max-height', '0px');
+        $('#edit-entry-form').animate({'max-height': '0px'}, 200, "linear", function(){
+            $('tr.edit').remove().empty();
+            $('tr.selected-entry').addClass('list-entry-row');
+            $('tr.selected-entry').html('<td>' + selectedColumnActivity + '</td><td>' + selectedColumnTime + '</td>');
+            $('tr.selected-entry').removeClass('selected-entry');
+        });
+        isInEditMode = false;
+    }
+});
+</script>
+
+</body>
+</html>
