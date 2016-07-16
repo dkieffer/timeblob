@@ -8,3 +8,5 @@ DATABASES = {
         'PASSWORD': 'app'
     }
 }
+
+SANDSTORM = True

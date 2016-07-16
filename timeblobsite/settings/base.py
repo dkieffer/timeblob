@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'timeblob'
+    'timeblob',
+    'django_sandstorm'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -50,7 +51,13 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_sandstorm.middleware.SandstormMiddleware'
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.RemoteUserBackend',
+    'django.contrib.auth.backends.ModelBackend'
+)
 
 ROOT_URLCONF = 'timeblobsite.urls'
 
