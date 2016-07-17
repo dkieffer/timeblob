@@ -1,13 +1,15 @@
+{% load staticfiles %}
+
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="{% static "timeblob/style/style.css" %}">
 <title>Time Blob</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
 
-<div>
+
 
 <div class="wrapper">
 
@@ -185,7 +187,7 @@ $(window).resize(resizeStopwatch);
 var degree = 0, timer, isRunning = false, nowTime;
 $('.stopwatch-component:first').on('click', function() {
     console.log('click registered');
-    var dt = new Date();
+
     if (!isRunning) {
         rotate();
         stopwatchRun();
@@ -323,7 +325,7 @@ $('tr.list-entry-row').click(function() {
         selectedColumnTime = $('tr.selected-entry td:last-child').html();
         $('tr.selected-entry').empty();
         $(this).removeClass('list-entry-row');
-        $('tr.selected-entry').html('<td colspan="2" class="open-entry"><img src="img/white-menu-triangle.svg"></td>');
+        $('tr.selected-entry').html('<td colspan="2" class="open-entry"><img src="{% static "timeblob/img/white-menu-triangle.svg" %}"></td>');
     } else {
         // Exit edit mode
         $('.open-entry img').css('transform', 'rotate(-90deg)');

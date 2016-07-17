@@ -36,6 +36,7 @@ source /opt/app/env/bin/activate
 set -o nounset
 HOME=/var python /opt/app/manage.py migrate
 echo 'after migrate '
+HOME=/var python /opt/app/manage.py collectstatic -c -l --noinput
 set +o nounset
 deactivate
 set -o nounset
