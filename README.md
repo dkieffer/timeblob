@@ -1,5 +1,5 @@
 # Time Blob
-Time Blob is a time tracker
+Time Blob is a time tracker designed for [Sandstorm.io](https://sandstorm.io)
 
 Check out [the project overview](/project-overview.md) to see an outline of what we are developing, and what we want to add.
 
