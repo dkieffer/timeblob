@@ -28,3 +28,16 @@ Add Timeblob to your dev version of Sandstorm
 ```
 vagrant-spk dev
 ```
+
+### Running tests
+Before sending a commit, please consider adding tests to verify functionality.
+
+... Information about how to install pip and other silliness ...
+
+Once you have the requirements installed, please run the following to run the tests:
+
+```
+./manage.py tests
+```
+
+Everything should pass!
