@@ -182,7 +182,7 @@ function resizeStopwatch () {
 $(window).resize(resizeStopwatch);
 
 // Click to start and stop the clock
-var degree = 0, timer, isRunning = false, nowTime, clockTicker;
+var degree = 0, timer, isRunning = false, nowTime, clockTicker, dt;
 $('.stopwatch-component:first').on('click', function() {
     if (!isRunning) {
         rotate();
@@ -207,29 +207,11 @@ $('.stopwatch-component:first').on('click', function() {
         if (!$('#input-end-date').val('')) {
             $('#input-end-date').val('');
         }
-
+        // While stopwatch is running set form's end time to a transparent elipsis
         $('#input-end-time').val('...');
         $('#input-end-time').css('opacity', '0.5');
-    } /*else if (isRunning && totalSessionTime != 0) {
-        isRunning = false;
-        $('#stopwatch-message').text('tap to resume');
-        $('#clock-hand-inner-glow').css('opacity', '0');
-        $('#clock-hand-big-back-glow').css('opacity', '0');
-
-        // Input Time & Date of Stopwatch End
-        if ($('#input-end-time').val('...')) {
-            nowTime = dt.getHours() + ":" + dt.getMinutes();
-            nowDate = dt.getDay() + "/" + dt.getMonth() + "/" + dt.getFullYear();
-            $('#input-end-time').css('color', 'rgba(255,255,255,1)');
-            $('#input-end-date').css('color', 'rgba(255,255,255,1)');
-            $('#input-end-time').val(nowTime);
-            $('#input-end-date').val(nowDate);
-            $('#input-end-time').css('color', 'rgba(255,149,77,1)');
-            $('#input-end-date').css('color', 'rgba(255,149,77,1)');
-            $('#input-end-time').css('opacity', '1');
-        }
-
-    }*/ else {
+    } else {
+        // Stop the stopwatch
         isRunning = false;
         $('#stopwatch-message').text('tap to start');
         $('#clock-hand-inner-glow').css('opacity', '0');
@@ -240,47 +222,34 @@ $('.stopwatch-component:first').on('click', function() {
     }
 });
 
-// Reset clock hand position to beginning
-function resetClockHand () {
-    $('#clock-hand').css({ 'transform': 'rotate(' + degree + 'deg)'});
-    timer = setTimeout(function() {
-        degree = degree - 1;
-        if (!isRunning && degree >= 0) {
-            resetClockHand();
-        } else {
-            clearTimeout(timer);
-        }
-    },10);
-}
-
-//start time at zero and add a seconds every 1000 milliseconds
+// Start time at zero and add a seconds every 1000 milliseconds
 var totalSessionTime = 0, stopwatch, totalSessionTimeFormated;
 function stopwatchRun () {
     stopwatch = setInterval(function() {
         if (!isRunning) {
             clearInterval(stopwatch);
+            $('#stopwatch-time').text(totalSessionTimeFormatted);
         } else {
             totalSessionTime = ++totalSessionTime;
-            //output total time on stopwatch face, and form field
+            // Format total session time for stopwatch face
+            if (totalSessionTime < 60) {
+                totalSessionTimeFormatted =  totalSessionTime +'s';
+            } else if (totalSessionTime < 3600) {
+                totalSessionTimeFormatted = Math.floor(totalSessionTime / 60) + 'm ' + totalSessionTime % 60 + 's';
+            } else if (totalSessionTime < 3660) {
+                totalSessionTimeFormatted = Math.floor(totalSessionTime / 3600) + 'h ' + Math.floor(totalSessionTime % 3600) + 's';
+            } else if (totalSessionTime >=3660) {
+                totalSessionTimeFormatted = Math.floor(totalSessionTime / 3600) + 'h ' + Math.floor((totalSessionTime % 3600) / 60) + 'm';
+            }
+            // Output total time on stopwatch face, and form field
             $('#stopwatch-time').text(totalSessionTimeFormatted);
             $('input#input-total-time').val(totalSessionTimeFormatted);
         }
     },1000);
-    //format total session time for stopwatch face
-    if (totalSessionTime < 60) {
-        totalSessionTimeFormatted =  totalSessionTime +'s';
-    } else if (totalSessionTime < 3600) {
-        totalSessionTimeFormatted = Math.floor(totalSessionTime / 60) + 'm ' + totalSessionTime % 60 + 's';
-    } else if (totalSessionTime < 3660) {
-        totalSessionTimeFormatted = Math.floor(totalSessionTime / 3600) + 'h ' + Math.floor(totalSessionTime % 3600) + 's';
-    } else if (totalSessionTime >=3660) {
-        totalSessionTimeFormatted = Math.floor(totalSessionTime / 3600) + 'h ' + Math.floor((totalSessionTime % 3600) / 60) + 'm';
-    }
 }
 
 //rotate the clock hand 0.24 degrees every 40 milliseconds (25fps)
 function rotate() {
-
     clockTicker = setInterval(function() {
         degree = degree + 0.24;
         if (!isRunning) {
@@ -295,10 +264,21 @@ function rotate() {
     },40);
 }
 
+// Reset clock hand position to beginning
+function resetClockHand () {
+    $('#clock-hand').css({ 'transform': 'rotate(' + degree + 'deg)'});
+    timer = setTimeout(function() {
+        degree = degree - 1;
+        if (!isRunning && degree >= 0) {
+            resetClockHand();
+        } else {
+            clearTimeout(timer);
+        }
+    },10);
+}
+
 //Edit Mode for List Entries
-var isInEditMode = false;
-var selectedColumnActivity;
-var selectedColumnTime;
+var isInEditMode = false, selectedColumnActivity, selectedColumnTime;
 $('tr.list-entry-row').click(function() {
     if (!isInEditMode) {
         // Enter edit mode
@@ -308,12 +288,8 @@ $('tr.list-entry-row').click(function() {
         // Load in the edit form
         $('tr.edit td').load('edit-form.html', function () {
             $('#edit-entry-form').animate({'max-height': '1000px'}, 200, "linear");
-            //$('#edit-entry-form').css('transition', 'max-height 1s');
-            //$('#edit-entry-form').css('max-height', '1000px');
-            //$('tr.edit td').css('height', '170px');
             $('.open-entry img').css('transform', 'rotate(0deg)');
         });
-
         // Remember the entry's data
         selectedColumnActivity = $('tr.selected-entry td:first-child').html();
         selectedColumnTime = $('tr.selected-entry td:last-child').html();
