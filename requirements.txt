@@ -1,4 +1,6 @@
-Django==1.9.7
+Django==1.10b1
 djangorestframework==3.4.0
+django-sandstorm==0.0.2
 Markdown==2.6.6
 MySQL-python==1.2.5
+six==1.10.0

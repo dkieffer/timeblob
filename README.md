@@ -1,5 +1,5 @@
 # Time Blob
-Time Blob is a time tracker
+Time Blob is a time tracker designed for [Sandstorm.io](https://sandstorm.io)
 
 Check out [the project overview](/project-overview.md) to see an outline of what we are developing, and what we want to add.
 
@@ -28,3 +28,16 @@ Add Timeblob to your dev version of Sandstorm
 ```
 vagrant-spk dev
 ```
+
+### Running tests
+Before sending a commit, please consider adding tests to verify functionality.
+
+... Information about how to install pip and other silliness ...
+
+Once you have the requirements installed, please run the following to run the tests:
+
+```
+./manage.py tests
+```
+
+Everything should pass!

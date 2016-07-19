@@ -19,5 +19,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls')),
-    url(r'^$', include('timeblob.urls'))
+    url(r'^', include('timeblob.urls'))
 ]

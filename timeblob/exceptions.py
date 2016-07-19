@@ -1,0 +1,2 @@
+class NoCurrentTask(Exception):
+    pass

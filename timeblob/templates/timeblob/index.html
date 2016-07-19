@@ -1,11 +1,16 @@
+{% load staticfiles %}
+
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="{% static "timeblob/style/style.css" %}">
 <title>Time Blob</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
+
+
+
 <div class="wrapper">
 
 <div class="timer-area stopwatch-component">
@@ -13,7 +18,7 @@
     <h1 id="stopwatch-time" class="stopwatch-component"></h1>
     <svg id="clock-hand" viewBox="0 0 400 400" enable-background="new 0 0 400 400"
 	 xml:space="preserve">
-    <polygon fill="#863EA2" points="199.965,231.158 206.977,229.557 206.938,184.702 202.63,41.172 197.521,41.176 192.914,184.713 
+    <polygon fill="#863EA2" points="199.965,231.158 206.977,229.557 206.938,184.702 202.63,41.172 197.521,41.176 192.914,184.713
 	192.952,229.566 "/>
     <filter id="blur-25" x="-40%" width="180%">
 	    <feGaussianBlur in="SourceGraphic" stdDeviation="25" />
@@ -78,14 +83,14 @@
     </tr>
     <tr>
         <td colspan="2" class="date-line"><span></span>6/22<span></span></td>
-    </tr>    
+    </tr>
     <tr class="list-entry-row">
         <td><span>Creating Identity Concepts</span></td>
         <td>4h 11m</td>
     </tr>
     <tr>
         <td colspan="2" class="date-line"><span></span>6/21<span></span></td>
-    </tr>  
+    </tr>
     <tr class="list-entry-row">
         <td><span>Identity Discovery</span></td>
         <td>1h 31m</td>
@@ -112,7 +117,7 @@
     <tr class="list-entry-row">
         <td><span>Design Comittee Presentation</span></td>
         <td>1h 17m</td>
-    </tr> 
+    </tr>
     <tr class="list-entry-row">
         <td><span>Presentation Prep</span></td>
         <td>4h 7m</td>
@@ -182,7 +187,7 @@ $(window).resize(resizeStopwatch);
 var degree = 0, timer, isRunning = false, nowTime;
 $('.stopwatch-component:first').on('click', function() {
     console.log('click registered');
-    var dt = new Date();
+
     if (!isRunning) {
         rotate();
         stopwatchRun();
@@ -191,7 +196,7 @@ $('.stopwatch-component:first').on('click', function() {
         $('#stopwatch-time').css('color', 'rgba(255,255,255,1)');
         $('#clock-hand-inner-glow').css('opacity', '1');
         $('#clock-hand-big-back-glow').css('opacity', '0.7');
-        
+
         // Input Time & Date of Stopwatch Start
         if (!$('#input-start-time').val()) {
             nowTime = dt.getHours() + ":" + dt.getMinutes();
@@ -201,7 +206,7 @@ $('.stopwatch-component:first').on('click', function() {
             $('#input-start-time').val(nowTime);
             $('#input-start-date').val(nowDate);
             $('#input-start-time').css('color', 'rgba(255,149,77,1)');
-            $('#input-start-date').css('color', 'rgba(255,149,77,1)');      
+            $('#input-start-date').css('color', 'rgba(255,149,77,1)');
         }
         if (!$('#input-end-date').val('')) {
             $('#input-end-date').val('');
@@ -224,10 +229,10 @@ $('.stopwatch-component:first').on('click', function() {
             $('#input-end-time').val(nowTime);
             $('#input-end-date').val(nowDate);
             $('#input-end-time').css('color', 'rgba(255,149,77,1)');
-            $('#input-end-date').css('color', 'rgba(255,149,77,1)'); 
-            $('#input-end-time').css('opacity', '1');   
+            $('#input-end-date').css('color', 'rgba(255,149,77,1)');
+            $('#input-end-time').css('opacity', '1');
         }
-       
+
     }*/ else {
         isRunning = false;
         $('#stopwatch-message').text('tap to start');
@@ -241,7 +246,7 @@ $('.stopwatch-component:first').on('click', function() {
 
 // Reset clock hand position to beginning
 function resetClockHand () {
-    $('#clock-hand').css({ 'transform': 'rotate(' + degree + 'deg)'});                   
+    $('#clock-hand').css({ 'transform': 'rotate(' + degree + 'deg)'});
     timer = setTimeout(function() {
         degree = degree - 1;
         if (!isRunning && degree >= 0) {
@@ -280,13 +285,13 @@ function stopwatchRun () {
 
 //rotate the clock hand 0.24 degrees every 40 milliseconds (25fps)
 function rotate() {
-                        
+
     timer = setInterval(function() {
         degree = degree + 0.24;
         if (!isRunning) {
             return;
         } else {
-            $('#clock-hand').css({ 'transform': 'rotate(' + degree + 'deg)'});  
+            $('#clock-hand').css({ 'transform': 'rotate(' + degree + 'deg)'});
             // Reset Degree count to 0 everytime it does a full 360 degree spin
             if (degree >= 360) {
                 degree = 0;
@@ -314,13 +319,13 @@ $('tr.list-entry-row').click(function() {
             //$('tr.edit td').css('height', '170px');
             $('.open-entry img').css('transform', 'rotate(0deg)');
         });
-        
+
         // Remember the entry's data
         selectedColumnActivity = $('tr.selected-entry td:first-child').html();
         selectedColumnTime = $('tr.selected-entry td:last-child').html();
         $('tr.selected-entry').empty();
         $(this).removeClass('list-entry-row');
-        $('tr.selected-entry').html('<td colspan="2" class="open-entry"><img src="img/white-menu-triangle.svg"></td>');
+        $('tr.selected-entry').html('<td colspan="2" class="open-entry"><img src="{% static "timeblob/img/white-menu-triangle.svg" %}"></td>');
     } else {
         // Exit edit mode
         $('.open-entry img').css('transform', 'rotate(-90deg)');
