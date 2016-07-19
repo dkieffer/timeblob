@@ -7,10 +7,8 @@
 <title>Time Blob</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
+
 <body>
-
-
-
 <div class="wrapper">
 
 <div class="timer-area stopwatch-component">
@@ -184,10 +182,8 @@ function resizeStopwatch () {
 $(window).resize(resizeStopwatch);
 
 // Click to start and stop the clock
-var degree = 0, timer, isRunning = false, nowTime;
+var degree = 0, timer, isRunning = false, nowTime, clockTicker;
 $('.stopwatch-component:first').on('click', function() {
-    console.log('click registered');
-
     if (!isRunning) {
         rotate();
         stopwatchRun();
@@ -252,20 +248,22 @@ function resetClockHand () {
         if (!isRunning && degree >= 0) {
             resetClockHand();
         } else {
-            return;
+            clearTimeout(timer);
         }
     },10);
 }
 
-//the stopwatch time tracker starts at zero and adds a seconds every 1000 milliseconds
+//start time at zero and add a seconds every 1000 milliseconds
 var totalSessionTime = 0, stopwatch, totalSessionTimeFormated;
 function stopwatchRun () {
-    stopwatch = setTimeout(function() {
+    stopwatch = setInterval(function() {
         if (!isRunning) {
-            return;
+            clearInterval(stopwatch);
         } else {
             totalSessionTime = ++totalSessionTime;
-            stopwatchRun();
+            //output total time on stopwatch face, and form field
+            $('#stopwatch-time').text(totalSessionTimeFormatted);
+            $('input#input-total-time').val(totalSessionTimeFormatted);
         }
     },1000);
     //format total session time for stopwatch face
@@ -278,18 +276,15 @@ function stopwatchRun () {
     } else if (totalSessionTime >=3660) {
         totalSessionTimeFormatted = Math.floor(totalSessionTime / 3600) + 'h ' + Math.floor((totalSessionTime % 3600) / 60) + 'm';
     }
-    //output total time on stopwatch face, and form field
-    $('#stopwatch-time').text(totalSessionTimeFormatted);
-    $('input#input-total-time').val(totalSessionTimeFormatted);
 }
 
 //rotate the clock hand 0.24 degrees every 40 milliseconds (25fps)
 function rotate() {
 
-    timer = setInterval(function() {
+    clockTicker = setInterval(function() {
         degree = degree + 0.24;
         if (!isRunning) {
-            return;
+            clearInterval(clockTicker);
         } else {
             $('#clock-hand').css({ 'transform': 'rotate(' + degree + 'deg)'});
             // Reset Degree count to 0 everytime it does a full 360 degree spin
@@ -305,7 +300,6 @@ var isInEditMode = false;
 var selectedColumnActivity;
 var selectedColumnTime;
 $('tr.list-entry-row').click(function() {
-    console.log('click worked');
     if (!isInEditMode) {
         // Enter edit mode
         isInEditMode = true;
