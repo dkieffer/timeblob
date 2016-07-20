@@ -40,4 +40,4 @@ Once you have the requirements installed, please run the following to run the te
 ./manage.py tests
 ```
 
-Everything should pass!
+Everything should pass.
