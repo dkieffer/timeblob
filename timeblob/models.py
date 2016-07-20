@@ -14,17 +14,17 @@ class TimeEntry(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=False)
     description = models.TextField(blank=True)
-    project = models.ForeignKey('Project',blank=True)
-    task = models.ForeignKey('Task',blank=True)
+    project = models.ForeignKey('Project',blank=True, null=True)
+    task = models.ForeignKey('Task',blank=True, null=True)
     billable = models.BooleanField(default=False,blank=True)
-    start = models.DateTimeField(default=timezone.now, blank=False)
+    start = models.DateTimeField(default=timezone.now(), blank=False)
     stop = models.DateTimeField(blank=True, null=True)
     created_with = models.CharField(max_length=200)
-    last_updated = models.DateTimeField(default=timezone.now, blank=False)
+    last_updated = models.DateTimeField(default=timezone.now(), blank=False)
 
     def save(self, *args, **kwargs):
         '''save updates last_updated'''
-        self.last_updated = timezone.now
+        self.last_updated = timezone.now()
         super(TimeEntry, self).save(*args, **kwargs)
 
     @staticmethod
@@ -51,7 +51,7 @@ class TimeEntry(models.Model):
     @staticmethod
     def stop_task(user):
         current = TimeEntry.current(user)
-        current.stop = timezone.now
+        current.stop = timezone.now()
         current.save()
         return current
 
