@@ -37,10 +37,10 @@ class TimeEntry(models.Model):
 
 
     @staticmethod
-    def start_task( user, data):
+    def start_task( user, **data):
         try:
             current = TimeEntry.current(user)
-            TimeEntry.stop(user)
+            TimeEntry.stop_task(user)
         except exceptions.NoCurrentTask:
             pass
         entry = TimeEntry(user=user, **data)
