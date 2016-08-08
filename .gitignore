@@ -96,3 +96,7 @@ db.sqlite3
 
 # our compiled js
 timeblob/static/timeblob/js
+
+# node
+
+timeblob/js/node_modules
