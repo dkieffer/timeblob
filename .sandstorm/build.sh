@@ -10,3 +10,9 @@ fi
 if [ -f /opt/app/requirements.txt ] ; then
     $VENV/bin/pip install -r /opt/app/requirements.txt
 fi
+
+cd /opt/app/timeblob/js
+
+npm install
+
+node_modules/.bin/gulp

@@ -5,63 +5,37 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="{% static "timeblob/style/style.css" %}">
 <title>Time Blob</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+
+    var STATIC_URL = '/static/';
+
+    var MEDIA_URL  = '{{ MEDIA_URL  }}';
+
+    function static_path(path) {
+
+        return STATIC_URL + path;
+
+    }
+
+    function static_media(path) {
+
+        return MEDIA_URL + path;
+
+    }
+
+</script>
+
+<script src="{% static "timeblob/js/app.js" %}"></script>
 </head>
-<body>
+<body ng-app="app">
 
 
 
 <div class="wrapper">
+  <timer-area/>
 
-<div class="timer-area stopwatch-component">
-<div id="stopwatch" class="stopwatch-component">
-    <h1 id="stopwatch-time" class="stopwatch-component"></h1>
-    <svg id="clock-hand" viewBox="0 0 400 400" enable-background="new 0 0 400 400"
-	 xml:space="preserve">
-    <polygon fill="#863EA2" points="199.965,231.158 206.977,229.557 206.938,184.702 202.63,41.172 197.521,41.176 192.914,184.713
-	192.952,229.566 "/>
-    <filter id="blur-25" x="-40%" width="180%">
-	    <feGaussianBlur in="SourceGraphic" stdDeviation="25" />
-    </filter>
-    <filter id="blur-3" x="-80%" width="210%">
-	    <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
-    </filter>
-    <polygon id="clock-hand-big-back-glow" opacity="0.75" fill="#FF45DC" points="199.965,231.158 160.768,148.144 201.662,21.631 246.96,162.516 " filter="url(#blur-25)"/>
-    <polygon opacity="0.2" fill="#FF45DC" points="199.965,231.158 196.969,171.535 201.512,40.202 206.111,172.074 " filter="url(#blur-10)"/>
-    <polygon id="clock-hand-inner-glow" opacity="0.7" fill="#FFFFFF" points="199.965,231.158 196.969,171.535 201.512,40.202 206.111,172.074 " filter="url(#blur-3)"/>
-    </svg>
-    <p id="stopwatch-message" class="stopwatch-component">tap to start</p>
-</div>
-</div>
-
-<div id="current-form-area">
-<form id="current-entry-form">
-    <label for="input-activity">Activity</label>
-    <input size="" title="" type="text" name="activity" value="" placeholder="" id="input-activity">
-
-    <label for="input-project">Project</label>
-    <input size="" title="" type="text" name="project" value="" placeholder="" id="input-project">
-
-    <label for="input-client">Client</label>
-    <input size="" title="" type="text" name="client" value="" placeholder="" id="input-client">
-
-    <label for="input-activity">Org.</label>
-    <input size="" title="" type="text" name="organization" value="" placeholder="" id="input-organization">
-
-    <label for="input-total-time">Time</label>
-    <input size="" title="" type="text" name="total-time" value="" placeholder="" id="input-total-time">
-
-    <label for="input-start-time">Start</label>
-    <input size="" title="" type="text" name="start-time" value="" placeholder="" id="input-start-time">
-    <input size="" title="" type="text" name="start-date" value="" placeholder="" id="input-start-date">
-
-    <label for="input-end-time">End</label>
-    <input size="" title="" type="text" name="end-time" value="" placeholder="" id="input-end-time">
-    <input size="" title="" type="text" name="end-date" value="" placeholder="" id="input-end-date">
-
-    <button type="submit" value="Send" id="entry-form-submit-button">Add Record</button>
-</form>
-</div>
 </div>
 
 <div class="table-wrapper">
@@ -169,8 +143,9 @@
     </tr>
 </table>
 </div>
-
+<!--
 <script>
+
 //sizing the stopwatch
 resizeStopwatch ();
 function resizeStopwatch () {
@@ -339,7 +314,7 @@ $('tr.list-entry-row').click(function() {
         isInEditMode = false;
     }
 });
-</script>
+</script>-->
 
 </body>
 </html>

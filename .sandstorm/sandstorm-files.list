@@ -1185,6 +1185,11 @@ opt/app/timeblob/static/timeblob/img
 opt/app/timeblob/static/timeblob/img/clock-face.svg
 opt/app/timeblob/static/timeblob/img/clock-hand.svg
 opt/app/timeblob/static/timeblob/img/white-menu-triangle.svg
+opt/app/timeblob/static/timeblob/js
+opt/app/timeblob/static/timeblob/js/app.js
+opt/app/timeblob/static/timeblob/js/app.js.map
+opt/app/timeblob/static/timeblob/ngtemplates
+opt/app/timeblob/static/timeblob/ngtemplates/timerarea.html
 opt/app/timeblob/static/timeblob/style
 opt/app/timeblob/static/timeblob/style/style.css
 opt/app/timeblob/templates/timeblob/index.html
