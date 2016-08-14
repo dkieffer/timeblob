@@ -93,10 +93,7 @@ env/
 # unneeded sqlite
 db.sqlite3
 
+timeblob/js/node_modules
 
 # our compiled js
 timeblob/static/timeblob/js
-
-# node
-
-timeblob/js/node_modules
