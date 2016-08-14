@@ -1,7 +1,0 @@
-(
-  cd timeblob/js
-  npm install
-  gulp
-)
-
-wait
