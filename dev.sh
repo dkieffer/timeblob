@@ -6,6 +6,9 @@ while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
 done
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
+ACTION="${1:-runserver}"
+
+
 VENV=$DIR/venv
 if [ ! -d $VENV ] ; then
     virtualenv $VENV
@@ -24,5 +27,9 @@ fi
   node_modules/.bin/gulp
 )
 
-$VENV/bin/python $DIR/manage.py migrate
-$VENV/bin/python  $DIR/manage.py runserver
+if [ $ACTION == "runserver" ]; then
+  #we need to always run the migration if we runserver
+  $VENV/bin/python $DIR/manage.py migrate
+fi
+
+$VENV/bin/python  $DIR/manage.py $ACTION
