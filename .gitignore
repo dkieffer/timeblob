@@ -97,3 +97,6 @@ timeblob/js/node_modules
 
 # our compiled js
 timeblob/static/timeblob/js
+
+# our copied in templates
+timeblob/static/ngtemplates
