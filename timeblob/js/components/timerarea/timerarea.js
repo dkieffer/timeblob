@@ -52,7 +52,7 @@ function TimerArea($scope, $element, $attrs, $interval, CurrentEntryService)
 angular.module("app").component('timerArea',
 {
   controller: TimerArea,
-  templateUrl: static_path('/timeblob/ngtemplates/timerarea.html')
+  templateUrl: TEMPLATE.TIMERAREA
 });
 /*
 // Click to start and stop the clock

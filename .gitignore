@@ -100,3 +100,6 @@ timeblob/static/timeblob/js
 
 # our copied in templates
 timeblob/static/ngtemplates
+
+#generated template.js
+timeblob/templates/timeblob/templates.js

@@ -9,4 +9,6 @@ DATABASES = {
     }
 }
 
+STATIC_ROOT= '/var/app/static/'
+
 SANDSTORM = True

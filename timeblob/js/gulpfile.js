@@ -11,9 +11,37 @@ var ngAnnotate = require('gulp-ng-annotate');
 var babel = require('babelify');
 var through = require('through2');
 var globby = require('globby');
+const path = require('path');
+const gulp_file = require('gulp-file');
+const flatten = require('gulp-flatten');
 
-gulp.task('default', function () {
+const templateGlob = "components/**/*.html"
 
+gulp.task('makeTemplateJs', function() {
+  var templateSrc = "{% load static from staticfiles %}\nvar TEMPLATE = {\n";
+  globby(templateGlob).then(function (entries) {
+    entries.forEach(function(i ) {
+      var name = path.posix.basename(i, ".html");
+
+      templateSrc += name.toUpperCase() + ": '{% static \"timeblob/ngtemplates/"+  name + ".html\" %}',\n"
+    })
+
+    templateSrc += "}\n"
+  }).then(function() {source('templates.js')
+    .pipe(gulp_file("templates.js", templateSrc))
+    .pipe(gulp.dest("../templates/timeblob")) });
+
+
+})
+
+gulp.task('templates', function() {
+  gulp.src(templateGlob)
+    .pipe(flatten())
+    .pipe(gulp.dest("../static/timeblob/ngtemplates"))
+});
+
+
+gulp.task('compileApp', function () {
   var bundledStream = through();
 
    bundledStream.pipe(source('app.js'))
@@ -27,7 +55,7 @@ gulp.task('default', function () {
      .pipe(gulp.dest('../static/timeblob/js'));
   // set up the browserify instance on a task basis
 
-    globby(['app.js', './services/*.js', './components/*.js']).then(function(entries) {
+    globby(['app.js', './services/**/*.js', './components/**/*.js']).then(function(entries) {
 
         var b = browserify({
              entries: entries,
@@ -47,7 +75,7 @@ gulp.task('default', function () {
 
 
 // finally, we return the stream, so gulp knows when this task is done.
-return bundledStream;
-
-
+  return bundledStream;
 });
+
+gulp.task('default', ['makeTemplateJs', 'templates', 'compileApp'], function () { });

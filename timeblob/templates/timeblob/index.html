@@ -6,27 +6,7 @@
 <link rel="stylesheet" href="{% static "timeblob/style/style.css" %}">
 <title>Time Blob</title>
 
-<script type="text/javascript">
-
-
-    var STATIC_URL = '/static/';
-
-    var MEDIA_URL  = '{{ MEDIA_URL  }}';
-
-    function static_path(path) {
-
-        return STATIC_URL + path;
-
-    }
-
-    function static_media(path) {
-
-        return MEDIA_URL + path;
-
-    }
-
-</script>
-
+<script src="./templates_js"></script>
 <script src="{% static "timeblob/js/app.js" %}"></script>
 </head>
 <body ng-app="app">
