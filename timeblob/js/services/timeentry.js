@@ -88,5 +88,5 @@ class TimeEntryService {
 
 angular.module('app').factory("TimeEntryService", ($http) =>
 {
-  return new TimeEntryService($http, "base_url");
+  return new TimeEntryService($http, BASE_URL);
 })
