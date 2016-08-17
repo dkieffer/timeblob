@@ -1,2 +1,2 @@
-class NoCurrentTask(Exception):
+class NoCurrentEntry(Exception):
     pass

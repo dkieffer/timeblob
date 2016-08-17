@@ -5,6 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from timeblob.models import TimeEntry
 from timeblob.api.serializers import TimeEntrySerializer
+from timeblob.exceptions import NoCurrentEntry
 
 @api_view(['GET'])
 
@@ -23,7 +24,7 @@ def time_entries_list(request):
 def time_entry_item(request, id):
     try:
         item = TimeEntry.objects.get(user=request.user, id=id)
-    except TimeEntry.DoesNotExist:
+    except NoCurrentEntry:
         return Response(status=status.HTTP_404_NOT_FOUND)
     user = request.user
     if request.method == 'GET':
@@ -50,7 +51,7 @@ def time_entry_start(request):
 def time_entry_stop(request, id):
     try:
         item = TimeEntry.objects.get(user=request.user, id=id)
-    except TimeEntry.DoesNotExist:
+    except NoCurrentEntry:
         return Response(status=status.HTTP_404_NOT_FOUND)
     TimeEntry.stop_task(item)
     serializer = TimeEntrySerializer(user, item)
@@ -61,7 +62,7 @@ def time_entry_stop(request, id):
 def time_entry_current(request):
     try:
         item = TimeEntry.current(user=request.user)
-    except TimeEntry.DoesNotExist:
+    except NoCurrentEntry:
         return Response(status=status.HTTP_404_NOT_FOUND)
     serializers = TimeEntrySerializer(user, item)
     return Response(serializer.data)

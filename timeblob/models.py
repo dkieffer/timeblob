@@ -29,11 +29,11 @@ class TimeEntry(models.Model):
 
     @staticmethod
     def current(user):
-        '''gets current time entry. If none current, raises `NoCurrentTask`'''
+        '''gets current time entry. If none current, raises `NoCurrentEntry`'''
         try:
             return TimeEntry.objects.get(user=user, stop=None)
         except core_exceptions.ObjectDoesNotExist as e:
-            raise exceptions.NoCurrentTask()
+            raise exceptions.NoCurrentEntry()
 
 
     @staticmethod
@@ -41,7 +41,7 @@ class TimeEntry(models.Model):
         try:
             current = TimeEntry.current(user)
             TimeEntry.stop_task(user)
-        except exceptions.NoCurrentTask:
+        except exceptions.NoCurrentEntry:
             pass
         entry = TimeEntry(user=user, **data)
         entry.save()
