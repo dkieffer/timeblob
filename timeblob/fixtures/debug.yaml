@@ -1,0 +1,6 @@
+- model: auth.User
+  pk: 1
+  fields:
+    username: john_lennon
+    first_name: John
+    last_name: Lennon

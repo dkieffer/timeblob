@@ -51,7 +51,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_sandstorm.middleware.SandstormMiddleware'
+    'timeblob.local_middleware.LocalMiddleware'
 ]
 
 AUTHENTICATION_BACKENDS = (

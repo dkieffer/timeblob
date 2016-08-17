@@ -32,4 +32,7 @@ if [ $ACTION == "runserver" ]; then
   $VENV/bin/python $DIR/manage.py migrate
 fi
 
-$VENV/bin/python  $DIR/manage.py $ACTION
+$VENV/bin/python $DIR/manage.py loaddata "timeblob/fixtures/debug.yaml"
+
+shift
+$VENV/bin/python  $DIR/manage.py $ACTION $@
