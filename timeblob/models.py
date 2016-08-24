@@ -17,43 +17,15 @@ class TimeEntry(models.Model):
     project = models.ForeignKey('Project',blank=True, null=True)
     task = models.ForeignKey('Task',blank=True, null=True)
     billable = models.BooleanField(default=False,blank=True)
-    start = models.DateTimeField(default=timezone.now(), blank=False)
+    start = models.DateTimeField(blank=False)
     stop = models.DateTimeField(blank=True, null=True)
     created_with = models.CharField(max_length=200)
-    last_updated = models.DateTimeField(default=timezone.now(), blank=False)
+    last_updated = models.DateTimeField(blank=False)
 
     def save(self, *args, **kwargs):
         '''save updates last_updated'''
         self.last_updated = timezone.now()
         super(TimeEntry, self).save(*args, **kwargs)
-
-    @staticmethod
-    def current(user):
-        '''gets current time entry. If none current, raises `NoCurrentEntry`'''
-        try:
-            return TimeEntry.objects.get(user=user, stop=None)
-        except core_exceptions.ObjectDoesNotExist as e:
-            raise exceptions.NoCurrentEntry()
-
-
-    @staticmethod
-    def start_task( user, **data):
-        try:
-            current = TimeEntry.current(user)
-            TimeEntry.stop_task(user)
-        except exceptions.NoCurrentEntry:
-            pass
-        entry = TimeEntry(user=user, **data)
-        entry.save()
-        return entry
-
-
-    @staticmethod
-    def stop_task(user):
-        current = TimeEntry.current(user)
-        current.stop = timezone.now()
-        current.save()
-        return current
 
 class Project(models.Model):
     id = models.AutoField(primary_key=True)
