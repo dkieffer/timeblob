@@ -15,7 +15,11 @@ class CurrentEntryService extends EventEmitter {
 
     var start = self.TimeEntryService.start(timeEntry)
 
-    start.then((i) => {self.emit('update-current', i)}, (i) => {self.emit('error', i)})
+    start.then(
+      (i) => {self.emit('update-current', i)},
+      (i) => { self.emit('error', i);
+
+    })
 
     return start;
   }
@@ -24,7 +28,18 @@ class CurrentEntryService extends EventEmitter {
     var self = this;
     var current = self.TimeEntryService.current()
     // TODO
-    current.then((i) => {self.emit('update-current', i)}, (i) => {self.emit('error', i)})
+    current.then(
+      (response) => {self.emit('update-current', response)},
+      (response) => {
+        //if the response status is 404, we're fine, there is no current
+        if (response.status == 404)
+        {
+          self.emit('update-current', null)
+        }
+        else {
+            self.emit('error', response)
+        }
+        })
 
     return current;
   }
@@ -34,7 +49,16 @@ class CurrentEntryService extends EventEmitter {
     var self = this;
     var stop = self.TimeEntryService.stop()
 
-    stop.then((i) => {self.emit('update-current', i)}, (i) => {self.emit('error', i)})
+    stop.then((i) => {
+      if (i.status == 200)
+      {
+        self.emit('update-current', null)
+      }
+      else {
+        self.emit('update-current', i)
+      }
+
+    }, (i) => {self.emit('error', i)})
 
     return stop;
   }

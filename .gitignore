@@ -99,7 +99,7 @@ timeblob/js/node_modules
 timeblob/static/timeblob/js
 
 # our copied in templates
-timeblob/static/ngtemplates
+timeblob/static/timeblob/ngtemplates
 
 #generated template.js
 timeblob/templates/timeblob/templates.js

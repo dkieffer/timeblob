@@ -1,6 +1,6 @@
 <div class="timer-area stopwatch-component">
   <div id="stopwatch" class="stopwatch-component">
-      <h1 id="stopwatch-time" class="stopwatch-component"><span ng-if="isRunning" am-time-ago="startTime"></span></h1>
+      <h1 id="stopwatch-time" class="stopwatch-component"><span ng-if="$ctrl.isRunning" am-time-ago="startTime"></span></h1>
       <svg id="clock-hand" viewBox="0 0 400 400" enable-background="new 0 0 400 400"
   	 xml:space="preserve" ng-style="">
       <polygon fill="#863EA2" points="199.965,231.158 206.977,229.557 206.938,184.702 202.63,41.172 197.521,41.176 192.914,184.713
@@ -15,17 +15,17 @@
       <polygon opacity="0.2" fill="#FF45DC" points="199.965,231.158 196.969,171.535 201.512,40.202 206.111,172.074 " filter="url(#blur-10)"/>
       <polygon id="clock-hand-inner-glow" opacity="0.7" fill="#FFFFFF" points="199.965,231.158 196.969,171.535 201.512,40.202 206.111,172.074 " filter="url(#blur-3)"/>
       </svg>
-      <p id="stopwatch-message" class="stopwatch-component"><span ng-if="isRunning">tap to finish</span><span ng-if="!isRunning">tap to start</span></p>
+      <p id="stopwatch-message" class="stopwatch-component"><span ng-if="$ctrl.isRunning" ng-click="$ctrl.stop()">tap to finish</span><span ng-if="!$ctrl.isRunning" ng-click="$ctrl.start()">tap to start</span></p>
   </div>
 </div>
 
 <div id="current-form-area">
 <form id="current-entry-form">
     <label for="input-activity">Activity</label>
-    <input size="" title="" type="text" name="activity" value="" placeholder="" ng-model="currentEntry.description">
+    <input size="" title="" type="text" name="activity" value="" placeholder="" ng-model="$ctrl.currentEntry.description">
 
     <label for="input-project">Project</label>
-    <input size="" title="" type="text" name="project" value="" placeholder="" ng-model="currentEntry.project">
+    <input size="" title="" type="text" name="project" value="" placeholder="" ng-model="$ctrl.currentEntry.project">
 
     <label for="input-client">Client</label>
     <input size="" title="" type="text" name="client" value="" placeholder="" id="input-client">

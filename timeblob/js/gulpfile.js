@@ -14,6 +14,7 @@ var globby = require('globby');
 const path = require('path');
 const gulp_file = require('gulp-file');
 const flatten = require('gulp-flatten');
+const jasmineBrowser = require('gulp-jasmine-browser');
 
 const templateGlob = "components/**/*.html"
 
@@ -77,5 +78,15 @@ gulp.task('compileApp', function () {
 // finally, we return the stream, so gulp knows when this task is done.
   return bundledStream;
 });
+
+gulp.task('test',['default'], function () {
+
+    gulp.src(['node_modules/angular-mocks/angular-mocks.js',
+    '../templates/timeblob/templates.js',
+      '../static/timeblob/js/app.js',
+      'spec/**/*.js'])
+      .pipe(jasmineBrowser.specRunner({console: true}))
+      .pipe(jasmineBrowser.headless())
+})
 
 gulp.task('default', ['makeTemplateJs', 'templates', 'compileApp'], function () { });

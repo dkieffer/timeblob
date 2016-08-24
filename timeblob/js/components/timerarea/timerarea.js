@@ -10,11 +10,12 @@ function TimerArea($scope, $element, $attrs, $interval, CurrentEntryService)
       ctrl.currentEntry = entry;
       if (entry == null)
       {
-        isRunning = false;
+        ctrl.isRunning = false;
 
       }
       else {
         startTime = entry.start;
+        ctrl.isRunning = true;
       }
       updateClockHandle();
     });
@@ -29,7 +30,7 @@ function TimerArea($scope, $element, $attrs, $interval, CurrentEntryService)
     if (!ctrl.isRunning) {
         return;
     } else {
-        degree = 0.006 * currentTime;
+        var degree = 0.006 * currentTime;
         ctrl.clockHandStyle = { 'transform': 'rotate(' + degree + 'deg)'};
     }
   }
@@ -37,11 +38,11 @@ function TimerArea($scope, $element, $attrs, $interval, CurrentEntryService)
   ctrl.start = () => {
 
     // begin rotating
-    CurrentEntryService.start(currentEntry);
+    CurrentEntryService.start(ctrl.currentEntry);
     //update timeblob
     //
   };
-  ctrl.stop = () => CurrentEntryService.start();
+  ctrl.stop = () => CurrentEntryService.stop();
 
   ctrl.currentEntry = {}
 
