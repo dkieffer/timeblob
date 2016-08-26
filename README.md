@@ -1,9 +1,15 @@
+ATTENTION: Time Blob is in early development; many parts of the prototype are not yet functional.
+
 # Time Blob
-Time Blob is a time tracker designed for [Sandstorm.io](https://sandstorm.io)
+Time Blob is a time tracking app. It’s not an app that you install on your phone; it’s a web app that you install and run on a server. It only works with servers that are running [Sandstorm](https://sandstorm.io) (an open source OS for servers). Once you install Time Blob on your Sandstorm server, you can then access the app from any computer or phone simply by visiting the app’s web address.
 
-Check out [the project overview](/project-overview.md) to see an outline of what we are developing, and what we want to add.
+Once we have a working prototype, getting up and running with Time Blob will require some initial setup. Here are the three major steps:
 
-The project is currently in a prototyping phase. To see the where we are at with the prototype simply open index.html in your browser. For the prototype we are using Javascript and JQuery. Contact [David](mailto:david@polyhedral.studio) if you are interested in getting involved.
+1. Have your own server that is running a compatible version of Linux
+2. Install [Sandstorm](https://sandstorm.io) on your server
+3. Install Time Blob (this will be the easy part)
+
+If you are interested in getting involved with the development, feel free to contact [David](mailto:david@dkieffer.xyz), or keep reading to dive right in.
 
 # How to develop
 
