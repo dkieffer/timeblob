@@ -8,6 +8,14 @@ class CurrentEntryService extends EventEmitter {
     self.TimeEntryService = TimeEntryService;
     $interval(() => self.current(), 10000)
 
+    self.current = null;
+
+  }
+
+  setCurrent(response) {
+    var self = this;
+    self.current = response;
+    self.emit('update-current', response)
   }
   // TODO what do I do when the device is already started and we need to stop (how do we notify of a stop)
   start(timeEntry) {
@@ -29,12 +37,12 @@ class CurrentEntryService extends EventEmitter {
     var current = self.TimeEntryService.current()
     // TODO
     current.then(
-      (response) => {self.emit('update-current', response)},
+      (response) => self.setCurrent(response),
       (response) => {
         //if the response status is 404, we're fine, there is no current
         if (response.status == 404)
         {
-          self.emit('update-current', null)
+          self.setCurrent(null)
         }
         else {
             self.emit('error', response)
@@ -52,10 +60,10 @@ class CurrentEntryService extends EventEmitter {
     stop.then((i) => {
       if (i.status == 200)
       {
-        self.emit('update-current', null)
+        self.setCurrent(null)
       }
       else {
-        self.emit('update-current', i)
+        self.setCurrent(i)
       }
 
     }, (i) => {self.emit('error', i)})

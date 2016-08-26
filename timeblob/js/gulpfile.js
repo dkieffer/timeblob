@@ -14,13 +14,18 @@ var globby = require('globby');
 const path = require('path');
 const gulp_file = require('gulp-file');
 const flatten = require('gulp-flatten');
-const jasmineBrowser = require('gulp-jasmine-browser');
+var Server = require('karma').Server;
 
 const templateGlob = "components/**/*.html"
 
+var jsGlob = ['app.js', './services/**/*.js', './components/**/*.js'];
+
+var specGlob = jsGlob.concat(['./spec/**/*.js'])
+
+
 gulp.task('makeTemplateJs', function() {
   var templateSrc = "{% load static from staticfiles %}\nvar TEMPLATE = {\n";
-  globby(templateGlob).then(function (entries) {
+  return globby(templateGlob).then(function (entries) {
     entries.forEach(function(i ) {
       var name = path.posix.basename(i, ".html");
 
@@ -30,15 +35,36 @@ gulp.task('makeTemplateJs', function() {
     templateSrc += "}\n"
   }).then(function() {source('templates.js')
     .pipe(gulp_file("templates.js", templateSrc))
-    .pipe(gulp.dest("../templates/timeblob")) });
+    .pipe(gulp.dest("../templates/timeblob"))  .on('error', function (err) {
+        console.log(err);
+      }) })
 
 
+})
+
+gulp.task('makeTemplateTestJs', function() {
+  var templateSrc = "var TEMPLATE = {\n";
+  return globby(templateGlob).then(function (entries) {
+    entries.forEach(function(i ) {
+      var name = path.posix.basename(i, ".html");
+
+      templateSrc += name.toUpperCase() + ": 'timeblob/ngtemplates/" +  name +  ".html'\n"
+    })
+
+    templateSrc += "};\n"
+
+    templateSrc += "var BASE_URL = 'http://BASEURL';\n"
+  }).then(function() {source('templates.js')
+    .pipe(gulp_file("templates.js", templateSrc))
+    .pipe(gulp.dest("../../.jstest/")) })
 })
 
 gulp.task('templates', function() {
   gulp.src(templateGlob)
     .pipe(flatten())
-    .pipe(gulp.dest("../static/timeblob/ngtemplates"))
+    .pipe(gulp.dest("../static/timeblob/ngtemplates"))  .on('error', function (err) {
+        console.log(err);
+      })
 });
 
 
@@ -56,7 +82,7 @@ gulp.task('compileApp', function () {
      .pipe(gulp.dest('../static/timeblob/js'));
   // set up the browserify instance on a task basis
 
-    globby(['app.js', './services/**/*.js', './components/**/*.js']).then(function(entries) {
+    globby(jsGlob).then(function(entries) {
 
         var b = browserify({
              entries: entries,
@@ -79,14 +105,22 @@ gulp.task('compileApp', function () {
   return bundledStream;
 });
 
-gulp.task('test',['default'], function () {
 
-    gulp.src(['node_modules/angular-mocks/angular-mocks.js',
-    '../templates/timeblob/templates.js',
-      '../static/timeblob/js/app.js',
-      'spec/**/*.js'])
-      .pipe(jasmineBrowser.specRunner({console: true}))
-      .pipe(jasmineBrowser.headless())
+gulp.task('test',['default', 'makeTemplateTestJs'], function (done) {
+    new Server({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, done).start();
+
+})
+
+gulp.task('watch', function(){
+
+
+  gulp.watch(specGlob, ['test'])
+    .on('error', function (err) {
+      console.log(err);
+    })
 })
 
 gulp.task('default', ['makeTemplateJs', 'templates', 'compileApp'], function () { });

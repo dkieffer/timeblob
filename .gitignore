@@ -103,3 +103,5 @@ timeblob/static/timeblob/ngtemplates
 
 #generated template.js
 timeblob/templates/timeblob/templates.js
+
+.jstest
