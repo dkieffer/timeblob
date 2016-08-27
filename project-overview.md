@@ -1,69 +1,40 @@
-#Time Blob Project Outline
-Time Blob is a time tracker
+# Time Blob Overview
+Time Blob is a time tracker. It’s a web app that gets served straight from your own [Sandstorm](https//sandstorm.io) server. It can track metadata about your work session; it can track time for as many users as you add to your server. It can filter your sessions to analyze things like periods for billing. Time Blob has four main components for users:
 
-## A Form for Work Sessions
-* A list of form fields (time, metadata, etc.)
-* Start & Stop time and date autofill with stopwatch data
-* Submit form button
-* Tap to start editing
-* Form field label select entire field on tap
+#### Stopwatch
+* Start and stop a timer for your work session
+* Shows whether the timer is running
+* Shows a real-time numerical display of elapsed time
 
-#### Default Work Session Entry Fields
-* Start Time & Date
-* End Time & Date
-* Activity
-* Project
-* Client
-* Organization
-* Length of Work Session
+#### Stopwatch Form
+* Add metadata to your current session
+* Editable, but pre-filled with previous entry’s data
+* Dropdown menu suggestions as you type
 
+#### List View: displays sessions from the database
+* Add, Edit, or Remove sessions
+* If edited can restore previous version of entry
+* Filterable by metadata variables: Deleted, User (only for admins), Activity, Project, Client, Org, Rate, Date Range 
 
-## A Stopwatch
-* track the time spent on a work session
-* Clock hand animation to show when the stopwatch is running
-* Tap to start & end
-* A numerical display of total time elapsed
-* 2 state clock hand- glowing while on, and darkened while stopped & paused
+#### Settings
+* TBD, but things like Time Formatting, Color Themes.
 
 
-## A Database to store your records
-* A Table of Work session entries
-* Add and Remove Entries
-* List View shows only Activity, Date, and Length of Session
-* Click Entry to Edit
-* On edit, auto expand to show all columns
-* List view shows 20 Entries, Scroll at bottom to load 20 more
-* Sorted by time & date
+## Database Structure
+* Row: Work Session
+* Columms: Session ID, User, Activity, Project, Client, Org, Rate, Start, End, Time, Deleted, Edited, Submit Timestamp
 
+## Users
+* Users are completely administered by the OS (Sandstorm)
+* Regular Users cannot modify or see other user’s entries
+* Admin Users have special abilities:
+	* Filter the list view by users
+	* Stopwatch Form And List View Form have a ‘user’ field
 
-##Feature Ideas
-
-#### General Ideas
-* User Preferences (eg: time formatting, theme colors, etc.)
-* UI Sound Effects
-* Accessibility for visually impaired
-* Stopwatch, Entry Form, and Database List viewed as three screens on mobile devices
-* Simple one-click install
-* Standalone App (use w/o browser)
-* Server install / Cloud Syncing
-
-#### Form Feature Ideas
-* Autofill fields with previous work session data (except time data)
-* As-you-type autofill Suggestions based on other database entries
-* Form field select entire field on tap
-* Auto focus on first form field after stopwatch starts
-* Focusing on time field should pause stopwatch (if running)
+## Feature Ideas
 * Clock & Calendar Picker for editing start/stop time & date entries
 * Time field should be able to handle multiple forms of entry, eg: "2:30", "2h 30m" etc.
-
-#### Stopwatch Feature Ideas
-
-
-#### DB Feature Ideas
-* Add Custom Columns
-* Auto Fill Suggestions
-* Clock & Calendar Picker for editing time & date entries
-* Sorting: display entries in a specified order
-* Filtering: display entries that match specific criteria
-* Non destructive DB editing
-* Totalling: Show the total amount of hours for selected entries
+* Blob-like animations throughout the app
+* Allow admins to add custom columns to the DB
+* Sorting. Is there any point?
+* Totalling. When any filter is active, the bottom will display total time for the filtered entries.
