@@ -1,6 +1,7 @@
-//if chromium exists, we do that
+// Karma configuration
+
 var common = require('./karma.common')
-common.browsers =  [ 'Chromium']
+common.browsers =  [ 'Chrome']
 
 module.exports = function(config) {
   common.logLevel= config.LOG_INFO
