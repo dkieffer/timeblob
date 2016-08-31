@@ -22,6 +22,9 @@ npm_install:
 
 test: jstest pytest
 
+jstestwatch: 
+		$(js)/node_modules/.bin/gulp watch --cwd $(js)
+
 requirements: virtualenv
 	if [ -f $(current_dir)/requirements.txt ] ; then $(venv)/bin/pip install -r $(current_dir)/requirements.txt -q ; fi
 
