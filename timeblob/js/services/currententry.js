@@ -8,13 +8,13 @@ class CurrentEntryService extends EventEmitter {
     self.TimeEntryService = TimeEntryService;
     $interval(() => self.current(), 10000)
 
-    self.current = null;
+    self.cachedCurrent = null;
 
   }
 
   setCurrent(response) {
     var self = this;
-    self.current = response;
+    self.cachedCurrent = response;
     self.emit('update-current', response)
   }
   // TODO what do I do when the device is already started and we need to stop (how do we notify of a stop)
@@ -22,7 +22,7 @@ class CurrentEntryService extends EventEmitter {
     var self = this;
 
     var start = self.TimeEntryService.start(timeEntry)
-
+    
     start.then(
       (i) => {self.emit('update-current', i)},
       (i) => { self.emit('error', i);
@@ -64,6 +64,7 @@ class CurrentEntryService extends EventEmitter {
       }
       else {
         self.setCurrent(i)
+
       }
 
     }, (i) => {self.emit('error', i)})
