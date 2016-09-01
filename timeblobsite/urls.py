@@ -15,9 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.auth.views import login
+from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls')),
     url(r'^', include('timeblob.urls'))
 ]
+
+if not(settings.TESTING) and not (settings.SANDSTORM):
+    urlpatterns.append(url(r'^accounts/login/', login, {'template_name': 'timeblob/login.html'}, name="login"))

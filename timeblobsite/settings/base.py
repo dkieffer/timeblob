@@ -57,8 +57,6 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-if not(TESTING):
-    MIDDLEWARE_CLASSES.append('timeblob.local_middleware.LocalMiddleware')
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.RemoteUserBackend',
@@ -136,3 +134,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = "static/"
+
+SANDSTORM = False
