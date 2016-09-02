@@ -6,7 +6,9 @@ js := $(current_dir)/timeblob/js
 
 default: migrate
 	#kill the server
-	ps aux|grep "python $(current_dir)/manage.py runserver"|grep -v grep|awk '{print $$2}'| xargs -r kill
+	test=$$( ps aux|grep "python $(current_dir)/manage.py runserver"|grep -v grep|awk '{print $$2}' ) ; if [ "" != "$$test" ] ; then kill $$test ; fi
+
+
 	sh -c '$(venv)/bin/python $(current_dir)/manage.py loaddata "timeblob/fixtures/debug.yaml" & $(js)/node_modules/.bin/gulp prepare-for-tests --cwd $(js) & wait'
 
 
