@@ -44,3 +44,6 @@ migrate: requirements
 prepare: requirements npm_install
 
 runserver: default
+
+shell: requirements
+	$(venv)/bin/python  $(current_dir)/manage.py shell
