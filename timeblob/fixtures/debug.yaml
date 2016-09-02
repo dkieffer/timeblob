@@ -1,6 +1,8 @@
 - model: auth.User
   pk: 1
   fields:
-    username: john_lennon
-    first_name: John
-    last_name: Lennon
+    username: alice
+    first_name: Alice
+    last_name: TheAdmin
+    #password=pass
+    password: 'pbkdf2_sha256$30000$lBLLm7V2MUpC$t9BklF/Ds9AFAVTlAxe0GG10lNfUnZXu+TuVCAr4BRA='
