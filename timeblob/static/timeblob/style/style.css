@@ -9,11 +9,11 @@ body {
 
 .wrapper {
     max-width: 62em;
-    margin: 0 auto 5em auto;
+    margin: 0 auto;
     text-align: center;
 }
 
-.table-wrapper {
+.list-view {
     max-width: 36em;
     margin: 0 auto 5em auto;
     text-align: center;
@@ -72,6 +72,16 @@ body {
 /* ================================
     Current Entry Form Styles
 ================================= */
+
+#current-entry-summary {
+    display: none;
+    position: fixed;
+    bottom: -100%;
+}
+
+#current-entry-summary table {
+    width: 100%;
+}
 
 #current-form-area {
     padding: 1em;
@@ -146,8 +156,26 @@ input#input-start-time, input#input-start-date, input#input-end-time, input#inpu
 }
 
 /* ================================
-    Session List Table Styles
+    List View Styles
 ================================= */
+
+.list-view.display {
+    display: block;
+}
+
+.nodisplay {
+    display: none;
+}
+
+#list-view-button {
+    display: none;
+    padding: 1em;
+    position: fixed;
+    float: right;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
 
 table#sessions-table {
     width: 100%;
@@ -226,6 +254,47 @@ td.open-entry:before {
     content: none;
 }
 
+/* ================================
+    Filter List Styles
+================================= */
+
+#filter-list-button {
+    display: inline-block;
+    padding: 0.5em 2em;
+    border-bottom: 1px solid rgba(19,170,114,1);
+    float: right;
+    background-color: rgba(0,60,54,1);
+    color: rgba(19,170,114,1);
+    vertical-align: middle;
+}
+
+#filter-list-button span {
+    vertical-align: top;
+}
+
+#filter-icon.active > rect, #filter-icon.active > line { 
+    stroke: white;
+} 
+ 
+.filter-icon-box-fall { 
+    animation: 4s linear infinite box-drops; 
+    stroke: white; 
+} 
+ 
+.filter-icon-box-fall-fade { 
+    animation: 4s linear infinite box-fade-out, 4s linear infinite box-drops; 
+    stroke: white; 
+} 
+ 
+@keyframes box-drops { 
+    0% {transform: translateY(0px);} 
+    100% {transform: translateY(14px);} 
+} 
+ 
+@keyframes box-fade-out { 
+    0%, 25% {opacity: 1;} 
+    50%, 100% {opacity: 0;} 
+} 
 
 /* ================================
     Edit Entry Form Styles
@@ -284,6 +353,32 @@ tr.edit td {
 /* ================================
     Responsive Extras
 ================================= */
+
+@media only screen and (max-width: 540px) {
+    .timer-area {
+        margin: 20% 2em 2em;
+    }
+    .list-view {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 100%;
+    }
+    #list-view-button {
+        display: inline-block;
+    }
+    #current-entry-summary {
+        display: block;
+        bottom: 0em;
+        width: 100%;
+    }
+    #current-form-area {
+        display: none;
+        position: absolute;
+        bottom: -100%;
+    }
+
+}
 
 @media only screen and (max-width: 400px) {
     #stopwatch {

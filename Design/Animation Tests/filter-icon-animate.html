@@ -1,0 +1,94 @@
+<html>
+<head>
+<title>Filter Icon Animation</title>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
+<script type="text/javascript" src="https://code.angularjs.org/1.2.18/angular-animate.min.js"></script>
+
+<style type="text/css">
+body {
+    color: purple;
+    background-color: #d8da3d;
+}
+
+#filter-icon {
+    //width: 5em;
+    //height: 5em;
+}
+
+#filter-icon.active > rect, #filter-icon.active > line {
+    stroke: white;
+}
+
+.filter-icon-box-fall {
+    animation: 4s linear infinite box-drops;
+    stroke: white;
+}
+
+.filter-icon-box-fall-fade {
+    animation: 4s linear infinite box-fade-out, 4s linear infinite box-drops;
+    stroke: white;
+}
+
+@keyframes box-drops {
+    0% {transform: translateY(0px);}
+    100% {transform: translateY(14px);}
+}
+
+@keyframes box-fade-out {
+    0%, 25% {opacity: 1;}
+    50%, 100% {opacity: 0;}
+}
+
+</style>
+</head>
+
+<body >
+<div style="padding: 8em; text-align: center;">
+
+<svg id="filter-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 25 24" enable-background="new 0 0 25 24" xml:space="preserve">
+
+<defs>
+<mask id="filter-icon-mask">
+    <polygon fill="#fff" points="24,0 0,0 0,24 24,24 24,13.5 0,13.5 0,10.5 24,10.5"/>
+</mask>
+</defs>
+
+<g mask="url(#filter-icon-mask)"> 
+<rect id="box1" x="1.359" y="2" fill="none" stroke="black" width="5.281" height="5.281" />
+<rect id="box2" x="9.359" y="2" fill="none" stroke="black" width="5.282" height="5.281" /> 
+<rect id="box3" x="17.36" y="2" fill="none" stroke="black" width="5.281" height="5.281" />
+
+<rect id="box4" x="9.359" y="16" fill="none" stroke="black" width="5.282" height="5.281" />
+
+<rect id="box5" x="1.359" y="-12" fill="none" stroke="black" width="5.281" height="5.281" />
+<rect id="box6" x="9.359" y="-12" fill="none" stroke="black" width="5.282" height="5.281" />
+<rect id="box7" x="17.36" y="-12" fill="none" stroke="black" width="5.281" height="5.281" />
+</g>
+
+<line fill="none" stroke="black" stroke-width="0.9993" x1="0" y1="10.5" x2="24" y2="10.5"/>
+<line fill="none" stroke="black" stroke-width="0.9993" x1="0" y1="13.5" x2="24" y2="13.5"/>
+</svg>
+
+</div>
+
+<script>
+var isFiltering = false;
+$('#filter-icon').click(function() {
+    if(isFiltering) {
+        $( '#box1, #box2, #box3, #box4, #box5, #box6, #box7' ).attr('class', '');
+        $( '#filter-icon' ).attr('class', '');
+        isFiltering = false;
+    }
+    else {
+        $( '#box1, #box3' ).attr('class', 'filter-icon-box-fall-fade');
+        $( '#box2, #box4, #box5, #box6, #box7' ).attr('class', 'filter-icon-box-fall');
+        $( '#filter-icon' ).attr('class', 'active');
+        isFiltering = true;
+    }
+});
+</script> 
+
+</body>
