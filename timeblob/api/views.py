@@ -40,7 +40,6 @@ def time_entry_item(request, id):
             return Response(serializer.data)
         return Response(serializer.errors)
     elif request.method == 'DELETE':
-
         pass
 
 
@@ -54,14 +53,12 @@ def time_entry_start(request):
         return Response(serializer.data)
     return Response(serializer.errors)
 
-@api_view(['PUT'])
+@api_view(['POST'])
 @login_required
 #PUT https://www.toggl.com/api/v8/time_entries/{time_entry_id}/stop
 def time_entry_stop(request):
     manager = UserTimeEntryManager(request.user)
     try:
-
-        item = None
 
 
         item = manager.current()

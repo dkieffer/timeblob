@@ -1,4 +1,4 @@
-from django.core.urlresolvers import reverse
+afrom django.core.urlresolvers import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase, APIClient
 from timeblob.models import TimeEntry
@@ -72,7 +72,7 @@ class TimeEntryTest(APITestCase):
 
         url = reverse("api:time-entry-stop")
         data = {}
-        response = self.client.put(url, data)
+        response = self.client.post(url, data)
 
         response_start_time = dateparse.parse_datetime(response.data['start'])
         response_stop_time = dateparse.parse_datetime(response.data['stop'])
