@@ -10,4 +10,4 @@ app.config(['$httpProvider', function ($httpProvider)
 }])
 
 //start the currentEntry service
-app.run((CurrentEntryService) => {CurrentEntryService.current();})
+//app.run((CurrentEntryService) => {CurrentEntryService.current();})

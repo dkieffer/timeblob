@@ -1,7 +1,7 @@
 // Karma configuration
 
 var common = require('./karma.common')
-common.browsers =  [ 'PhantomJS']
+common.browsers =  [ 'Chrome']
 
 module.exports = function(config) {
   common.logLevel= config.LOG_INFO

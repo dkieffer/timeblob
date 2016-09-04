@@ -21,7 +21,9 @@ gulp.registry(FwdRef());
 
 var jsGlob = ['app.js', './services/**/*.js', './components/**/*.js'];
 
-var specGlob = jsGlob.concat(['./spec/**/*.js'])
+
+var specGlob = ['./spec/**/*.js']
+var jsAndSpecGlob = jsGlob.concat(specGlob);
 
 var htmlJsGlob = jsGlob.concat(['./components/**/*.html'])
 
@@ -42,13 +44,18 @@ gulp.task('templates', function() {
 });
 
 /* compiles all of the javascript files for the application */
-gulp.task('compileApp', function() {
-    return compilejs(jsGlob);
+gulp.task('compileApp', function(done) {
+    return compilejs(jsGlob, 'app.js', '../static/timeblob/js', done);
 });
 
+/* compiles all of the javascript files PLUS the spec files */
+gulp.task ('compileAppWithSpec', gs('compileApp', function (done) {
+  return compilejs(specGlob, 'spec.js', '../../.jstest', done)
+}))
+
 /* run karma once via the command line */
-gulp.task('test', gs('default', 'makeTemplateTestJs', function(done) {
-  return test(__dirname, done);
+gulp.task('test', gs( 'compileAppWithSpec', 'makeTemplateTestJs', function(done) {
+  return test(__dirname,  done);
 }))
 
 /* make changes to your app while it's running in karma */
@@ -59,7 +66,12 @@ gulp.task('watch',   gs('default', 'app-watch'), (done) => done());
 
 
 /** use this when you want to run in karma */
-gulp.task('karma-watch', gs('prepare-for-tests', gp('spec-watch', 'js-watch')),  (done) => done());
+gulp.task(
+  'karma-watch',
+    gs('compileAppWithSpec',
+      'makeTemplateTestJs',
+      gp('spec-watch', 'js-watch', (done) => done()),
+     (done) => done()));
 
 /* looks for changes in teh app.js and updates as necessary. This is for handling spec testing */
 gulp.task('js-watch', function(done) {
@@ -67,7 +79,7 @@ gulp.task('js-watch', function(done) {
 });
 
 gulp.task('spec-watch',  function() {
-    return gulp.watch(specGlob, gs('prepare-for-tests'))
+    return gulp.watch(jsAndSpecGlob, gs('compileAppWithSpec'))
         .on('error', function(err) {
             console.log(err);
         })

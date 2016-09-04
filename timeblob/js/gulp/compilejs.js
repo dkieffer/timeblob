@@ -10,11 +10,11 @@ const globby = require('globby');
 var browserify = require('browserify');
 var gulp = require('gulp');
 
-module.exports = function(jsGlob)
+module.exports = function(jsGlob, filename, outputDest, done )
 {
   var bundledStream = through();
 
-  bundledStream.pipe(source('app.js'))
+  bundledStream.pipe(source(filename))
       .pipe(buffer())
       .pipe(sourcemaps.init({
           loadMaps: true
@@ -24,11 +24,12 @@ module.exports = function(jsGlob)
       .pipe(uglify({mangle: false, compress: false}))
       .on('error', gutil.log)
       .pipe(sourcemaps.write('./'))
-      .pipe(gulp.dest('../static/timeblob/js'));
+      .pipe(gulp.dest(outputDest))
+      .on('end', () => done());
   // set up the browserify instance on a task basis
 
   globby(jsGlob).then(function(entries) {
-
+      console.log(entries)
       var b = browserify({
           entries: entries,
           debug: true
@@ -46,6 +47,5 @@ module.exports = function(jsGlob)
 
 
 
-  // finally, we return the stream, so gulp knows when this task is done.
-  return bundledStream;
+
 }

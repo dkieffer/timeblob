@@ -6,16 +6,18 @@ module.exports = {
 
   // frameworks to use
   // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-  frameworks: ['jasmine'],
+  frameworks: ['jasmine', 'source-map-support'],
 
 
   // list of files / patterns to load in the browser
   files: [
     '../../.jstest/templates.js',
+
       '../static/timeblob/js/app.js',
-      //'../static/timeblob/js/app.js.map',
       'node_modules/angular-mocks/angular-mocks.js',
-      'spec/**/*.js'
+      {pattern: '../static/timeblob/js/app.js.map',  included: false},
+      '../../.jstest/spec.js',
+      {pattern: '../../.jstest/spec.js.map',  included: false},
   ],
 
 
@@ -27,7 +29,7 @@ module.exports = {
   // preprocess matching files before serving them to the browser
   // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
   preprocessors: {
-    '**/*.js': ['sourcemap']
+  //  '../static/timeblob/js/app.js': ['source-map-support']
   },
 
 

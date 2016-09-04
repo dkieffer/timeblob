@@ -1,5 +1,5 @@
-var Server = require('karma').Server;
-var os = require('os');
+var os = require('os')
+var Server = require('karma').Server
 
 module.exports = function(dirname, done)
 {
@@ -9,6 +9,6 @@ module.exports = function(dirname, done)
       karmaConf = '/karma.mac.conf.js';
   }
   new Server({
-      configFile: __dirname + karmaConf
+      configFile: dirname + karmaConf
   }, done).start();
 }
