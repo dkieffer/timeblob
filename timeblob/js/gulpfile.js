@@ -48,7 +48,7 @@ gulp.task('compileApp', function() {
 
 /* run karma once via the command line */
 gulp.task('test', gs('default', 'makeTemplateTestJs', function(done) {
-  return test(dirname, done);
+  return test(__dirname, done);
 }))
 
 /* make changes to your app while it's running in karma */
