@@ -1,52 +1,72 @@
-function TimerArea($scope, $element, $attrs, $interval, CurrentEntryService)
-{
-  var ctrl = this
-  var startTime = 0;
-  ctrl.isRunning = false;
-  ctrl.$onInit = () => {
-    CurrentEntryService.on('update-current', (entry) =>
-    {
-      //compare if anything has changed from current entry.
-      ctrl.currentEntry = entry;
-      if (entry == null)
-      {
-        ctrl.isRunning = false;
 
-      }
-      else {
-        startTime = entry.start;
-        ctrl.isRunning = true;
-      }
-      updateClockHandle();
+const CurrentEntrySensitiveComponent = require ('../current-sensitive')
+
+class TimerArea extends CurrentEntrySensitiveComponent {
+
+
+  /* @ngInject */
+  constructor($scope, $element, $attrs, CurrentEntryService, $interval){
+    super($scope, $element, $attrs, CurrentEntryService)
+    Object.assign(this, {$interval})
+
+    var ctrl = this;
+    ctrl.onComponentInit.push(() => {
+      ctrl.onUpdateCurrent.push((entry) =>
+      {
+        if (entry == null)
+        {
+          ctrl.isRunning = false;
+          ctrl.currentEntry = null;
+          ctrl.startTime = null;
+        }
+        else {
+          ctrl.startTime = Date.parse(entry.data.start);
+          ctrl.isRunning = true;
+          ctrl.currentEntry = entry.data;
+        }
+        ctrl.updateClockHandle();
+      })
+
+
+      $interval(() => ctrl.updateClockHandle(), 40);
     });
-    CurrentEntryService.current();
-    $interval(() => updateClockHandle(), 40);
+
   }
 
 
-  var  updateClockHandle = () =>
+  updateClockHandle()
   {
-    var currentTime = Date.now() - startTime;
+    var ctrl = this;
+
+
     if (!ctrl.isRunning) {
+        ctrl.clockHandStyle = { 'transform': 'rotate(0 deg)'};
         return;
     } else {
+        var currentTime = Date.now() - ctrl.startTime;
         var degree = 0.006 * currentTime;
         ctrl.clockHandStyle = { 'transform': 'rotate(' + degree + 'deg)'};
     }
   }
 
-  ctrl.start = () => {
-
+  start() {
+    var ctrl = this;
     // begin rotating
-    CurrentEntryService.start(ctrl.currentEntry);
+    ctrl.CurrentEntryService.start(ctrl.currentEntry);
     //update timeblob
     //
   };
-  ctrl.stop = () => CurrentEntryService.stop();
+  stop() {var ctrl = this; ctrl.CurrentEntryService.stop()}
 
-  ctrl.currentEntry = {}
-
-  ctrl.clockHandStyle = {};
+  static get $inject() {
+	      return [
+	        '$scope',
+          '$element',
+          '$attrs',
+          'CurrentEntryService',
+          '$interval'
+	      ];
+	    }
 }
 
 

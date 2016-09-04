@@ -23,6 +23,8 @@ var jsGlob = ['app.js', './services/**/*.js', './components/**/*.js'];
 
 var specGlob = jsGlob.concat(['./spec/**/*.js'])
 
+var htmlJsGlob = jsGlob.concat(['./components/**/*.html'])
+
 /*We make the template.js file so we can reference the angular component html
 files via an identifier instead of paths */
 gulp.task('makeTemplateJs', function() {
@@ -50,22 +52,38 @@ gulp.task('test', gs('default', 'makeTemplateTestJs', function(done) {
 }))
 
 /* make changes to your app while it's running in karma */
-gulp.task('watch',   gs('prepare-for-tests', gp('gulp-watch', 'js-watch'), (done) => done()));
+gulp.task('watch',   gs('default', 'app-watch'), (done) => done());
 
-/* looks for changes in the directories (including javascript files and then recompiles them*/
-gulp.task('gulp-watch',  function() {
-    return gulp.watch(specGlob, gs('prepare-for-tests'))
-        .on('error', function(err) {
-            console.log(err);
-        })
-});
+/* looks for changes in the (including javascript files and then recompiles them*/
+
+
+
+/** use this when you want to run in karma */
+gulp.task('karma-watch', gs('prepare-for-tests', gp('spec-watch', 'js-watch')),  (done) => done());
 
 /* looks for changes in teh app.js and updates as necessary. This is for handling spec testing */
 gulp.task('js-watch', function(done) {
   return karmawatch(__dirname, done)
 });
 
+gulp.task('spec-watch',  function() {
+    return gulp.watch(specGlob, gs('prepare-for-tests'))
+        .on('error', function(err) {
+            console.log(err);
+        })
+});
+
+/* watches all the app files and recompiles as necessary, used when you're doing runserver from the Makefile*/
+gulp.task('app-watch',() => {
+  return gulp.watch(htmlJsGlob, gs('default'))
+    .on('error', function(err) {
+        console.log(err);
+    })
+  }
+)
+
 
 
 gulp.task('prepare-for-tests', gs('templates', 'compileApp', 'makeTemplateTestJs', (done) => done()));
+
 gulp.task('default', gs('makeTemplateJs', 'templates', 'compileApp', (done) => done()));

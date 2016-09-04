@@ -22,9 +22,15 @@ class CurrentEntryService extends EventEmitter {
     var self = this;
 
     var start = self.TimeEntryService.start(timeEntry)
-    
-    start.then(
-      (i) => {self.emit('update-current', i)},
+
+    start.then((i) => {
+        if (i.data.id == undefined) {
+          self.emit('validation-error', i);
+        }
+        else {
+          self.emit('update-current', i)
+        }
+      },
       (i) => { self.emit('error', i);
 
     })

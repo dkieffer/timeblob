@@ -58,12 +58,12 @@ class TimeEntryService {
     });
   }
 
-  stop(id)
+  stop()
   {
     var self = this;
     return this.$http({
-      method: "PUT",
-      url: self.urlCreate(id, 'stop')
+      method: "POST",
+      url: self.urlCreate('stop')
     });
   }
 

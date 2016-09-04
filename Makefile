@@ -5,14 +5,9 @@ venv := $(current_dir)/venv
 js := $(current_dir)/timeblob/js
 
 default: migrate
-	#kill the server
-	test=$$( ps aux|grep "python $(current_dir)/manage.py runserver"|grep -v grep|awk '{print $$2}' ) ; if [ "" != "$$test" ] ; then kill $$test ; fi
 
+	$(current_dir)/run_default.sh $(current_dir)
 
-	sh -c '$(venv)/bin/python $(current_dir)/manage.py loaddata "timeblob/fixtures/debug.yaml" & $(js)/node_modules/.bin/gulp prepare-for-tests --cwd $(js) & wait'
-
-
-	sh -c '$(venv)/bin/python  $(current_dir)/manage.py $(ACTION) & $(js)/node_modules/.bin/gulp gulp-watch --cwd $(js) & wait'
 
 jstest: npm_install
 	$(js)/node_modules/.bin/gulp test --cwd $(js)

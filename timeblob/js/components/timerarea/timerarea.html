@@ -1,8 +1,8 @@
 <div class="timer-area stopwatch-component">
   <div id="stopwatch" class="stopwatch-component">
-      <h1 id="stopwatch-time" class="stopwatch-component"><span ng-if="$ctrl.isRunning" am-time-ago="startTime"></span></h1>
+      <h1 id="stopwatch-time" class="stopwatch-component" ng-class="{running: $ctrl.isRunning}"><span  am-time-ago="$ctrl.startTime">Are you here?</span></h1>
       <svg id="clock-hand" viewBox="0 0 400 400" enable-background="new 0 0 400 400"
-  	 xml:space="preserve" ng-style="">
+  	 xml:space="preserve" ng-style="$ctrl.clockHandStyle">
       <polygon fill="#863EA2" points="199.965,231.158 206.977,229.557 206.938,184.702 202.63,41.172 197.521,41.176 192.914,184.713
   	192.952,229.566 "/>
       <filter id="blur-25" x="-40%" width="180%">
