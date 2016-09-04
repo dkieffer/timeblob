@@ -50,6 +50,10 @@ body {
     transition: color 1s;
 }
 
+#stopwatch-time.running {
+  color: rgba(255,255,255,1)
+}
+
 #clock-hand {
     max-width: 400px;
 }
