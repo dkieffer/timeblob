@@ -1,133 +1,58 @@
 'use strict';
 
-var browserify = require('browserify');
 var gulp = require('gulp');
-var source = require('vinyl-source-stream');
-var buffer = require('vinyl-buffer');
-var uglify = require('gulp-uglify');
-var sourcemaps = require('gulp-sourcemaps');
-var gutil = require('gulp-util');
-var ngAnnotate = require('gulp-ng-annotate');
-var babel = require('babelify');
-var through = require('through2');
-var globby = require('globby');
-const path = require('path');
-const gulp_file = require('gulp-file');
-const flatten = require('gulp-flatten');
-var Server = require('karma').Server;
-var os = require('os');
 const gs = gulp.series;
 const gp = gulp.parallel;
+
+
 var FwdRef = require('undertaker-forward-reference');
+
+var makeTemplate = require("./gulp/maketemplate");
+var ngTemplates = require("./gulp/ngtemplates")
+var compilejs = require('./gulp/compilejs')
+var karmawatch = require('./gulp/karmawatch');
+var test = require('./gulp/test')
+
+
+var templateGlob = "components/**/*.html";
 
 gulp.registry(FwdRef());
 
-const templateGlob = "components/**/*.html"
 
 var jsGlob = ['app.js', './services/**/*.js', './components/**/*.js'];
 
 var specGlob = jsGlob.concat(['./spec/**/*.js'])
 
-
+/*We make the template.js file so we can reference the angular component html
+files via an identifier instead of paths */
 gulp.task('makeTemplateJs', function() {
-    var templateSrc = "{% load static from staticfiles %}\nvar TEMPLATE = {\n";
-    return globby(templateGlob).then(function(entries) {
-        entries.forEach(function(i) {
-            var name = path.posix.basename(i, ".html");
-
-            templateSrc += name.toUpperCase() + ": '{% static \"timeblob/ngtemplates/" + name + ".html\" %}',\n"
-        })
-
-        templateSrc += "}\n"
-    }).then(function() {
-        source('templates.js')
-            .pipe(gulp_file("templates.js", templateSrc))
-            .pipe(gulp.dest("../templates/timeblob")).on('error', function(err) {
-                console.log(err);
-            })
-    })
-
-
+  return makeTemplate(templateGlob, false);
 })
 
+/* Same as makeTemplateJs but only used by Karma for spec tests*/
 gulp.task('makeTemplateTestJs', function() {
-    var templateSrc = "var TEMPLATE = {\n";
-    return globby(templateGlob).then(function(entries) {
-        entries.forEach(function(i) {
-            var name = path.posix.basename(i, ".html");
-
-            templateSrc += name.toUpperCase() + ": 'timeblob/ngtemplates/" + name + ".html'\n"
-        })
-
-        templateSrc += "};\n"
-
-        templateSrc += "var BASE_URL = 'http://BASEURL';\n"
-    }).then(function() {
-        source('templates.js')
-            .pipe(gulp_file("templates.js", templateSrc))
-            .pipe(gulp.dest("../../.jstest/"))
-    })
+  return makeTemplate(templateGlob, true);
 })
 
+/* copies the angular templates to the static folder for django*/
 gulp.task('templates', function() {
-    return gulp.src(templateGlob)
-        .pipe(flatten())
-        .pipe(gulp.dest("../static/timeblob/ngtemplates")).on('error', function(err) {
-            console.log(err);
-        })
+    return ngTemplates(templateGlob);
 });
 
-
+/* compiles all of the javascript files for the application */
 gulp.task('compileApp', function() {
-    var bundledStream = through();
-
-    bundledStream.pipe(source('app.js'))
-        .pipe(buffer())
-        .pipe(sourcemaps.init({
-            loadMaps: true
-        }))
-        .pipe(ngAnnotate())
-        // Add transformation tasks to the pipeline here.
-        .pipe(uglify())
-        .on('error', gutil.log)
-        .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest('../static/timeblob/js'));
-    // set up the browserify instance on a task basis
-
-    globby(jsGlob).then(function(entries) {
-
-        var b = browserify({
-            entries: entries,
-            debug: true
-        }).transform(babel.configure({
-            // Use all of the ES2015 spec
-            presets: ["es2015"]
-        }))
-
-        b.bundle().pipe(bundledStream);
-    }).catch(function(err) {
-        // ensure any errors from globby are handled
-        bundledStream.emit('error', err);
-    });
-
-
-
-
-    // finally, we return the stream, so gulp knows when this task is done.
-    return bundledStream;
+    return compilejs(jsGlob);
 });
 
-
+/* run karma once via the command line */
 gulp.task('test', gs('default', 'makeTemplateTestJs', function(done) {
-    new Server({
-        configFile: __dirname + '/karma.test.conf.js',
-        singleRun: true
-    }, done).start();
-
+  return test(dirname, done);
 }))
 
+/* make changes to your app while it's running in karma */
 gulp.task('watch',   gs('prepare-for-tests', gp('gulp-watch', 'js-watch'), (done) => done()));
-//gulp.task('full-watch', , (done) => done()));
+
+/* looks for changes in the directories (including javascript files and then recompiles them*/
 gulp.task('gulp-watch',  function() {
     return gulp.watch(specGlob, gs('prepare-for-tests'))
         .on('error', function(err) {
@@ -135,16 +60,11 @@ gulp.task('gulp-watch',  function() {
         })
 });
 
+/* looks for changes in teh app.js and updates as necessary. This is for handling spec testing */
 gulp.task('js-watch', function(done) {
-    var karmaConf = '/karma.conf.js';
-    //you probably won't have chromium on darwin so let's assume Chrome
-    if (os.platform == ' darwin') {
-        karmaConf = '/karma.mac.conf.js';
-    }
-    new Server({
-        configFile: __dirname + karmaConf
-    }, done).start();
+  return karmawatch(__dirname, done)
 });
+
 
 
 gulp.task('prepare-for-tests', gs('templates', 'compileApp', 'makeTemplateTestJs', (done) => done()));
