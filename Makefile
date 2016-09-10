@@ -4,7 +4,7 @@ current_dir :=$(strip $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST)))))
 venv := $(current_dir)/venv
 js := $(current_dir)/timeblob/js
 
-default: migrate
+default: migrate npm_install
 
 	$(current_dir)/run_default.sh $(current_dir)
 
