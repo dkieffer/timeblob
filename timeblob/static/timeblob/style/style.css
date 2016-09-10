@@ -83,10 +83,6 @@ body {
     bottom: -100%;
 }
 
-#current-entry-summary table {
-    width: 100%;
-}
-
 #current-form-area {
     padding: 1em;
     max-width: 30em;
@@ -181,7 +177,7 @@ input#input-start-time, input#input-start-date, input#input-end-time, input#inpu
     cursor: pointer;
 }
 
-table#sessions-table {
+table#sessions-table, #current-entry-summary table {
     width: 100%;
     background-color: rgba(96,37,81,1);
     color: rgba(239,175,227,1);
