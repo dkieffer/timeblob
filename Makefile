@@ -36,6 +36,9 @@ virtualenv:
 migrate: requirements
 		$(venv)/bin/python $(current_dir)/manage.py migrate
 
+makemigrations: requirements
+		$(venv)/bin/python $(current_dir)/manage.py makemigrations
+
 prepare: requirements npm_install
 
 runserver: default
