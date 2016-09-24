@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from rest_framework import status
+from rest_framework import status, generics, filters
 from rest_framework.decorators import api_view
 from django.contrib.auth.decorators import login_required
 from rest_framework.response import Response
@@ -8,6 +8,9 @@ from timeblob.models import TimeEntry
 from timeblob.api.serializers import TimeEntrySerializer, TimeEntryStartSerializer
 from timeblob.exceptions import NoCurrentEntry
 from timeblob.user_time_entry_manager import UserTimeEntryManager
+from rest_framework.permissions import IsAuthenticated
+import django_filters
+
 
 @api_view(['GET'])
 @login_required
@@ -15,9 +18,14 @@ from timeblob.user_time_entry_manager import UserTimeEntryManager
 def time_entries_list(request):
     start_date = request.GET.get("start_date")
     end_date = request.GET.get("end_date")
+    project = request.GET.get('project_id')
+    task = request.GET.get('task_id')
+    billable = request.GET.get('billable')
     entries = TimeEntry.objects.filter(user=request.user)
     serializer = TimeEntrySerializer(entries, many=True);
     return Response(serializer.data)
+
+
 
 @api_view(['GET', 'PUT', 'DELETE'])
 @login_required
@@ -80,3 +88,32 @@ def time_entry_current(request):
         return Response(status=status.HTTP_404_NOT_FOUND)
     serializer = TimeEntrySerializer(request.user, item)
     return Response(serializer.data)
+
+
+
+class ListEntryFilter(filters.FilterSet):
+    before = django_filters.IsoDateTimeFilter(name="stop", lookup_expr='lt')
+    after = django_filters.IsoDateTimeFilter(name="start", lookup_expr='gt')
+    description = django_filters.CharFilter(name="description", lookup_expr='icontains')
+    created_with = django_filters.CharFilter(name="created_with", lookup_expr='icontains')
+    last_updated_before = django_filters.IsoDateTimeFilter(name="last_updated", lookup_expr='lt')
+    last_updated_after = django_filters.IsoDateTimeFilter(name="last_updated", lookup_expr='gt')
+    class Meta:
+        model = TimeEntry
+        fields = ['task', 'project', 'billable', 'description', 'before', 'after', 'created_with', 'last_updated_before', 'last_updated_after']
+
+
+class ListEntriesView(generics.ListAPIView):
+    serializer_class = TimeEntrySerializer
+    permission_classes = (IsAuthenticated,)
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_class = ListEntryFilter
+
+    def get_queryset(self):
+        """
+        This view should return a list of all TimeEntries for the current_user
+        TODO: this is a hack, we shouldn't check user here since we do it otherwise in the serializer
+        OR we should fix the serializer to not deal with current_user (make it dumb)
+        """
+        user = self.request.user
+        return TimeEntry.objects.filter(user=user)

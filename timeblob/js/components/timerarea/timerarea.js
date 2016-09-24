@@ -4,20 +4,26 @@ const CurrentEntrySensitiveComponent = require ('../current-sensitive')
 class TimerArea extends CurrentEntrySensitiveComponent {
 
 
-  /* @ngInject */
-  constructor($scope, $element, $attrs, CurrentEntryService, $interval){
-    super($scope, $element, $attrs, CurrentEntryService)
+
+  constructor(CurrentEntryService, $interval){
+    super(null, null, null, CurrentEntryService)
     Object.assign(this, {$interval})
 
     var ctrl = this;
-    ctrl.onComponentInit.push(() => {
-      ctrl.onUpdateCurrent.push((entry) =>
+    ctrl.onComponentInit(() => {
+      ctrl.isRunning = false;
+      ctrl.currentEntry = null;
+      ctrl.startTime = null;
+      ctrl.lastUpdated = null
+      ctrl.clockHandStyle = { 'transform': 'rotate(0 deg)'};
+      ctrl.onUpdateCurrent((entry) =>
       {
         if (entry == null)
         {
           ctrl.isRunning = false;
           ctrl.currentEntry = null;
           ctrl.startTime = null;
+          ctrl.lastUpdated
         }
         else {
           ctrl.startTime = Date.parse(entry.data.start);
@@ -60,9 +66,6 @@ class TimerArea extends CurrentEntrySensitiveComponent {
 
   static get $inject() {
 	      return [
-	        '$scope',
-          '$element',
-          '$attrs',
           'CurrentEntryService',
           '$interval'
 	      ];

@@ -1,5 +1,5 @@
 //events update_current,
-const EventEmitter = require("events")
+const EventEmitter = require("events").EventEmitter
 class CurrentEntryService extends EventEmitter {
 
   constructor( $interval, TimeEntryService) {

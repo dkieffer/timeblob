@@ -1,4 +1,4 @@
-afrom django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase, APIClient
 from timeblob.models import TimeEntry
@@ -6,19 +6,18 @@ from django.contrib.auth.models import AnonymousUser, User
 import timeblob.api.views
 from django.utils import timezone, dateparse
 from timeblob import util
+from . import ForceLoginTest
 
-class TimeEntryTest(APITestCase):
+class TimeEntryTest(ForceLoginTest):
+    fixtures = ['timeblob/fixtures/users', 'timeblob/fixtures/list']
 
-    def setUp(self):
-        self.TestUser = User.objects.create_user("TestUser", password="TestPass")
-        self.TestUser.save()
-        # we use this since the RemoteUserBackend is used for Sandstorm
-        self.client.force_login(self.TestUser, backend="django.contrib.auth.backends.RemoteUserBackend")
+
 
 
     def test_no_current_entry(self):
         '''Can't get a non-valid entry'''
         url = reverse("api:time-entry-current")
+        
         data = {}
         response = self.client.get(url, data)
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND, "We received a status of %s but we should have received 404" % response.status_code)
@@ -82,6 +81,7 @@ class TimeEntryTest(APITestCase):
         self.assertEqual(response_start_time, startTime)
         self.assertGreater(response_stop_time, response_start_time)
         self.assertEqual(response.data['duration'],(response_stop_time- response_start_time).total_seconds())
+        
 
     def test_start_entry_with_current_running(self):
         DESCRIPTION = 'EXAMPLE'
@@ -117,3 +117,6 @@ class TimeEntryTest(APITestCase):
         response = self.client.get(url, data)
 
         self.assertEqual(response_duration, response.data['duration'], "We checked the duration twice but it changed from %s to %s" % (response_duration, response.data['duration']))
+
+class TimeEntryNoCurrentTest(ForceLoginTest):
+    pass

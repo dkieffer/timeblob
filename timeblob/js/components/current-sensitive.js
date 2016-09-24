@@ -1,32 +1,43 @@
-const EventEmitter = require("events")
+const EventEmitter = require("events").EventEmitter
 
 /* A component which needs to know if the current entryhas changed. */
 class CurrentEntrySensitiveComponent extends EventEmitter {
-  /* @ngInject */
+
   constructor($scope, $element, $attr, CurrentEntryService) {
     super()
     Object.assign(this, {$scope, $element, $attr, CurrentEntryService})
 
     var ctrl = this
-    ctrl.onComponentInit = []
-    ctrl.onUpdateCurrent = []
+    var onComponentInit = []
+    var onUpdateCurrent = []
 
+    ctrl.onComponentInit = (initFunction) => {
+      onComponentInit.push(initFunction)
+    }
+
+    ctrl.onUpdateCurrent = (initFunction) => {
+      onUpdateCurrent.push(initFunction)
+    }
     ctrl.$onInit =  () => {
+      for (var i =0; i <  onComponentInit.length; i++)
+      {
+        onComponentInit[i]()
+      }
       ctrl.CurrentEntryService.on('update-current', (entry) =>
       {
 
-        for (var i =0; i < ctrl.onUpdateCurrent.length; i++)
+        for (var i =0; i < onUpdateCurrent.length; i++)
         {
-          ctrl.onUpdateCurrent[i](entry);
+          onUpdateCurrent[i](entry);
         }
       });
 
 
-      for (var i =0; i <  ctrl.onComponentInit.length; i++)
-      {
-        ctrl.onComponentInit[i]()
-      }
+
     }
+
+
+
 
   }
 }

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from timeblob.models import TimeEntry
+from timeblob.models import TimeEntry, Project, Task
 from django.utils import timezone
 from timeblob.user_time_entry_manager import UserTimeEntryManager
 from django.contrib.auth.models import AnonymousUser, User
@@ -9,8 +9,8 @@ class TimeEntrySerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
     description = serializers.CharField(required=True)
-    project =  serializers.IntegerField(required=False)
-    task =  serializers.IntegerField(required=False)
+    project =  serializers.PrimaryKeyRelatedField(queryset=Project.objects.all(), required=False)
+    task =  serializers.PrimaryKeyRelatedField(queryset=Task.objects.all(),required=False)
     billable =  serializers.BooleanField(required=False)
     start = serializers.DateTimeField(format="iso-8601", required=True)
     stop =  serializers.DateTimeField(format="iso-8601")
