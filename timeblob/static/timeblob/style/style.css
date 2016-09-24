@@ -255,7 +255,7 @@ td.open-entry:before {
 }
 
 /* ================================
-    Filter List Styles
+    List Filters Styles
 ================================= */
 
 #filter-list-button {
@@ -295,6 +295,11 @@ td.open-entry:before {
     0%, 25% {opacity: 1;} 
     50%, 100% {opacity: 0;} 
 } 
+
+#filters-menu {
+    width: 100%;
+    border-collapse: collapse;
+}
 
 /* ================================
     Edit Entry Form Styles
