@@ -9,16 +9,25 @@ class TimeEntryService {
   }
 
 
-  list(start_date=null, end_date=null) {
+  /*
+  parameters are: before=null,
+    after=null,
+    task=null,
+    description=null,
+    created_with=null,
+    last_updated_before=null,
+    last_updated_after=null,
+    task=null,
+    project=null,
+    billable=null
+  */
+  list(filters={}) {
     var self = this;
     return this.$http({
       method: 'GET',
       url:self.urlCreate(),
-      params:
-      {
-        start_date: start_date,
-        end_date: end_date
-      }
+      params: filters
+
     });
   }
 
