@@ -1,20 +1,30 @@
+import 'jasmine'
+import * as ng from 'angular'
+import 'angular-mocks'
+import * as interfaces from'../../services/interfaces'
+import * as ta from '../../components/timerarea/timerarea';
+describe('TimerArea', () => {
 
-
-describe('TimerArea', function() {
-  var scope, element, $componentController, CurrentEntryService;
+  var scope: ng.IScope
+  var element : HTMLElement
+  var $componentController : ng.IControllerService
+  var CurrentEntryService : interfaces.ICurrentEntryService
   var interval;
   // Before each test load our api.users module
-  beforeEach(() => {angular.mock.module('app')});
+  beforeEach(() => {ng.mock.module('app')});
 
-  beforeEach(inject(function($injector,  _$componentController_, $interval, _CurrentEntryService_){
-   $componentController = $injector.get('$componentController')
+  beforeEach(inject(($injector:ng.auto.IInjectorService,
+      _$componentController_:ng.IControllerService,
+      $interval: ng.IIntervalService,
+      _CurrentEntryService_: interfaces.ICurrentEntryService) => {
+   $componentController = $injector.get<ng.IControllerService>(name='$componentController')
    interval = $interval
    CurrentEntryService = _CurrentEntryService_
    spyOn(CurrentEntryService, 'current').and.returnValue(null)
   }));
 
   it('should not have anything set before first update', () => {
-      var controller = $componentController('timerArea')
+      var controller:any = $componentController('timerArea')
       controller.$onInit();
       expect(controller.isRunning).toBe(false)
       expect(controller.currentEntry).toBe(null)
@@ -23,7 +33,7 @@ describe('TimerArea', function() {
   })
 
   it('should not have anything set after a null first update', () => {
-    var controller = $componentController('timerArea')
+    var controller = $componentController<ta.TimerArea>('timerArea')
       controller.$onInit();
       CurrentEntryService.emit('update-current', null)
       expect(controller.isRunning).toBe(false)
@@ -33,8 +43,8 @@ describe('TimerArea', function() {
   })
 
   it('should not have anything set after a get update', () => {
-    var controller = $componentController('timerArea')
-    controller.$onInit();
+      var controller = $componentController<ta.TimerArea>('timerArea')
+      controller.$onInit();
       CurrentEntryService.emit('update-current', {'data': {'start': "2016-09-05T01:45:53+00:00", 'last_updated': "2016-09-05T01:45:53+00:00"}})
       expect(controller.isRunning).toBe(true)
       expect(controller.startTime).toBe(Date.UTC(2016,8,5,1,45,53,0))

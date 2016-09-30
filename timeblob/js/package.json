@@ -9,6 +9,7 @@
   "author": "",
   "license": "AGPL-3.0",
   "devDependencies": {
+    "@types/angular": "^1.5.16",
     "angular-mocks": "^1.5.8",
     "babel": "^6.5.2",
     "babel-core": "^6.13.2",
@@ -46,6 +47,7 @@
   "dependencies": {
     "angular": "^1.5.8",
     "angular-moment": "^1.0.0-beta.6",
+    "gulp-typescript": "^3.0.0",
     "url-join": "^1.1.0"
   }
 }

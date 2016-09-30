@@ -1,15 +1,19 @@
-
+import 'jasmine'
+import * as ng from 'angular'
+import 'angular-mocks'
+import * as interfaces from'../../services/interfaces'
+declare var BASE_URL : string
 
 describe('CurrentEntryService', function() {
-  var $httpBackend;
-  var timeEntry;
-  var currentEntryService;
-  var TimeEntryService;
+  var $httpBackend: ng.IHttpBackendService;
+  var timeEntry : interfaces.ITimeEntry;
+  var currentEntryService : interfaces.ICurrentEntryService;
+  var TimeEntryService : interfaces.ITimeEntryService;
   // Before each test load our api.users module
-  beforeEach(() => {angular.mock.module('app')});
+  beforeEach(() => {ng.mock.module('app')});
 
   // Before each test set our injected Users factory (_Users_) to our local Users variable
-  beforeEach(inject(function($injector, _CurrentEntryService_) {
+  beforeEach(inject(function($injector:ng.auto.IInjectorService, _CurrentEntryService_: interfaces.ICurrentEntryService) {
     currentEntryService = _CurrentEntryService_;
     $httpBackend = $injector.get('$httpBackend');
     $httpBackend.when('GET', BASE_URL + '/time_entries/current').respond(404,'')
@@ -37,15 +41,15 @@ describe('CurrentEntryService', function() {
 describe('CurrentEntryServiceWithCurrent', function() {
   var startTime = Date.now();
   var stopTime = startTime + 3000;
-  var $httpBackend;
-  var timeEntry;
-  var currentEntryService;
-  var TimeEntryService;
+  var $httpBackend: ng.IHttpBackendService;
+  var timeEntry : interfaces.ITimeEntry;
+  var currentEntryService : interfaces.ICurrentEntryService;
+  var TimeEntryService : interfaces.ITimeEntryService;
   // Before each test load our api.users module
-  beforeEach(angular.mock.module('app'));
+  beforeEach(ng.mock.module('app'));
 
   // Before each test set our injected Users factory (_Users_) to our local Users variable
-  beforeEach(inject(function($injector, CurrentEntryService) {
+  beforeEach(inject(function($injector: ng.auto.IInjectorService, CurrentEntryService: interfaces.ICurrentEntryService) {
     currentEntryService = CurrentEntryService;
     $httpBackend = $injector.get('$httpBackend');
 
@@ -79,9 +83,9 @@ describe('CurrentEntryServiceWithCurrent', function() {
     var totalDone = 0
     currentEntryService.on('update-current', function(entry) {
 
-      [entry, currentEntryService.currentCached].forEach(function(i)
+      [entry, currentEntryService.cachedCurrent].forEach(function(i)
       {
-        expect(i, null)
+        expect(i).toBeNull()
       })
 
       totalDone++

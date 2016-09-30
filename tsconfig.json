@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+       "target": "es5",
+       "module": "commonjs",
+       "declaration": false,
+       "noImplicitAny": false,
+       "removeComments": true,
+       "noLib": false,
+       "baseUrl": "timeblob/js",
+       "paths": {
+           "*": [
+                   "type/*",
+                   "node_modules/@types/*"
+               ]
+
+           }
+   },
+   "filesGlob": [
+       "timeblob/js/type/**/*.d.ts",
+       "timeblob/js/node_modules/@types/**/*.d.ts",
+       "timeblob/js/spec/**/*.ts",
+       "timeblob/js/services/**/*.ts",
+       "timeblob/js/components/**/*.ts",
+       "timeblob/js/app.ts"
+
+   ]
+
+}
