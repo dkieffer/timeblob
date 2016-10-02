@@ -1,5 +1,3 @@
-//BASE_URL: string
-
 import urljoin = require("url-join")
 import * as angular from 'angular'
 import * as interfaces from './interfaces'
