@@ -94,7 +94,7 @@ class TimeEntryService implements interfaces.ITimeEntryService {
 
 }
 
-angular.module('app').factory("TimeEntryService", ($http) =>
+angular.module('app').factory("TimeEntryService", ($http:angular.IHttpService) =>
 {
   return new TimeEntryService($http, BASE_URL);
 })

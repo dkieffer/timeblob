@@ -13,9 +13,9 @@ module.exports = {
   files: [
     '../../.jstest/templates.js',
 
-      '../static/timeblob/js/app.js',
-      'node_modules/angular-mocks/angular-mocks.js',
-      {pattern: '../static/timeblob/js/app.js.map',  included: false},
+      //'../static/timeblob/js/app.js',
+      //'node_modules/angular-mocks/angular-mocks.js',
+      //{pattern: '../static/timeblob/js/app.js.map',  included: false},
       '../../.jstest/spec.js',
       {pattern: '../../.jstest/spec.js.map',  included: false},
   ],

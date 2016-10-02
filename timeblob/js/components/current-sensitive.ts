@@ -21,7 +21,8 @@ export default class CurrentEntrySensitiveComponent extends events.EventEmitter 
     this.$attr = $attr
     this.CurrentEntryService = CurrentEntryService
 
-
+    this._onComponentInit = new Array<Function>()
+    this._onUpdateCurrent = new Array<IUpdateCurrent>()
 
 
 
@@ -34,7 +35,7 @@ export default class CurrentEntrySensitiveComponent extends events.EventEmitter 
     {
       self._onComponentInit[i]()
     }
-    this.CurrentEntryService.on('update-current', (entry) =>
+    this.CurrentEntryService.on('update-current', (entry:ng.IHttpPromiseCallbackArg<interfaces.ITimeEntry>) =>
     {
 
       for (var i =0; i < self._onUpdateCurrent.length; i++)

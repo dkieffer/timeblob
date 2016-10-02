@@ -1,4 +1,4 @@
-import 'jasmine'
+//import 'jasmine'
 import * as ng from 'angular'
 import 'angular-mocks'
 import * as interfaces from'../../services/interfaces'
@@ -9,17 +9,15 @@ describe('TimerArea', () => {
   var element : HTMLElement
   var $componentController : ng.IControllerService
   var CurrentEntryService : interfaces.ICurrentEntryService
-  var interval;
+  var interval: ng.IIntervalService;
   // Before each test load our api.users module
   beforeEach(() => {ng.mock.module('app')});
 
   beforeEach(inject(($injector:ng.auto.IInjectorService,
-      _$componentController_:ng.IControllerService,
-      $interval: ng.IIntervalService,
-      _CurrentEntryService_: interfaces.ICurrentEntryService) => {
-   $componentController = $injector.get<ng.IControllerService>(name='$componentController')
+      $interval: ng.IIntervalService) => {
+   $componentController = $injector.get<ng.IControllerService>('$componentController')
    interval = $interval
-   CurrentEntryService = _CurrentEntryService_
+   CurrentEntryService =  $injector.get<interfaces.ICurrentEntryService>('CurrentEntryService')
    spyOn(CurrentEntryService, 'current').and.returnValue(null)
   }));
 

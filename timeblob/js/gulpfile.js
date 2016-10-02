@@ -19,13 +19,13 @@ var templateGlob = "components/**/*.html";
 gulp.registry(FwdRef());
 
 
-var jsGlob = ['app.js', './services/**/*.js', './components/**/*.js'];
+var tsGlob = ['app.ts', './services/**/*.ts', './components/**/*.ts'];
 
+//var specGlob = ['./spec/**/*.js']
+var specGlob = ['./spec/**/*.ts']
+var jsAndSpecGlob = tsGlob.concat(specGlob);
 
-var specGlob = ['./spec/**/*.js']
-var jsAndSpecGlob = jsGlob.concat(specGlob);
-
-var htmlJsGlob = jsGlob.concat(['./components/**/*.html'])
+var htmlJsGlob = tsGlob.concat(['./components/**/*.html'])
 
 /*We make the template.js file so we can reference the angular component html
 files via an identifier instead of paths */
@@ -45,13 +45,13 @@ gulp.task('templates', function() {
 
 /* compiles all of the javascript files for the application */
 gulp.task('compileApp', function(done) {
-    return compilejs(jsGlob, 'app.js', '../static/timeblob/js', done);
+    return compilejs(tsGlob, 'app.js', '../static/timeblob/js', done);
 });
 
 /* compiles all of the javascript files PLUS the spec files */
-gulp.task ('compileAppWithSpec', gs('compileApp', function (done) {
-  return compilejs(specGlob, 'spec.js', '../../.jstest', done)
-}))
+gulp.task ('compileAppWithSpec',  function (done) {
+  return compilejs(jsAndSpecGlob, 'spec.js', '../../.jstest', done)
+})
 
 /* run karma once via the command line */
 gulp.task('test', gs( 'compileAppWithSpec', 'makeTemplateTestJs', function(done) {

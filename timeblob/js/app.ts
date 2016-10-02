@@ -3,7 +3,6 @@ declare var BASE_URL: string
 import * as angular from 'angular'
 import 'moment'
 import 'angular-moment'
-import ''
 import * as interfaces from './services/interfaces'
 
 var app = angular.module('app', ['angularMoment'])
@@ -14,4 +13,7 @@ app.config(['$httpProvider', function ($httpProvider: angular.IHttpProvider)
 }])
 
 //start the currentEntry service
-app.run((CurrentEntryService:interfaces.ICurrentEntryService ) => {CurrentEntryService.current();})
+app.run((CurrentEntryService:interfaces.ICurrentEntryService ) => {
+  
+  if (window['jasmine'] === undefined) {CurrentEntryService.current();}
+});

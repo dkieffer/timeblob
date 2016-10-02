@@ -1,9 +1,9 @@
-import 'jasmine'
+
 import * as ng from 'angular'
 import 'angular-mocks'
 import * as interfaces from'../../services/interfaces'
 declare var BASE_URL : string
-
+//import 'jasmine'
 describe('CurrentEntryService', function() {
   var $httpBackend: ng.IHttpBackendService;
   var timeEntry : interfaces.ITimeEntry;
@@ -13,8 +13,8 @@ describe('CurrentEntryService', function() {
   beforeEach(() => {ng.mock.module('app')});
 
   // Before each test set our injected Users factory (_Users_) to our local Users variable
-  beforeEach(inject(function($injector:ng.auto.IInjectorService, _CurrentEntryService_: interfaces.ICurrentEntryService) {
-    currentEntryService = _CurrentEntryService_;
+  beforeEach(inject(function($injector:ng.auto.IInjectorService) {
+    currentEntryService = $injector.get<interfaces.ICurrentEntryService>('CurrentEntryService');
     $httpBackend = $injector.get('$httpBackend');
     $httpBackend.when('GET', BASE_URL + '/time_entries/current').respond(404,'')
 
@@ -23,7 +23,7 @@ describe('CurrentEntryService', function() {
   it("current entry isn't set", function(done)
   {
 
-    currentEntryService.on('update-current', function(entry) {
+    currentEntryService.on('update-current', function(entry:any) {
       expect(entry).toBe(null)
       expect(currentEntryService.cachedCurrent).toBe(null)
       done()
@@ -46,11 +46,11 @@ describe('CurrentEntryServiceWithCurrent', function() {
   var currentEntryService : interfaces.ICurrentEntryService;
   var TimeEntryService : interfaces.ITimeEntryService;
   // Before each test load our api.users module
-  beforeEach(ng.mock.module('app'));
+  beforeEach(() => ng.mock.module('app'));
 
   // Before each test set our injected Users factory (_Users_) to our local Users variable
-  beforeEach(inject(function($injector: ng.auto.IInjectorService, CurrentEntryService: interfaces.ICurrentEntryService) {
-    currentEntryService = CurrentEntryService;
+  beforeEach(inject(function($injector: ng.auto.IInjectorService) {
+    currentEntryService = $injector.get<interfaces.ICurrentEntryService>('CurrentEntryService');
     $httpBackend = $injector.get('$httpBackend');
 
     $httpBackend.when('GET', BASE_URL + '/time_entries/current').respond(200, {id:1, user:1, description: "a description", start: startTime})
@@ -60,7 +60,7 @@ describe('CurrentEntryServiceWithCurrent', function() {
   it("check current", function(done)
   {
 
-    currentEntryService.on('update-current', function(entry) {
+    currentEntryService.on('update-current', function(entry:any) {
 
       [entry, currentEntryService.cachedCurrent].forEach(function(i)
         {
@@ -81,9 +81,11 @@ describe('CurrentEntryServiceWithCurrent', function() {
   it("stop current", function(done)
   {
     var totalDone = 0
-    currentEntryService.on('update-current', function(entry) {
+    currentEntryService.on('update-current', function(entry:any) {
 
-      [entry, currentEntryService.cachedCurrent].forEach(function(i)
+      expect(currentEntryService.cachedCurrent).toBeNull();
+
+      [entry].forEach(function(i:any)
       {
         expect(i).toBeNull()
       })

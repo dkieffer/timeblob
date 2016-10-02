@@ -9,20 +9,20 @@ class EntryList extends CurrentEntrySensitiveComponent {
   entries : Array<interfaces.ITimeEntry>
   TimeEntryService: interfaces.ITimeEntryService
 
-  constructor($scope, $element, $attr, TimeEntryService)
+  constructor($scope:any, $element:any, $attr:any, TimeEntryService:any)
   {
     super($scope, $element, $attr, TimeEntryService)
     var self = this;
     self.waitingForResponse = false;
     self.entries = [];
     self.TimeEntryService
-    TimeEntryService.on('update-current', function(entry) {
+    TimeEntryService.on('update-current', function(entry:any) {
     //  var beforeDate = self.entries.first()
       //
     })
   }
 
-  get(beforeDate= null, afterDate=null, max=20)
+  get(beforeDate:any= null, afterDate:any=null, max:any=20)
   {
     var self = this;
     //get more

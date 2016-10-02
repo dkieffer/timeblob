@@ -19,7 +19,7 @@ class CurrentEntryService extends EventEmitter implements interfaces.ICurrentEnt
 
   }
 
-  setCurrent(response) {
+  setCurrent(response:any) {
     var self = this;
     self.cachedCurrent = response;
     self.emit('update-current', response)
@@ -87,3 +87,8 @@ class CurrentEntryService extends EventEmitter implements interfaces.ICurrentEnt
   }
 
 }
+
+angular.module('app').factory("CurrentEntryService", ($interval:angular.IIntervalService, TimeEntryService:interfaces.ITimeEntryService) =>
+{
+  return new CurrentEntryService($interval, TimeEntryService);
+})

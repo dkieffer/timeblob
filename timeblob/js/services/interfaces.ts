@@ -58,7 +58,7 @@ export interface ITimeEntryService {
 export interface ICurrentEntryService extends events.EventEmitter {
   TimeEntryService : ITimeEntryService
   cachedCurrent : angular.IHttpPromiseCallbackArg<ITimeEntry>
-  start(ITimeEntry): angular.IHttpPromise<ITimeEntry>
+  start(entry:ITimeEntry): angular.IHttpPromise<ITimeEntry>
   current() : angular.IHttpPromise<ITimeEntry>
   stop(): angular.IHttpPromise<ITimeEntry>
 }
