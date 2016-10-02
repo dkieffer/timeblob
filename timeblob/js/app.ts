@@ -14,6 +14,6 @@ app.config(['$httpProvider', function ($httpProvider: angular.IHttpProvider)
 
 //start the currentEntry service
 app.run((CurrentEntryService:interfaces.ICurrentEntryService ) => {
-  
+  // are we running in the tester? If so, don't run current
   if (window['jasmine'] === undefined) {CurrentEntryService.current();}
 });
