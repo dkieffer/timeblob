@@ -19,6 +19,7 @@ body {
     text-align: center;
 }
 
+
 /* ================================
     Stopwatch Styles
 ================================= */
@@ -299,6 +300,25 @@ td.open-entry:before {
 #filters-menu {
     width: 100%;
     border-collapse: collapse;
+    display: none;
+}
+
+#filters-meun.display {
+    display: block;
+}
+
+#filters-menu tr td:first-child {
+    padding-left: 1.2em;
+}
+
+#filters-menu tr.active td:first-child::before {
+    content: '';
+    position: absolute;
+    height: .8em;
+    width: .8em;
+    left: 0.25em;
+    background-size: cover;
+    background-image: url(/static/timeblob/img/checkmark.svg);
 }
 
 /* ================================
