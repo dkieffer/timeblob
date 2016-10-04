@@ -29,6 +29,8 @@ class TimeEntry(models.Model):
 
 class Project(models.Model):
     id = models.AutoField(primary_key=True)
+    description = models.TextField(null=False)
 
 class Task(models.Model):
     id = models.AutoField(primary_key=True)
+    description = models.TextField(null=False)

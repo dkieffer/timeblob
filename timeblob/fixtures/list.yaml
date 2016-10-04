@@ -1,0 +1,70 @@
+#this test case should have the following characteristics:
+# * two user
+# * three projects, two of which are used by a time-entry
+# * three tasks, two of what are used by a time-entry
+# * 11 TimeEntries
+# * no current TimeEntry
+
+- model: timeblob.Task
+  pk: 1
+  fields:
+    description: "Task 1"
+
+- model: timeblob.Task
+  pk: 2
+  fields:
+    description: "Task 2"
+
+- model: timeblob.Task
+  pk: 3
+  fields:
+    description: "Task 3"
+
+- model: timeblob.Project
+  pk: 1
+  fields:
+    description: "Project 1"
+
+- model: timeblob.Project
+  pk: 2
+  fields:
+    description: "Project 2"
+
+- model: timeblob.Project
+  pk: 3
+  fields:
+    description: "Project 3"
+
+
+- model: timeblob.timeentry
+  pk: 42
+  fields: {user: 1, description: dafaf, project: null, task: 1, billable: false,
+    start:  '2016-09-04 03:53:38.497848+00:00',
+    stop:  '2016-09-04 03:55:09.127775+00:00',
+    created_with: '', last_updated:  '2016-09-04 03:55:09.127788+00:00'}
+- model: timeblob.timeentry
+  pk: 43
+  fields: {user: 1, description: faf, project: 2, task: null, billable: true,
+    start:  '2016-09-04 03:55:09.196817+00:00',
+    stop:  '2016-09-04 04:04:38.661926+00:00',
+    created_with: '', last_updated:  '2016-09-04 04:04:38.661935+00:00'}
+- model: timeblob.timeentry
+  pk: 44
+  fields: {user: 1, description: f, project: 1, task: null, billable: false,
+    start:  '2016-09-04 04:04:38.718903+00:00',
+    stop:  '2016-09-04 23:38:45.786046+00:00', created_with: '',
+    last_updated:  '2016-09-04 23:38:45.786067+00:00'}
+
+- model: timeblob.timeentry
+  pk: 45
+  fields: {user: 1, description: 'something more', project: null, task: null, billable: false,
+  start:  '2016-09-05 04:04:38.718903+00:00',
+  stop:  '2016-09-05 23:38:45.786046+00:00', created_with: '',
+  last_updated:  '2016-09-05 23:38:45.786067+00:00'}
+
+- model: timeblob.timeentry
+  pk: 46
+  fields: {user: 2, description: f, project: null, task: null, billable: false,
+    start:  '2016-09-04 04:04:38.718903+00:00',
+    stop:  '2016-09-05 23:38:45.786046+00:00', created_with: '',
+    last_updated:  '2016-09-05 23:38:45.786067+00:00'}

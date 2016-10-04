@@ -4,3 +4,4 @@ django-sandstorm==0.0.2
 Markdown==2.6.6
 six==1.10.0
 PyYAML==3.11
+django-filter==0.14.0

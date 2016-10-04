@@ -1,16 +1,20 @@
 
-
+import * as ng from 'angular'
+import 'angular-mocks'
+import * as interfaces from'../../services/interfaces'
+declare var BASE_URL : string
+//import 'jasmine'
 describe('CurrentEntryService', function() {
-  var $httpBackend;
-  var timeEntry;
-  var currentEntryService;
-  var TimeEntryService;
+  var $httpBackend: ng.IHttpBackendService;
+  var timeEntry : interfaces.ITimeEntry;
+  var currentEntryService : interfaces.ICurrentEntryService;
+  var TimeEntryService : interfaces.ITimeEntryService;
   // Before each test load our api.users module
-  beforeEach(() => {angular.mock.module('app')});
+  beforeEach(() => {ng.mock.module('app')});
 
   // Before each test set our injected Users factory (_Users_) to our local Users variable
-  beforeEach(inject(function($injector, _CurrentEntryService_) {
-    currentEntryService = _CurrentEntryService_;
+  beforeEach(inject(function($injector:ng.auto.IInjectorService) {
+    currentEntryService = $injector.get<interfaces.ICurrentEntryService>('CurrentEntryService');
     $httpBackend = $injector.get('$httpBackend');
     $httpBackend.when('GET', BASE_URL + '/time_entries/current').respond(404,'')
 
@@ -19,7 +23,7 @@ describe('CurrentEntryService', function() {
   it("current entry isn't set", function(done)
   {
 
-    currentEntryService.on('update-current', function(entry) {
+    currentEntryService.on('update-current', function(entry:any) {
       expect(entry).toBe(null)
       expect(currentEntryService.cachedCurrent).toBe(null)
       done()
@@ -37,16 +41,16 @@ describe('CurrentEntryService', function() {
 describe('CurrentEntryServiceWithCurrent', function() {
   var startTime = Date.now();
   var stopTime = startTime + 3000;
-  var $httpBackend;
-  var timeEntry;
-  var currentEntryService;
-  var TimeEntryService;
+  var $httpBackend: ng.IHttpBackendService;
+  var timeEntry : interfaces.ITimeEntry;
+  var currentEntryService : interfaces.ICurrentEntryService;
+  var TimeEntryService : interfaces.ITimeEntryService;
   // Before each test load our api.users module
-  beforeEach(angular.mock.module('app'));
+  beforeEach(() => ng.mock.module('app'));
 
   // Before each test set our injected Users factory (_Users_) to our local Users variable
-  beforeEach(inject(function($injector, CurrentEntryService) {
-    currentEntryService = CurrentEntryService;
+  beforeEach(inject(function($injector: ng.auto.IInjectorService) {
+    currentEntryService = $injector.get<interfaces.ICurrentEntryService>('CurrentEntryService');
     $httpBackend = $injector.get('$httpBackend');
 
     $httpBackend.when('GET', BASE_URL + '/time_entries/current').respond(200, {id:1, user:1, description: "a description", start: startTime})
@@ -56,7 +60,7 @@ describe('CurrentEntryServiceWithCurrent', function() {
   it("check current", function(done)
   {
 
-    currentEntryService.on('update-current', function(entry) {
+    currentEntryService.on('update-current', function(entry:any) {
 
       [entry, currentEntryService.cachedCurrent].forEach(function(i)
         {
@@ -77,11 +81,13 @@ describe('CurrentEntryServiceWithCurrent', function() {
   it("stop current", function(done)
   {
     var totalDone = 0
-    currentEntryService.on('update-current', function(entry) {
+    currentEntryService.on('update-current', function(entry:any) {
 
-      [entry, currentEntryService.currentCached].forEach(function(i)
+      expect(currentEntryService.cachedCurrent).toBeNull();
+
+      [entry].forEach(function(i:any)
       {
-        expect(i, null)
+        expect(i).toBeNull()
       })
 
       totalDone++

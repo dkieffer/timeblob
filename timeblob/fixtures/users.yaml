@@ -1,0 +1,16 @@
+- model: auth.User
+  pk: 1
+  fields:
+    username: alice
+    first_name: Alice
+    last_name: TheAdmin
+    #password=pass
+    password: 'pbkdf2_sha256$30000$lBLLm7V2MUpC$t9BklF/Ds9AFAVTlAxe0GG10lNfUnZXu+TuVCAr4BRA='
+- model: auth.User
+  pk: 2
+  fields:
+    username: bob
+    first_name: Bob
+    last_name: TheAdmin
+    #password=pass
+    password: 'pbkdf2_sha256$30000$lBLLm7V2MUpC$t9BklF/Ds9AFAVTlAxe0GG10lNfUnZXu+TuVCAr4BRA='

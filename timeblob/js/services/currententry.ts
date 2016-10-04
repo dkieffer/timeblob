@@ -1,24 +1,32 @@
-//events update_current,
-const EventEmitter = require("events")
-class CurrentEntryService extends EventEmitter {
+import events = require('events');
+import * as angular from 'angular'
+import * as interfaces from './interfaces'
 
-  constructor( $interval, TimeEntryService) {
+const EventEmitter = events.EventEmitter
+
+class CurrentEntryService extends EventEmitter implements interfaces.ICurrentEntryService{
+  TimeEntryService : interfaces.ITimeEntryService
+  cachedCurrent : angular.IHttpPromiseCallbackArg<interfaces.ITimeEntry>
+
+  constructor( $interval : angular.IIntervalService, TimeEntryService : interfaces.ITimeEntryService) {
     super()
     var self = this;
     self.TimeEntryService = TimeEntryService;
     $interval(() => self.current(), 10000)
 
+
     self.cachedCurrent = null;
 
   }
 
-  setCurrent(response) {
+  setCurrent(response:any) {
     var self = this;
     self.cachedCurrent = response;
     self.emit('update-current', response)
   }
+
   // TODO what do I do when the device is already started and we need to stop (how do we notify of a stop)
-  start(timeEntry) {
+  start(timeEntry:interfaces.ITimeEntry) {
     var self = this;
 
     var start = self.TimeEntryService.start(timeEntry)
@@ -38,7 +46,7 @@ class CurrentEntryService extends EventEmitter {
     return start;
   }
 
-  current() {
+  current()  {
     var self = this;
     var current = self.TimeEntryService.current()
     // TODO
@@ -77,9 +85,10 @@ class CurrentEntryService extends EventEmitter {
 
     return stop;
   }
+
 }
 
-angular.module("app").factory("CurrentEntryService", ($interval, TimeEntryService) =>
+angular.module('app').factory("CurrentEntryService", ($interval:angular.IIntervalService, TimeEntryService:interfaces.ITimeEntryService) =>
 {
   return new CurrentEntryService($interval, TimeEntryService);
 })
