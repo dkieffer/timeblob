@@ -19,7 +19,6 @@ body {
     text-align: center;
 }
 
-
 /* ================================
     Stopwatch Styles
 ================================= */
@@ -168,6 +167,30 @@ input#input-start-time, input#input-start-date, input#input-end-time, input#inpu
     display: none;
 }
 
+.list-view-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid rgba(19,170,114,1);
+    background-color: rgba(0,60,54,1);
+    box-shadow: 0px -10px 10px rgba(76,17,61,1);
+    z-index: 2;
+}
+
+.list-view-nav .nav-button:first-child {
+    float: left;
+}
+.list-view-nav .nav-button {
+    float: right;
+}
+
+.nav-button {
+    padding: 0.5em;
+    display: inline-block;
+    cursor: pointer;
+}
+
 #list-view-button {
     display: none;
     padding: 1em;
@@ -184,7 +207,6 @@ table#sessions-table, #current-entry-summary table {
     color: rgba(239,175,227,1);
     font-weight: 200;
     padding: 0;
-    margin-top: 4em;
     border-spacing: 0;
     border-collapse: collapse;
     border: none;
@@ -303,7 +325,7 @@ td.open-entry:before {
     display: none;
 }
 
-#filters-meun.display {
+#filters-menu.display {
     display: block;
 }
 
@@ -387,10 +409,23 @@ tr.edit td {
         display: none;
         position: absolute;
         top: 0;
-        right: 100%;
+        width: 100%;
     }
+
+    .list-view.display {
+        animation: 0.2s linear 1 slide-from-left;
+    }
+
+    @keyframes slide-from-left {
+        0% {left: 100%;} 
+        100% {left: 0%;} 
+    }
+
     #list-view-button {
         display: inline-block;
+    }
+    .list-view-nav {
+        display: block;
     }
     #current-entry-summary {
         display: block;
@@ -402,7 +437,9 @@ tr.edit td {
         position: absolute;
         bottom: -100%;
     }
-
+    #filter-list-button {
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 400px) {
