@@ -12,6 +12,8 @@ app.config(['$httpProvider', function ($httpProvider: angular.IHttpProvider)
   $httpProvider.defaults.xsrfHeaderName = "X-CSRFToken"
 }])
 
+
+
 //start the currentEntry service
 app.run((CurrentEntryService:interfaces.ICurrentEntryService ) => {
   // are we running in the tester? If so, don't run current

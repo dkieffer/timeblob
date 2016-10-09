@@ -8,18 +8,21 @@ Only used in responsive
 */
 export class ListViewNav
 {
-    listViewActive: boolean
-    toggleListView()
-    {
-      this.listViewActive = !this.listViewActive;
-    }
+  toggleListViewNav()
+  {
+    this.onClose();
+  }
+
+  onClose : any
 }
 
 
 ng.module("app").component('listViewNav',
 {
   controller: ListViewNav,
-  templateUrl: TEMPLATE.LISTVIEWNAV
+  templateUrl: TEMPLATE.LISTVIEWNAV,
 
-
+  bindings: {
+   onClose: '&'
+ }
 });
