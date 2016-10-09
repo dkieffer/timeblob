@@ -45,6 +45,7 @@
     "@types/jasmine": "^2.2.34",
     "angular": "^1.5.8",
     "angular-moment": "^1.0.0-beta.6",
+    "es6-map": "^0.1.4",
     "url-join": "^1.1.0"
   }
 }
