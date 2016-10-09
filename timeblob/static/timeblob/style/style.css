@@ -31,6 +31,12 @@ body {
     float: right;
 }
 
+select {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+}
+
 /* ================================
     Stopwatch Styles
 ================================= */
@@ -342,9 +348,17 @@ td.open-entry:before {
     padding-left: 1.2em;
 }
 
-#filters-menu table tr td:nth-child(2n) {
+#filters-menu table tr td:last-child {
     text-align: right;
     padding: 0 1em 0 0.5em;
+    opacity: 0.5;
+}
+
+#filters-menu table tr.active td:last-child {
+    text-align: right;
+    padding: 0 1em 0 0.5em;
+    color: white;
+    opacity: 1;
 }
 
 #filters-menu tr.active td:first-child::before {
