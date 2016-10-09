@@ -240,7 +240,7 @@ tr.list-entry-row:hover {
     cursor: pointer;
 }
 
-td:nth-child(2n) {
+#sessions-table tr td:nth-child(2n) {
     text-align: right;
     width: 4em;
     padding: 0 1em 0 0.5em;
@@ -344,6 +344,11 @@ td.open-entry:before {
 
 #filters-menu table tr td:first-child {
     padding-left: 1.2em;
+}
+
+#filters-menu table tr td:nth-child(2n) {
+    text-align: right;
+    padding: 0 1em 0 0.5em;
 }
 
 #filters-menu tr.active td:first-child::before {
