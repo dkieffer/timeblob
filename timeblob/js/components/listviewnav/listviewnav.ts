@@ -14,6 +14,7 @@ export class ListViewNav
   }
 
   onClose : any
+  onFilterToggle : any
 }
 
 
@@ -24,6 +25,7 @@ ng.module("app").component('listViewNav',
   templateUrl: TEMPLATE.LISTVIEWNAV,
 
   bindings: {
-   onClose: '&'
+   onClose: '&',
+   onFilterToggle: '&'
  }
 });

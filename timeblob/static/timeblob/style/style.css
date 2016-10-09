@@ -31,11 +31,6 @@ body {
     float: right;
 }
 
-
-.drawer-view-nav .nav-button:first-child {
-    float: left;
-}
-
 /* ================================
     Stopwatch Styles
 ================================= */
@@ -192,6 +187,7 @@ input#input-start-time, input#input-start-date, input#input-end-time, input#inpu
     background-color: rgba(0,60,54,1);
     box-shadow: 0px -10px 10px rgba(76,17,61,1);
     z-index: 1000;
+    display: none;
 }
 
 .list-view-nav .nav-button:first-child {
@@ -360,9 +356,6 @@ td.open-entry:before {
     top: 0.75em;
     background-size: cover;
     background-image: url(/static/timeblob/img/checkmark.svg);
-}
-
-.drawer-open {
 }
 
 /* ================================

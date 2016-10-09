@@ -1,4 +1,4 @@
-<div id="filter-list-title-bar" ng-click="filterListOpen = !filterListOpen">
+<div id="filter-list-title-bar" ng-click="$ctrl.toggleFiltersMenu()">
     <svg id="filter-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve"> 
         <defs> 
         <mask id="filter-icon-mask"> 
@@ -19,7 +19,7 @@
     </svg>
 </div>
 
-<div id="filters-menu" ng-class="{'nodisplay': !filterListOpen, 'drawer-open': filterListOpen}">
+<div id="filters-menu" ng-class="{'nodisplay': !$ctrl.filtersMenuActive}">
 <table>
     <tr class="active">
         <td>Users</td>
@@ -48,6 +48,6 @@
 </table>
 
 <div class="drawer-view-nav">
-    <img class="nav-button" src="/static/timeblob/img/checkmark.svg" ng-click="filterListOpen = !filterListOpen">
+    <img class="nav-button" src="/static/timeblob/img/checkmark.svg" ng-click="$ctrl.toggleFiltersMenu()">
 </div>
 </div>
