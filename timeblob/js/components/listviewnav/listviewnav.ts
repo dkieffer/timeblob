@@ -19,6 +19,7 @@ export class ListViewNav
 
 ng.module("app").component('listViewNav',
 {
+
   controller: ListViewNav,
   templateUrl: TEMPLATE.LISTVIEWNAV,
 
