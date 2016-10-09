@@ -35,6 +35,22 @@ select {
    -webkit-appearance: none;
    -moz-appearance: none;
    appearance: none;
+   border: none;
+   background-color: unset;
+   color: white;
+   font-size: 1em;
+}
+
+select::after {
+    content: '';
+    background-color: black;
+    position: absolute;
+    height: .6em;
+    width: .6em;
+    left: 0.3em;
+    top: 0.8em;
+    background-size: cover;
+    background-image: url(/static/timeblob/img/white-menu-triangle.svg);
 }
 
 /* ================================
@@ -194,13 +210,14 @@ input#input-start-time, input#input-start-date, input#input-end-time, input#inpu
     box-shadow: 0px -10px 10px rgba(76,17,61,1);
     z-index: 1000;
     display: none;
+    text-align: right;
 }
 
 .list-view-nav .nav-button:first-child {
     float: left;
 }
 .list-view-nav .nav-button {
-    float: right;
+    //float: right;
 }
 
 .nav-button {
