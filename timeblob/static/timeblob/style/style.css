@@ -350,10 +350,10 @@ td.open-entry:before {
 #filters-menu tr.active td:first-child::before {
     content: '';
     position: absolute;
-    height: .8em;
-    width: .8em;
-    left: 0.25em;
-    top: 0.75em;
+    height: .6em;
+    width: .6em;
+    left: 0.3em;
+    top: 0.8em;
     background-size: cover;
     background-image: url(/static/timeblob/img/checkmark.svg);
 }
