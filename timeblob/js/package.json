@@ -10,6 +10,8 @@
   "license": "AGPL-3.0",
   "devDependencies": {
     "@types/angular": "^1.5.16",
+    "@types/angular-mocks": "^1.5.5",
+    "@types/node": "^6.0.45",
     "angular-mocks": "^1.5.8",
     "browserify": "^13.1.0",
     "globby": "^6.0.0",
@@ -36,6 +38,7 @@
     "requirejs": "^2.2.0",
     "through2": "^2.0.1",
     "tsify": "^1.0.7",
+    "typescript": "^2.0.3",
     "undertaker-forward-reference": "^1.0.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
