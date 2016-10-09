@@ -1,4 +1,4 @@
-<div id="filter-list-button" ng-click="schwa = !schwa">
+<div id="filter-list-title-bar" ng-click="filterListOpen = !filterListOpen">
     <svg id="filter-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve"> 
         <defs> 
         <mask id="filter-icon-mask"> 
@@ -17,10 +17,10 @@
         <line fill="none" stroke="rgba(19,170,114,1)" stroke-width="1" x1="0" y1="10.5" x2="24" y2="10.5"/> 
         <line fill="none" stroke="rgba(19,170,114,1)" stroke-width="1" x1="0" y1="13.5" x2="24" y2="13.5"/> 
     </svg>
-    <span>Filter</span>
 </div>
 
-<table id="filters-menu" ng-class="{'display': schwa}">
+<div id="filters-menu" ng-class="{'nodisplay': !filterListOpen, 'drawer-open': filterListOpen}">
+<table>
     <tr class="active">
         <td>Users</td>
         <td>All</td>
@@ -46,3 +46,8 @@
         <td></td>
     </tr>
 </table>
+
+<div class="drawer-view-nav">
+    <img class="nav-button" src="/static/timeblob/img/checkmark.svg" ng-click="filterListOpen = !filterListOpen">
+</div>
+</div>
