@@ -10,11 +10,11 @@
 <div class="list-view" ng-class="{'display': $ctrl.listViewActive}">
 
 <div>
-    <list-filters/>
+    <list-filters on-filter-toggle="$ctrl.toggleFiltersMenu()" filters-menu-active="$ctrl.filtersMenuActive"/>
 </div>
 
 <div>
-    <list-view-nav on-close="$ctrl.toggleListViewNav()" on-filter-toggle=""/>
+    <list-view-nav on-close="$ctrl.toggleListViewNav()" on-filters-toggle="$ctrl.toggleFiltersMenu()"/>
 </div>
 
 <table id="sessions-table">

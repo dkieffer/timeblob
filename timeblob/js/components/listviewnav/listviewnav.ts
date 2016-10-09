@@ -13,8 +13,13 @@ export class ListViewNav
     this.onClose();
   }
 
+  toggleFiltersMenu()
+  {
+    this.onFiltersToggle()
+  }
+
   onClose : any
-  onFilterToggle : any
+  onFiltersToggle : any
 }
 
 
@@ -26,6 +31,6 @@ ng.module("app").component('listViewNav',
 
   bindings: {
    onClose: '&',
-   onFilterToggle: '&'
+   onFiltersToggle: '&'
  }
 });

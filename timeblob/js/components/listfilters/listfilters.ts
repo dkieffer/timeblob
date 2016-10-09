@@ -4,15 +4,22 @@ declare var TEMPLATE:any
 
 export class ListFilters
 {
-  filtersMenuActive: boolean
+
   toggleFiltersMenu()
   {
-    this.filtersMenuActive = !this.filtersMenuActive
+    this.onFilterToggle()
   }
+
+  onFilterToggle : any
+  filtersMenuActive: boolean
 }
 
 ng.module("app").component('listFilters',
 {
   controller: ListFilters,
-  templateUrl: TEMPLATE.LISTFILTERS
+  templateUrl: TEMPLATE.LISTFILTERS,
+  bindings: {
+    filtersMenuActive: '<',
+    onFilterToggle : '&'
+  }
 });

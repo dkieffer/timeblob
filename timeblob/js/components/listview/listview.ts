@@ -6,15 +6,22 @@ declare var TEMPLATE:any
 export class ListView extends CurrentEntrySensitiveComponent
 {
 
+  listViewActive: boolean
+  filtersMenuActive: boolean
   constructor( CurrentEntryService:interfaces.ICurrentEntryService)
   {
     super(null,null, null, CurrentEntryService)
   }
 
-  listViewActive: boolean
+
   toggleListViewNav()
   {
     this.listViewActive = !this.listViewActive
+  }
+
+  toggleFiltersMenu()
+  {
+    this.filtersMenuActive = !this.filtersMenuActive
   }
 }
 
