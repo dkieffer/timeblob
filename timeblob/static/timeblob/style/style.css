@@ -437,18 +437,18 @@ tr.edit td {
     border-bottom: 1px solid rgba(239,175,227,0);
 }
 
-#edit-entry-form {
+tr.edit td edit-entry-form form {
     max-height: 0px;
     margin: 0 1em;
     overflow: hidden;
     transition: max-height 0.2s, padding 0.2s;
 }
 
-tr.edit.active #edit-entry-form {
+tr.edit.active edit-entry-form form {
     max-height: 1000px;
 }
 
-#edit-entry-form label {
+tr.edit td edit-entry-form form label {
     display: block;
     float: left;
     clear: left;
@@ -456,7 +456,7 @@ tr.edit.active #edit-entry-form {
     margin-bottom: 0.5em;
 }
 
-#edit-entry-form input {
+tr.edit td edit-entry-form form input {
     float: right;
     clear: right;
     padding: 0.5em;
@@ -469,7 +469,7 @@ tr.edit.active #edit-entry-form {
     display: none;
 }
 
-#edit-entry-form span {
+tr.edit td edit-entry-form form span {
     float: right;
     clear: right;
     padding: 0.5em 0    ;
