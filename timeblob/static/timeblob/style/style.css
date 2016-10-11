@@ -39,6 +39,13 @@ select {
    background-color: unset;
    color: white;
    font-size: 1em;
+   text-align: right;
+   font-family: Montserrat;
+}
+
+select option{
+    padding: 0.5em;
+    text-align: right;
 }
 
 select::after {
@@ -208,7 +215,7 @@ input#input-start-time, input#input-start-date, input#input-end-time, input#inpu
     border-top: 1px solid rgba(19,170,114,1);
     background-color: rgba(0,60,54,1);
     box-shadow: 0px -10px 10px rgba(76,17,61,1);
-    z-index: 1000;
+    z-index: 1;
     display: none;
     text-align: right;
 }
@@ -250,7 +257,7 @@ table#sessions-table, #current-entry-summary table {
 
 tr {
     background-color: rgba(96,37,81,1);
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, color 0.3s, font-size 0.2s;
 }
 
 tr.list-entry-row:hover {
@@ -351,6 +358,11 @@ td.open-entry:before {
     50%, 100% {opacity: 0;} 
 } 
 
+#filters-menu {
+    z-index: 2;
+    width: 100%;
+}
+
 #filters-menu table {
     width: 100%;
     border-collapse: collapse;
@@ -362,7 +374,7 @@ td.open-entry:before {
 }
 
 #filters-menu table tr td:first-child {
-    padding-left: 1.2em;
+    padding-left: 1.2em;    
 }
 
 #filters-menu table tr td:last-child {
@@ -371,10 +383,13 @@ td.open-entry:before {
     opacity: 0.5;
 }
 
+#filters-menu table tr.active {
+        color: rgba(239,175,227,1);
+}
+
 #filters-menu table tr.active td:last-child {
     text-align: right;
     padding: 0 1em 0 0.5em;
-    color: white;
     opacity: 1;
 }
 
@@ -395,19 +410,42 @@ td.open-entry:before {
 
 tr.selected-entry {
     background-color: rgba(106,47,91,1);
-    color: white;
+    color: rgba(255,255,255,0);
     cursor: pointer;
+    height: 0px;
+    font-size: 0.1em;
+}
+
+tr.selected-entry:hover {
+    color: rgba(0,0,0,0)
+}
+
+
+tr.edit {
+
+}
+
+tr.edit.active {
+    border-bottom: 1px solid rgba(239,175,227,1);
+    z-index: 1;
 }
 
 tr.edit td {
     font-size: 0.9em;
     background: linear-gradient(to bottom, rgba(96,37,81,1), rgba(43,20,48,1) 33%);
+    padding: 0;
+    border-bottom: 1px solid rgba(239,175,227,0);
 }
 
 #edit-entry-form {
     max-height: 0px;
+    margin: 0 1em;
     overflow: hidden;
-    transition: max-height 1s;
+    transition: max-height 0.2s, padding 0.2s;
+}
+
+tr.edit.active #edit-entry-form {
+    max-height: 1000px;
 }
 
 #edit-entry-form label {
@@ -432,12 +470,11 @@ tr.edit td {
 }
 
 #edit-entry-form span {
-
     float: right;
     clear: right;
-    padding: 0.5em 1em;
+    padding: 0.5em 0    ;
     margin-bottom: 0.5em;
-    background-color: rgba(239,175,227,0.5);
+    //background-color: rgba(239,175,227,0.5);
     color: white;
     border-radius: 2px;
 }
@@ -486,9 +523,11 @@ tr.edit td {
     #filter-list-title-bar {
         display: none;
     }
-    #filters-list {
+    #filters-menu {
         position: fixed;
-        bottom: 0;
+        top: 0px;
+        height: 100%;
+        background-color: rgba(0,0,0,0.8);
     }
 }
 

@@ -8,6 +8,7 @@ export class ListView extends CurrentEntrySensitiveComponent
 
   listViewActive: boolean
   filtersMenuActive: boolean
+  openEntryForEdit: boolean
   constructor( CurrentEntryService:interfaces.ICurrentEntryService)
   {
     super(null,null, null, CurrentEntryService)
@@ -23,6 +24,12 @@ export class ListView extends CurrentEntrySensitiveComponent
   {
     this.filtersMenuActive = !this.filtersMenuActive
   }
+
+  editEntry()
+  {
+    this.openEntryForEdit = !this.openEntryForEdit
+  }
+
 }
 
 ng.module("app").component('listView',
