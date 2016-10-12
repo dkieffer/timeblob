@@ -60,6 +60,10 @@ select::after {
     background-image: url(/static/timeblob/img/white-menu-triangle.svg);
 }
 
+form, ul {
+    margin: 0;
+}
+
 /* ================================
     Stopwatch Styles
 ================================= */
@@ -200,6 +204,82 @@ input#input-start-time, input#input-start-date, input#input-end-time, input#inpu
     List View Styles
 ================================= */
 
+#sessions-list, #current-entry-summary table {
+    list-style: none;
+    width: 100%;
+    background-color: rgba(96,37,81,1);
+    color: rgba(239,175,227,1);
+    font-weight: 200;
+    padding: 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+    border: none;
+    //padding: 3em 1em;
+}
+
+.list-entry {
+    text-align: left;
+    padding: 1em;
+    transition: 0.2s;
+    display: flex;
+    flex-flow: row;
+}
+
+.list-entry:hover {
+    background-color: rgba(106,47,91,1);
+    color: white;
+    cursor: pointer;
+}
+
+.list-entry span:first-child {
+    flex: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.list-entry span:nth-child(2n) {
+    flex: 0 0 4em;
+    text-align: right;
+}
+
+.edit {
+    max-height: 0px;
+    overflow: hidden;
+    transition: 0.2s max-height;
+}
+
+.edit.active {
+    max-height: 1000px;
+    overflow: hidden;
+}
+
+.list-entry.selected-entry {
+    background-color: rgba(106,47,91,1);
+    color: rgba(255,255,255,0);
+    cursor: pointer;
+    padding: 0 1em;
+}
+
+.date-line {
+    text-align: center;
+    color: rgba(239,175,227,0.32);
+    font-size: 0.875em;
+    padding: 0.5em 1em;
+    display: flex;
+    flex-flow: row;
+}
+
+.date-line span {
+    position: relative;
+    top: -0.5em;
+    margin: 0  1em;
+    border-bottom: solid 1px rgba(239,175,227,0.32);
+    flex: auto;
+}
+
+/* ====================== */
+
 .list-view.display {
     display: block;
 }
@@ -223,9 +303,6 @@ input#input-start-time, input#input-start-date, input#input-end-time, input#inpu
 .list-view-nav .nav-button:first-child {
     float: left;
 }
-.list-view-nav .nav-button {
-    //float: right;
-}
 
 .nav-button {
     padding: 0.5em;
@@ -241,18 +318,6 @@ input#input-start-time, input#input-start-date, input#input-end-time, input#inpu
     top: 0;
     right: 0;
     cursor: pointer;
-}
-
-table#sessions-table, #current-entry-summary table {
-    width: 100%;
-    background-color: rgba(96,37,81,1);
-    color: rgba(239,175,227,1);
-    font-weight: 200;
-    padding: 0;
-    border-spacing: 0;
-    border-collapse: collapse;
-    border: none;
-    padding: 3em 1em;
 }
 
 tr {
@@ -325,9 +390,8 @@ td.open-entry:before {
 
 #filter-list-title-bar {
     padding: 0.5em 2em;
-    border-bottom: 1px solid rgba(19,170,114,1);
-    float: right;
-    min-width: 0%;
+    border-bottom: 1px solid rgba(19,170,114,0.2);
+    width: 4em;
     background-color: rgba(0,60,54,1);
     color: rgba(19,170,114,1);
     vertical-align: middle;
@@ -408,6 +472,36 @@ td.open-entry:before {
     Edit Entry Form Styles
 ================================= */
 
+edit-entry-form form {
+    font-size: 0.9em;
+    background: linear-gradient(to bottom, rgba(96,37,81,1), rgba(43,20,48,1) 33%);
+    text-align: right;
+    padding: 1em;
+}
+
+edit-entry-form form fieldset {
+    border: none;
+    margin: 0;
+    padding: 0.5em 0;
+}
+
+edit-entry-form form label {
+    float: left;
+    margin-bottom: 0.5em;
+}
+
+edit-entry-form form input {
+    background-color: unset;
+    color: white;
+    border: none;
+    font-family: Montserrat;
+    font-size: 1em;
+    text-align: right;
+    max-width: content;
+}
+
+/* ============================================== */
+
 tr.selected-entry {
     background-color: rgba(106,47,91,1);
     color: rgba(255,255,255,0);
@@ -422,7 +516,15 @@ tr.selected-entry:hover {
 
 
 tr.edit {
-
+    float: right;
+    clear: right;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    border: none;
+    border-radius: 2px;
+    text-align: left;
+    font-family: Montserrat;
+    font-size: 0.9em;
 }
 
 tr.edit.active {

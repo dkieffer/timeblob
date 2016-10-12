@@ -1,34 +1,35 @@
-<form> 
-    <label for="input-edit-activity">Activity</label> 
-    <span>Git Cleanup</span> 
-    <input size="" title="" type="text" name="activity" value="" placeholder="" id="input-edit-activity"> 
-        
-    <label for="input-edit-total-time">Time</label> 
-    <span>3h 2m</span> 
-    <input size="" title="" type="text" name="total-time" value="" placeholder="" id="input-edit-total-time"> 
-
-    <label for="input-edit-project">Project</label> 
-    <span>Nap Across America</span> 
-    <input size="" title="" type="text" name="project" value="" placeholder="" id="input-edit-project"> 
-
-    <label for="input-edit-client">Client</label> 
-    <span>Shut Eye Inc.</span> 
-    <input size="" title="" type="text" name="client" value="" placeholder="" id="input-edit-client"> 
-
-    <label for="input-edit-activity">Org.</label> 
-    <span>-</span> 
-    <input size="" title="" type="text" name="organization" value="" placeholder="" id="input-edit-organization"> 
-
-    <label for="input-edit-start-time">Start</label> 
-    <span>14:12 - 6/23/16</span> 
-    <input size="" title="" type="text" name="start-time" value="" placeholder="" id="input-edit-start-time"> 
-    <input size="" title="" type="text" name="start-date" value="" placeholder="" id="input-edit-start-date"> 
-
-    <label for="input-edit-end-time">End</label> 
-    <span>17:14 - 6/23/16</span> 
-    <input size="" title="" type="text" name="end-time" value="" placeholder="" id="input-edit-end-time"> 
-    <input size="" title="" type="text" name="end-date" value="" placeholder="" id="input-edit-end-date"> 
+<form>
+    <fieldset>
+        <label for="input-edit-activity">Activity</label> 
+        <input size="" title="" type="text" name="activity" value="Moonshinin" placeholder="" id="input-edit-activity">
+    </fieldset>
+    <fieldset>
+        <label for="input-edit-total-time">Time</label> 
+        <input size="" title="" type="text" name="total-time" value="31h" placeholder="" id="input-edit-total-time"> 
+    </fieldset>
+    <fieldset>
+        <label for="input-edit-project">Project</label> 
+        <input size="" title="" type="text" name="project" value="Hootinanny" placeholder="" id="input-edit-project"> 
+    </fieldset>
+    <fieldset>
+        <label for="input-edit-client">Client</label> 
+        <input size="" title="" type="text" name="client" value="Granpappy" placeholder="" id="input-edit-client"> 
+    </fieldset>
+    <fieldset>
+        <label for="input-edit-activity">Org.</label> 
+        <input size="" title="" type="text" name="organization" value="" placeholder="" id="input-edit-organization"> 
+    </fieldset>
+    <fieldset>
+        <label for="input-edit-start-time">Start</label> 
+        <input size="" title="" type="text" name="start-time" value="17:30" placeholder="" id="input-edit-start-time"> 
+        <input size="" title="" type="text" name="start-date" value="11/3/94" placeholder="" id="input-edit-start-date"> 
+    </fieldset>
+    <fieldset>
+        <label for="input-edit-end-time">End</label> 
+        <input size="" title="" type="text" name="end-time" value="00:30" placeholder="" id="input-edit-end-time"> 
+        <input size="" title="" type="text" name="end-date" value="11/5/94" placeholder="" id="input-edit-end-date">
+    </fieldset>
 </form>
 <div class="drawer-view-nav">
-    <img class="nav-button" src="/static/timeblob/img/checkmark.svg" ng-click="$ctrl.editEntry()">
+    <img class="nav-button" src="/static/timeblob/img/checkmark.svg" on-edit-toggle="$ctrl.editEntry()">
 </div>

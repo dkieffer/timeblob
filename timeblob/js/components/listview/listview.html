@@ -13,116 +13,46 @@
     <list-filters on-filter-toggle="$ctrl.toggleFiltersMenu()" filters-menu-active="$ctrl.filtersMenuActive"/>
 </div>
 
+<ul id="sessions-list">
+    <li class="date-line"><span></span>11/5<span></span></li>
+    <li>
+        <div class="list-entry" ng-click="$ctrl.editEntry()" ng-class="{'selected-entry': $ctrl.openEntryForEdit}">
+            <span>Moonshinin'</span><span>31h</span>
+        </div>
+        <div class="edit" ng-class="{'active': $ctrl.openEntryForEdit}">
+            <edit-entry-form/>
+        </div>
+    </li>
+    <!-- use ng-repeat. the following list items exist only for CSS dev and should be deleted -->
+    <li>
+        <div class="list-entry" ng-click="$ctrl.editEntry()" ng-class="{'selected-entry': $ctrl.openEntryForEdit}">
+            <span>Character Development</span><span>1h 43m</span>
+        </div>
+        <div class="edit" ng-class="{'active': $ctrl.openEntryForEdit}">
+            <edit-entry-form/>
+        </div>
+    </li>
+    <li>
+        <div class="list-entry" ng-click="$ctrl.editEntry()" ng-class="{'selected-entry': $ctrl.openEntryForEdit}">
+            <span>Checking all the casks for integrity</span><span>16m</span>
+        </div>
+        <div class="edit" ng-class="{'active': $ctrl.openEntryForEdit}">
+            <edit-entry-form/>
+        </div>
+    </li>
+    <li class="date-line"><span></span>11/5<span></span></li>
+    <li>
+        <div class="list-entry" ng-click="$ctrl.editEntry()" ng-class="{'selected-entry': $ctrl.openEntryForEdit}">
+            <span>Sampling Bacteria Conent</span><span>1h 17m</span>
+        </div>
+        <div class="edit" ng-class="{'active': $ctrl.openEntryForEdit}">
+            <edit-entry-form/>
+        </div>
+    </li>
+</ul>
+
 <div>
     <list-view-nav on-close="$ctrl.toggleListViewNav()" on-filters-toggle="$ctrl.toggleFiltersMenu()"/>
 </div>
 
-<table id="sessions-table">
-    <tr>
-        <td colspan="2" class="date-line"><span></span>6/23<span></span></td>
-    </td>
-    <tr class="list-entry-row" ng-repeat="" ng-click="$ctrl.editEntry()" ng-class="{'selected-entry': $ctrl.openEntryForEdit}">
-        <td><span>Head Meta Tag Updates</span></td>
-        <td>1h 43m</td>
-    </tr>
-    <tr class="edit" ng-class="{'active': $ctrl.openEntryForEdit}">
-        <td colspan="2">
-            <edit-entry-form/>
-        </td>
-    </tr>
-    <tr class="list-entry-row">
-        <td><span>Minor Style Sheet Adjustments</span></td>
-        <td>39m</td>
-    </tr>
-    <tr class="list-entry-row">
-        <td><span>Git Cleanup</span></td>
-        <td>3h 2m</td>
-    </tr>
-    <tr>
-        <td colspan="2" class="date-line"><span></span>6/22<span></span></td>
-    </tr>
-    <tr class="list-entry-row">
-        <td><span>Creating Identity Concepts</span></td>
-        <td>4h 11m</td>
-    </tr>
-    <tr>
-        <td colspan="2" class="date-line"><span></span>6/21<span></span></td>
-    </tr>
-    <tr class="list-entry-row">
-        <td><span>Identity Discovery</span></td>
-        <td>1h 31m</td>
-    </tr>
-    <tr class="list-entry-row">
-        <td><span>Identity Discovery</span></td>
-        <td>2h 14m</td>
-    </tr>
-    <tr class="list-entry-row">
-        <td><span>Client Consultation</span></td>
-        <td>1h</td>
-    </tr>
-    <tr class="list-entry-row">
-        <td><span>UX Design</span></td>
-        <td>2h 34m</td>
-    </tr>
-    <tr>
-        <td colspan="2" class="date-line"><span></span>6/18<span></span></td>
-    </tr>
-    <tr class="list-entry-row">
-        <td><span>Client Call</span></td>
-        <td>15m</td>
-    </tr>
-    <tr class="list-entry-row">
-        <td><span>Design Comittee Presentation</span></td>
-        <td>1h 17m</td>
-    </tr>
-    <tr class="list-entry-row">
-        <td><span>Presentation Prep</span></td>
-        <td>4h 7m</td>
-    </tr>
-    <tr class="list-entry-row">
-        <td><span>Concept Prep</span></td>
-        <td>24m</td>
-    </tr>
-    <tr class="list-entry-row">
-        <td><span>Identity Concept Design</span></td>
-        <td>3h 23m</td>
-    </tr>
-    <tr>
-        <td colspan="2" class="date-line"><span></span>6/17<span></span></td>
-    </tr>
-    <tr class="list-entry-row">
-        <td><span>Identity Concept Design</span></td>
-        <td>3h 23m</td>
-    </tr>
-    <tr class="list-entry-row">
-        <td><span>Identity Concept Design</span></td>
-        <td>1h 47m</td>
-    </tr>
-    <tr class="list-entry-row">
-        <td><span>Client Phone Call</span></td>
-        <td>1h 3m</td>
-    </tr>
-    <tr class="list-entry-row">
-        <td><span>Identity Concept Design</span></td>
-        <td>2h 23m</td>
-    </tr>
-    <tr class="list-entry-row">
-        <td><span>Rework of Form Front End</span></td>
-        <td>1h 14m</td>
-    </tr>
-    <tr>
-        <td colspan="2" class="date-line"><span></span>6/16<span></span></td>
-    </tr>
-    <tr class="list-entry-row">
-        <td><span>UX Consultation</span></td>
-        <td>2h 10m</td>
-    </tr>
-    <tr class="list-entry-row">
-        <td><span>Identity Concept Design</span></td>
-        <td>1h 19m</td>
-    </tr>
-    <tr>
-        <td colspan="2" class="date-line">Scroll to load 20 more</td>
-    </tr>
-</table>
 </div>
