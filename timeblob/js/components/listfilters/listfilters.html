@@ -21,7 +21,7 @@
 
 <div id="filters-menu" ng-class="{'fade-in': $ctrl.filtersMenuActive}">
     <form class="edit" ng-class="{'active': $ctrl.filtersMenuActive}">
-        <fieldset class="active">
+        <div class="active">
             <label>Users</label>
             <select>
                 <option>Alice</option>
@@ -30,39 +30,39 @@
                 <option>Everyone</option>
                 <option>-</option>
             </select>
-        </fieldset>
-        <fieldset>
+        </div>
+        <div>
             <label>Project</label>
             <select>
                 <option>-</option>
             </select>
-        </fieldset>
-        <fieldset>
+        </div>
+        <div>
             <label>Client</label>
             <select>
                 <option>-</option>
             </select>
-        </fieldset>
-        <fieldset class="active">
+        </div>
+        <div class="active">
             <label>Org</label>
             <select>
                 <option>Supply Co.</option>
                 <option>Acme Co.</option>
                 <option>General Inc.</option>
             </select>
-        </fieldset>
-        <fieldset class="active">
+        </div>
+        <div class="active">
             <label>Date</label>
             <!-- Let's use a calendar picker here -->
             <input type="text" size="5" value="11/3/15"><input type="text" size="5" value="1/3/16">
-        </fieldset>
-        <fieldset>
+        </div>
+        <div>
             <label>Deleted</label>
             <select>
                 <option>-</option>
                 <option>Only Deleted</option>
             </select>
-        </fieldset>
+        </div>
         <div class="drawer-view-nav">
             <img class="nav-button" src="/static/timeblob/img/checkmark.svg" ng-click="$ctrl.toggleFiltersMenu()">
         </div>

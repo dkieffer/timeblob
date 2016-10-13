@@ -228,7 +228,7 @@ input#input-start-time, input#input-start-date, input#input-end-time, input#inpu
     display: none;
 }
 
-#sessions-list, #current-entry-summary table {
+#sessions-list {
     list-style: none;
     width: 100%;
     background-color: rgba(96,37,81,1);
@@ -238,6 +238,8 @@ input#input-start-time, input#input-start-date, input#input-end-time, input#inpu
     border-spacing: 0;
     border-collapse: collapse;
     border: none;
+    display: flex;
+    flex-flow: column;
 }
 
 .list-entry {
@@ -246,6 +248,7 @@ input#input-start-time, input#input-start-date, input#input-end-time, input#inpu
     transition: 0.2s;
     display: flex;
     flex-flow: row;
+    flex: 0 1;
 }
 
 .list-entry:hover {
@@ -301,6 +304,10 @@ input#input-start-time, input#input-start-date, input#input-end-time, input#inpu
     flex: auto;
 }
 
+.list-view-filler {
+    flex: 1 1 auto;
+}
+
 .list-view-nav {
     position: fixed;
     bottom: 0;
@@ -338,25 +345,31 @@ edit-entry-form form {
     padding: 1em;
 }
 
-edit-entry-form form fieldset, #filters-menu form fieldset {
+edit-entry-form form div, #filters-menu form div {
     display: flex;
     flex-flow: row;
 }
 
 edit-entry-form form label {
     padding: 0.5em 0;
-    flex-grow: 1;
+    flex: 0 1;
 }
 
 edit-entry-form form input {
-    padding: 0.5em 0;
+    padding: 0.5em 0 0.5em 0.5em;
     color: white;
     border: none;
     font-family: Montserrat;
     font-size: 1em;
     text-align: right;
-    flex: 0 1 content;
+    text-overflow: ellipsis;
+    flex: 1 1;
 }
+
+edit-entry-form form input:nth-child(3n) {
+    flex: 0 1;
+}
+
 
 /* ================================
     List Filters Styles
@@ -407,12 +420,12 @@ edit-entry-form form input {
     background: linear-gradient(to bottom, rgba(96,37,81,1), rgba(43,20,48,1) 33%);
 }
 
-#filters-menu form fieldset {
+#filters-menu form div {
     padding: 0em 1em;
     position: relative;
 }
 
-#filters-menu form fieldset.active label:before {
+#filters-menu form div.active label:before {
     content: '';
     position: absolute;
     display: block;
@@ -424,7 +437,7 @@ edit-entry-form form input {
     background-image: url(/static/timeblob/img/checkmark.svg);
 }
 
-#filters-menu form fieldset input, #filters-menu form fieldset label {
+#filters-menu form div input, #filters-menu form div label {
     padding: 0.5em 0;
     flex: 1 1 auto;
     text-align: left;
@@ -432,16 +445,16 @@ edit-entry-form form input {
     font-size: 1em;
 }
 
-#filters-menu form fieldset select {
+#filters-menu form div select {
     color: rgba(160,60,139,1);
 }
 
-#filters-menu form fieldset input {
+#filters-menu form div input {
     text-align: right;
     flex: 0 0 auto;
 }
 
-#filters-menu form fieldset.active label, #filters-menu form fieldset.active input, #filters-menu form fieldset.active select {
+#filters-menu form div.active label, #filters-menu form div.active input, #filters-menu form div.active select {
     color: rgba(239,175,227,1);
 }
 
@@ -458,6 +471,9 @@ edit-entry-form form input {
         position: absolute;
         top: 0;
         width: 100%;
+    }
+    #sessions-list {
+        height: 100vw;
     }
     .list-view.display {
         animation: 0.2s linear 1 slide-from-left;
