@@ -304,10 +304,6 @@ input#input-start-time, input#input-start-date, input#input-end-time, input#inpu
     flex: auto;
 }
 
-.list-view-filler {
-    flex: 1 1 auto;
-}
-
 .list-view-nav {
     position: fixed;
     bottom: 0;
@@ -471,9 +467,6 @@ edit-entry-form form input:nth-child(3n) {
         position: absolute;
         top: 0;
         width: 100%;
-    }
-    #sessions-list {
-        height: 100vw;
     }
     .list-view.display {
         animation: 0.2s linear 1 slide-from-left;
