@@ -19,11 +19,10 @@
     </svg>
 </div>
 
-<div id="filters-menu" ng-class="{'nodisplay': !$ctrl.filtersMenuActive}">
-<table>
-    <tr class="active">
-        <td>Users</td>
-        <td>
+<div id="filters-menu" ng-class="{'fade-in': $ctrl.filtersMenuActive}">
+    <form class="edit" ng-class="{'active': $ctrl.filtersMenuActive}">
+        <fieldset class="active">
+            <label>Users</label>
             <select>
                 <option>Alice</option>
                 <option>Billy</option>
@@ -31,37 +30,41 @@
                 <option>Everyone</option>
                 <option>-</option>
             </select>
-        </td>
-    </tr>
-    <tr>
-        <td>Project</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td>Client</td>
-        <td>-</td>
-    </tr>
-    <tr class="active">
-        <td>Org</td>
-        <td>
+        </fieldset>
+        <fieldset>
+            <label>Project</label>
+            <select>
+                <option>-</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <label>Client</label>
+            <select>
+                <option>-</option>
+            </select>
+        </fieldset>
+        <fieldset class="active">
+            <label>Org</label>
             <select>
                 <option>Supply Co.</option>
                 <option>Acme Co.</option>
                 <option>General Inc.</option>
             </select>
-        </td>
-    </tr>
-    <tr class="active">
-        <td>Date</td>
-        <td>11/3/15 - 1/3/16</td>
-    </tr>
-    <tr>
-        <td>Deleted</td>
-        <td>-</td>
-    </tr>
-</table>
-
-<div class="drawer-view-nav">
-    <img class="nav-button" src="/static/timeblob/img/checkmark.svg" ng-click="$ctrl.toggleFiltersMenu()">
-</div>
+        </fieldset>
+        <fieldset class="active">
+            <label>Date</label>
+            <!-- Let's use a calendar picker here -->
+            <input type="text" size="5" value="11/3/15"><input type="text" size="5" value="1/3/16">
+        </fieldset>
+        <fieldset>
+            <label>Deleted</label>
+            <select>
+                <option>-</option>
+                <option>Only Deleted</option>
+            </select>
+        </fieldset>
+        <div class="drawer-view-nav">
+            <img class="nav-button" src="/static/timeblob/img/checkmark.svg" ng-click="$ctrl.toggleFiltersMenu()">
+        </div>
+    </form>
 </div>
