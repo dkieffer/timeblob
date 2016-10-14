@@ -20,7 +20,7 @@
             <span>Moonshinin'</span><span>31h</span>
         </div>
         <div class="edit" ng-class="{'active': $ctrl.openEntryForEdit}">
-            <edit-entry-form/>
+            <edit-entry-form on-edit-toggle="$ctrl.editEntry()"/>
         </div>
     </li>
 </ul>
