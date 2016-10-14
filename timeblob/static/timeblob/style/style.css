@@ -67,6 +67,10 @@ select::after {
     background-image: url(/static/timeblob/img/white-menu-triangle.svg);
 }
 
+.component-wrapper {
+    display: inline;
+}
+
 /* ================================
     Stopwatch Styles
 ================================= */
