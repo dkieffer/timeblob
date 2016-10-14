@@ -1,5 +1,5 @@
 <!-- this first section is for handhelds only -->
-<ul id="current-entry-summary">
+<ul id="current-entry-summary" ng-click="$ctrl.toggleCurrentEntryForm()">
     <li>
         <div class="list-entry">
             <span>Thought Leading Human Capital Towards Trending Net Growth</span><span>0h</span>
@@ -7,7 +7,7 @@
     </li>
 </ul>
 
-<div id="current-form-area">
+<div id="current-form-area" ng-class="{'display': $ctrl.currentEntryFormActive}">
 <form id="current-entry-form">
     <label for="input-activity">Activity</label>
     <input size="" title="" type="text" name="activity" value="" placeholder="" ng-model="$ctrl.currentEntry.description">
@@ -34,4 +34,8 @@
 
     <button type="submit" value="Send" id="entry-form-submit-button">Add Record</button>
 </form>
+<div class="drawer-view-nav">
+    <div class="nav-button">Add Record</div>
+    <img class="nav-button" src="/static/timeblob/img/checkmark.svg" ng-click="$ctrl.toggleCurrentEntryForm()">
+</div>
 </div>
