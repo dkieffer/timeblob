@@ -235,6 +235,7 @@ input#input-start-time, input#input-start-date, input#input-end-time, input#inpu
     max-width: 36em;
     margin: 0 auto 5em auto;
     text-align: center;
+    overflow: auto;
 }
 
 .list-view.display {
@@ -252,11 +253,6 @@ input#input-start-time, input#input-start-date, input#input-end-time, input#inpu
     color: rgba(239,175,227,1);
     font-weight: 200;
     padding: 1em 0;
-    border-spacing: 0;
-    border-collapse: collapse;
-    border: none;
-    display: flex;
-    flex-flow: column;
 }
 
 .list-entry {
@@ -265,7 +261,6 @@ input#input-start-time, input#input-start-date, input#input-end-time, input#inpu
     transition: 0.2s;
     display: flex;
     flex-flow: row;
-    flex: 0 1;
 }
 
 .list-entry:hover {
@@ -325,12 +320,13 @@ input#input-start-time, input#input-start-date, input#input-end-time, input#inpu
     position: fixed;
     bottom: 0;
     width: 100%;
-    border-top: 1px solid rgba(19,170,114,1);
+    border-top: 1px solid rgba(19,170,114,0.5);
     background-color: rgba(0,60,54,1);
     box-shadow: 0px -10px 10px rgba(0,0,0,0.2);
     z-index: 1;
     display: none;
     text-align: right;
+    transition: 0.2s;
 }
 
 .list-view-nav .nav-button:first-child {
@@ -513,8 +509,8 @@ edit-entry-form form input:nth-child(3n) {
     #current-entry-form div input {
         flex: 1 1;
         text-align: right;
-        margin: 0 0 0 1em;
-        padding: 0.5em 0;
+        margin: 0 0 0.35em 1em;
+        padding: 0.5em 0 0.15em 0;
     }
     #current-entry-form div input:nth-child(3n) {
         flex: 0 1;
@@ -529,7 +525,6 @@ edit-entry-form form input:nth-child(3n) {
     }
     .list-view {
         position: absolute;
-        display: none;
         top: 0;
         left: 100%;
         width: 100%;
@@ -537,28 +532,28 @@ edit-entry-form form input:nth-child(3n) {
         background-color: rgba(45,14,38,0.8);
         padding: 0;
         background-image: url(/static/timeblob/img/diagonal-pinstripes.svg);
-        transition: position 1s, left 1s;
+        transition: left 0.2s;
     }
     .list-view.display {
         left: 0%;
-        display: block;
-        animation: 0.2s linear 1 slide-from-left;
-    }
-    @keyframes slide-from-left {
-        0% {left: 100%;} 
-        100% {left: 0%;} 
     }
     #list-view-button {
         display: inline-block;
     }
     .list-view-nav {
         display: block;
+        left: 100%;
+    }
+    .list-view.display div list-view-nav .list-view-nav {
+        position: fixed;
+        left: 0;
     }
     #current-entry-summary {
         display: block;
         bottom: 0em;
         width: 100%;
     }
+    
     #filter-list-title-bar {
         display: none;
     }
@@ -576,6 +571,7 @@ edit-entry-form form input:nth-child(3n) {
         opacity: 1;
         pointer-events: auto;
     }
+    
 }
 
 @media only screen and (max-width: 400px) {
