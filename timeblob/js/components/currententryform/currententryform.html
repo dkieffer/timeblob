@@ -9,33 +9,40 @@
 
 <div id="current-form-area" ng-class="{'display': $ctrl.currentEntryFormActive}">
 <form id="current-entry-form">
-    <label for="input-activity">Activity</label>
-    <input size="" title="" type="text" name="activity" value="" placeholder="" ng-model="$ctrl.currentEntry.description">
-
-    <label for="input-project">Project</label>
-    <input size="" title="" type="text" name="project" value="" placeholder="" ng-model="$ctrl.currentEntry.project">
-
-    <label for="input-client">Client</label>
-    <input size="" title="" type="text" name="client" value="" placeholder="" id="input-client">
-
-    <label for="input-activity">Org.</label>
-    <input size="" title="" type="text" name="organization" value="" placeholder="" id="input-organization">
-
-    <label for="input-total-time">Time</label>
-    <input size="" title="" type="text" name="total-time" value="" placeholder="" id="input-total-time">
-
-    <label for="input-start-time">Start</label>
-    <input size="" title="" type="text" name="start-time" value="" placeholder="" id="input-start-time">
-    <input size="" title="" type="text" name="start-date" value="" placeholder="" id="input-start-date">
-
-    <label for="input-end-time">End</label>
-    <input size="" title="" type="text" name="end-time" value="" placeholder="" id="input-end-time">
-    <input size="" title="" type="text" name="end-date" value="" placeholder="" id="input-end-date">
-
-    <button type="submit" value="Send" id="entry-form-submit-button">Add Record</button>
+    <div>
+        <label for="input-activity">Activity</label>
+        <input size="" title="" type="text" name="activity" value="" placeholder="" ng-model="$ctrl.currentEntry.description">
+    </div>
+    <div>
+        <label for="input-project">Project</label>
+        <input size="" title="" type="text" name="project" value="" placeholder="" ng-model="$ctrl.currentEntry.project">
+    </div>
+    <div>
+        <label for="input-client">Client</label>
+        <input size="" title="" type="text" name="client" value="" placeholder="" id="input-client">
+    </div>
+    <div>
+        <label for="input-activity">Org.</label>
+        <input size="" title="" type="text" name="organization" value="" placeholder="" id="input-organization">
+    </div>
+    <div>
+        <label for="input-total-time">Time</label>
+        <input size="" title="" type="text" name="total-time" value="" placeholder="" id="input-total-time">
+    </div>
+    <div>
+        <label for="input-start-time">Start</label>
+        <input size="" title="" type="text" name="start-time" value="" placeholder="" id="input-start-time">
+        <input size="" title="" type="text" name="start-date" value="" placeholder="" id="input-start-date">
+    </div>
+    <div>
+        <label for="input-end-time">End</label>
+        <input size="" title="" type="text" name="end-time" value="" placeholder="" id="input-end-time">
+        <input size="" title="" type="text" name="end-date" value="" placeholder="" id="input-end-date">
+    </div>
+    <button type="submit" value="Send" id="entry-form-submit-button">Add Now</button>
 </form>
 <div class="drawer-view-nav">
-    <div class="nav-button">Add Record</div>
+    <div class="nav-button">Add Now</div>
     <img class="nav-button" src="/static/timeblob/img/checkmark.svg" ng-click="$ctrl.toggleCurrentEntryForm()">
 </div>
 </div>

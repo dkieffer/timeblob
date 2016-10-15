@@ -135,13 +135,20 @@ select::after {
     display: none;
     position: fixed;
     bottom: 0;
-    background: linear-gradient(to bottom, rgba(96,37,81,0.2), rgba(255,149,77,0.2) 100%);
-    color: rgba(255,149,77,1);
+    color: rgba(255,149,77,0.5);
     transition: background 3s, color 3s;
 }
 
-#current-entry-summary:hover {
-    background: linear-gradient(to bottom, rgba(96,37,81,0.2), rgba(255,149,77,0.5) 100%);
+#current-entry-summary .list-entry {
+    background: linear-gradient(to bottom, rgba(96,37,81,0.2), rgba(255,149,77,0.2) 100%);
+    transition: background 2s, color 2s;
+}
+
+#current-entry-summary .list-entry:hover {
+    /* background gradients dont work with transitions
+    background: linear-gradient(to bottom, rgba(96,37,81,0.3), rgba(255,149,77,0.5) 100%);
+    */
+    color: rgba(255,149,77,1);
 }
 
 #current-entry-summary li .list-entry:hover {
@@ -162,7 +169,7 @@ select::after {
     vertical-align: top;
 }
 
-#current-entry-form .drawer-view-nav {
+#current-form-area .drawer-view-nav {
     display: none;
 }
 
@@ -244,7 +251,7 @@ input#input-start-time, input#input-start-date, input#input-end-time, input#inpu
     background-color: rgba(96,37,81,1);
     color: rgba(239,175,227,1);
     font-weight: 200;
-    padding: 0;
+    padding: 1em 0;
     border-spacing: 0;
     border-collapse: collapse;
     border: none;
@@ -254,7 +261,7 @@ input#input-start-time, input#input-start-date, input#input-end-time, input#inpu
 
 .list-entry {
     text-align: left;
-    padding: 1em;
+    padding: 0.5em 1em;
     transition: 0.2s;
     display: flex;
     flex-flow: row;
@@ -376,7 +383,6 @@ edit-entry-form form input:nth-child(3n) {
     flex: 0 1;
 }
 
-
 /* ================================
     List Filters Styles
 ================================= */
@@ -491,11 +497,32 @@ edit-entry-form form input:nth-child(3n) {
         display: block;
     }
     #current-entry-form {
+        border-top: 1px solid rgba(239,175,227,0.1);
         box-sizing: border-box;
         padding: 1em;
+        width: 100vw;
     }
-    #current-entry-form .drawer-view-nav {
+    #current-entry-form div {
+        display: flex;
+        flex-flow: row;
+    }
+    #current-entry-form div label {
+        flex: 0 0;
+        padding: 0.5em 0;
+    }
+    #current-entry-form div input {
+        flex: 1 1;
+        text-align: right;
+        margin: 0 0 0 1em;
+        padding: 0.5em 0;
+    }
+    #current-entry-form div input:nth-child(3n) {
+        flex: 0 1;
+    }
+    #current-form-area .drawer-view-nav {
         display: block;
+        box-sizing: border-box;
+        width: 100vw;
     }
     #current-entry-form button {
         display: none;
@@ -507,7 +534,7 @@ edit-entry-form form input:nth-child(3n) {
         left: 100%;
         width: 100%;
         height: 100%;
-        background-color: rgba(45,14,38,1);
+        background-color: rgba(45,14,38,0.8);
         padding: 0;
         background-image: url(/static/timeblob/img/diagonal-pinstripes.svg);
         transition: position 1s, left 1s;
