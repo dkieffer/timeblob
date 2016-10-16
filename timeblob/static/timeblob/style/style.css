@@ -79,11 +79,13 @@ select::after {
 
 .timer-area {
     margin: 2em;
-    display: inline-block;
+    display: inline-flex;
+    flex-flow: column;
     vertical-align: middle;
 }
 
 #stopwatch {
+    flex: none;
     display: inline-block;
     position: relative;
     min-width: 256px;
@@ -93,6 +95,14 @@ select::after {
     background-size: 100%;
     background-repeat: no-repeat;
     cursor: pointer;
+}
+
+.v-spacer {
+    flex: auto;
+}
+
+.v-spacer:first-child {
+    flex: 0.5 1;
 }
 
 #stopwatch-time {
@@ -475,7 +485,7 @@ edit-entry-form form input:nth-child(3n) {
         height: 100vh;
     }
     .timer-area {
-        display: flex;
+        height: 100vh;
         margin: 2em;
     }
     #current-form-area {

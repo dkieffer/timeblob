@@ -1,4 +1,5 @@
 <div class="timer-area stopwatch-component">
+    <div class="v-spacer"></div>
   <div id="stopwatch" class="stopwatch-component">
       <h1 id="stopwatch-time" class="stopwatch-component" ng-class="{running: $ctrl.isRunning}"><span  am-time-ago="$ctrl.startTime">Are you here?</span></h1>
       <svg id="clock-hand" viewBox="0 0 400 400" enable-background="new 0 0 400 400"
@@ -17,4 +18,5 @@
       </svg>
       <p id="stopwatch-message" class="stopwatch-component"><span ng-if="$ctrl.isRunning" ng-click="$ctrl.stop()">tap to finish</span><span ng-if="!$ctrl.isRunning" ng-click="$ctrl.start()">tap to start</span></p>
   </div>
+    <div class="v-spacer"></div>
 </div>
