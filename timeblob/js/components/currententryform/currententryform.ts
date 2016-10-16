@@ -5,9 +5,14 @@ declare var TEMPLATE:any
 
 export class CurrentEntryForm {
     currentEntryFormActive: boolean
+    isFocused: boolean
     toggleCurrentEntryForm()
     {
         this.currentEntryFormActive = !this.currentEntryFormActive
+    }
+    currentEntryFormFocus()
+    {
+        this.isFocused = !this.isFocused
     }
 }
 
