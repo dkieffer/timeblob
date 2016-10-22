@@ -1,15 +1,11 @@
 ATTENTION: Time Blob is in early development; many parts of the prototype are not yet functional.
 
 # Time Blob
-Time Blob is a time tracking app. It’s not an app that you install on your phone; it’s a web app that you install and run on a server. It only works with servers that are running [Sandstorm](https://sandstorm.io) (an open source OS for servers). Once you install Time Blob on your Sandstorm server, you can then access the app from any computer or phone simply by visiting the app’s web address.
+Time Blob is a free<sup>*</sup> time tracking web app. We are building it for [Sandstorm](https://sandstorm.io), an open source platform for Linux servers. Once you install Time Blob on your server, you can then access the app via web browser from any computer or phone.
 
-Once we have a working prototype, getting up and running with Time Blob will require some initial setup. Here are the three major steps:
+Once we have a working prototype (which we do not yet have), there are few things to note about how to get started using Time Blob. As a prerequisite _you'll need your own Linux server_. Then you'll need to install Sandstorm. Once Sandstorm is installed, you'll be able to go the Sandstorm App Market, find Time Blob, and click install. Then you should be seconds away from up and running.
 
-1. Have your own server that is running a compatible version of Linux
-2. Install [Sandstorm](https://sandstorm.io) on your server
-3. Install Time Blob (this will be the easy part)
-
-If you are interested in getting involved with the development, feel free to contact [David](mailto:david@dkieffer.xyz), or keep reading to dive right in.
+We'd love it if you are interested in helping develop Time Blob. Contact [David](mailto:david@dkieffer.xyz), or keep reading to dive right in.
 
 # How to develop
 
@@ -82,3 +78,6 @@ Add Timeblob to your dev version of Sandstorm
 ```
 vagrant-spk dev
 ```
+
+
+<sup>*</sup> Open Source, AGPLv3, see license for details
