@@ -16,7 +16,13 @@
       <polygon opacity="0.2" fill="#FF45DC" points="199.965,231.158 196.969,171.535 201.512,40.202 206.111,172.074 " filter="url(#blur-10)"/>
       <polygon id="clock-hand-inner-glow" opacity="0.7" fill="#FFFFFF" points="199.965,231.158 196.969,171.535 201.512,40.202 206.111,172.074 " filter="url(#blur-3)"/>
       </svg>
+      <!--
       <p id="stopwatch-message" class="stopwatch-component"><span ng-if="$ctrl.isRunning" ng-click="$ctrl.stop()">tap to finish</span><span ng-if="!$ctrl.isRunning" ng-click="$ctrl.start()">tap to start</span></p>
+      -->
+    <div id="current-entry-summary" ng-click="$ctrl.toggleCurrentEntryForm()">
+        <div>Project Rhubarb</div>
+        <div>Thought Leading Human Capital Towards Trending Net Growth</div>
+    </div>
   </div>
     <div class="v-spacer"></div>
 </div>

@@ -101,10 +101,6 @@ select::after {
     flex: auto;
 }
 
-.v-spacer:first-child {
-    flex: 0.5 1;
-}
-
 #stopwatch-time {
     color: rgba(160,60,139,0);
     text-align: center;
@@ -143,26 +139,6 @@ select::after {
 
 #current-entry-summary {
     display: none;
-    position: fixed;
-    bottom: 0;
-    color: rgba(255,149,77,0.5);
-    transition: background 3s, color 3s;
-}
-
-#current-entry-summary .list-entry {
-    background: linear-gradient(to bottom, rgba(96,37,81,0.2), rgba(255,149,77,0.2) 100%);
-    transition: background 2s, color 2s;
-}
-
-#current-entry-summary .list-entry:hover {
-    /* background gradients dont work with transitions
-    background: linear-gradient(to bottom, rgba(96,37,81,0.3), rgba(255,149,77,0.5) 100%);
-    */
-    color: rgba(255,149,77,1);
-}
-
-#current-entry-summary li .list-entry:hover {
-    background-color: unset;
 }
 
 #current-form-area {
@@ -485,8 +461,11 @@ edit-entry-form form input:nth-child(3n) {
         height: 100vh;
     }
     .timer-area {
+        box-sizing: border-box;
         height: 100vh;
-        margin: 2em;
+        width: 100vw;
+        margin: 0;
+        padding: 0 2em;
     }
     #current-form-area {
         padding: 0;
@@ -539,7 +518,7 @@ edit-entry-form form input:nth-child(3n) {
         background-color: rgba(45,14,38,0.8);
         padding: 0;
         background-image: url(/static/timeblob/img/diagonal-pinstripes.svg);
-        transition: right 0.2s;
+        transition: 0.2s;
     }
     .list-view.display {
         right: 0;
@@ -557,8 +536,18 @@ edit-entry-form form input:nth-child(3n) {
     }
     #current-entry-summary {
         display: block;
-        bottom: 0em;
+        box-sizing: border-box;
         width: 100%;
+        margin: 0.25em 0;
+        padding: 0.5em 0;
+        color: rgba(160,60,139,1);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    #current-entry-summary div:first-child {
+        font-size: 0.8em;
+        padding-bottom: 0.5em;
     }
     
     #filter-list-title-bar {
