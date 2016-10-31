@@ -1,28 +1,44 @@
 <div class="timer-area stopwatch-component">
     <div class="v-spacer"></div>
-  <div id="stopwatch" class="stopwatch-component">
-      <h1 id="stopwatch-time" class="stopwatch-component" ng-class="{running: $ctrl.isRunning}"><span  am-time-ago="$ctrl.startTime">Are you here?</span></h1>
-      <svg id="clock-hand" viewBox="0 0 400 400" enable-background="new 0 0 400 400"
-  	 xml:space="preserve" ng-style="$ctrl.clockHandStyle">
-      <polygon fill="#863EA2" points="199.965,231.158 206.977,229.557 206.938,184.702 202.63,41.172 197.521,41.176 192.914,184.713
-  	192.952,229.566 "/>
-      <filter id="blur-25" x="-40%" width="180%">
-  	    <feGaussianBlur in="SourceGraphic" stdDeviation="25" />
-      </filter>
-      <filter id="blur-3" x="-80%" width="210%">
-  	    <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
-      </filter>
-      <polygon id="clock-hand-big-back-glow" opacity="0.75" fill="#FF45DC" points="199.965,231.158 160.768,148.144 201.662,21.631 246.96,162.516 " filter="url(#blur-25)"/>
-      <polygon opacity="0.2" fill="#FF45DC" points="199.965,231.158 196.969,171.535 201.512,40.202 206.111,172.074 " filter="url(#blur-10)"/>
-      <polygon id="clock-hand-inner-glow" opacity="0.7" fill="#FFFFFF" points="199.965,231.158 196.969,171.535 201.512,40.202 206.111,172.074 " filter="url(#blur-3)"/>
-      </svg>
-      <!--
-      <p id="stopwatch-message" class="stopwatch-component"><span ng-if="$ctrl.isRunning" ng-click="$ctrl.stop()">tap to finish</span><span ng-if="!$ctrl.isRunning" ng-click="$ctrl.start()">tap to start</span></p>
-      -->
+    <div id="stopwatch" class="stopwatch-component">
+        <h1 id="stopwatch-time" class="stopwatch-component" ng-class="{running: $ctrl.isRunning}"><span  am-time-ago="$ctrl.startTime">Are you here?</span></h1>
+        <svg id="clock-face" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="400px" height="400px" viewBox="0 0 400 400" enable-background="new 0 0 400 400" xml:space="preserve">
+            <circle fill="none" stroke="#602551" stroke-width="4" cx="200" cy="200" r="195"/>
+            <circle fill="#602551" cx="200" cy="200" r="175"/>
+            <line fill="none" stroke="#863EA2" opacity="0.2" stroke-width="4" x1="200" y1="64" x2="200" y2="36"/>
+            <line fill="none" stroke="#863EA2" opacity="0.2" stroke-width="4" x1="132" y1="82.221" x2="118" y2="57.972"/>
+            <line fill="none" stroke="#863EA2" opacity="0.2" stroke-width="4" x1="82.221" y1="132" x2="57.972" y2="118"/>
+            <line fill="none" stroke="#863EA2" opacity="0.2" stroke-width="4" x1="64" y1="200" x2="36" y2="200"/>
+            <line fill="none" stroke="#863EA2" opacity="0.2" stroke-width="4" x1="82.221" y1="268" x2="57.973" y2="282"/>
+            <line fill="none" stroke="#863EA2" opacity="0.2" stroke-width="4" x1="132" y1="317.779" x2="118.001" y2="342.027"/>
+            <line fill="none" stroke="#863EA2" opacity="0.2" stroke-width="4" x1="200" y1="336" x2="200" y2="363.999"/>
+            <line fill="none" stroke="#863EA2" opacity="0.2" stroke-width="4" x1="268" y1="317.779" x2="282" y2="342.027"/>
+            <line fill="none" stroke="#863EA2" opacity="0.2" stroke-width="4" x1="317.779" y1="268" x2="342.027" y2="282"/>
+            <line fill="none" stroke="#863EA2" opacity="0.2" stroke-width="4" x1="336" y1="200" x2="364" y2="200"/>
+            <line fill="none" stroke="#863EA2" opacity="0.2" stroke-width="4" x1="317.779" y1="132" x2="342.028" y2="118"/>
+            <line fill="none" stroke="#863EA2" opacity="0.2" stroke-width="4" x1="268" y1="82.221" x2="282" y2="57.972"/>
+        </svg>
+        <svg id="clock-hand" width="400px" height="400px" viewBox="0 0 400 400" enable-background="new 0 0 400 400"
+        xml:space="preserve" ng-style="$ctrl.clockHandStyle">
+            <polygon fill="#863EA2" points="199.965,231.158 206.977,229.557 206.938,184.702 202.63,41.172 197.521,41.176 192.914,184.713
+            192.952,229.566 "/>
+            <filter id="blur-25" x="-40%" width="180%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="25" />
+            </filter>
+            <filter id="blur-3" x="-80%" width="210%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
+            </filter>
+            <polygon id="clock-hand-big-back-glow" opacity="0.75" fill="#FF45DC" points="199.965,231.158 160.768,148.144 201.662,21.631 246.96,162.516 " filter="url(#blur-25)"/>
+            <polygon opacity="0.2" fill="#FF45DC" points="199.965,231.158 196.969,171.535 201.512,40.202 206.111,172.074 " filter="url(#blur-10)"/>
+            <polygon id="clock-hand-inner-glow" opacity="0.7" fill="#FFFFFF" points="199.965,231.158 196.969,171.535 201.512,40.202 206.111,172.074 " filter="url(#blur-3)"/>
+        </svg>
+        <!--
+        <p id="stopwatch-message" class="stopwatch-component"><span ng-if="$ctrl.isRunning" ng-click="$ctrl.stop()">tap to finish</span><span ng-if="!$ctrl.isRunning" ng-click="$ctrl.start()">tap to start</span></p>
+        -->
+    </div>
     <div id="current-entry-summary" ng-click="$ctrl.toggleCurrentEntryForm()">
         <div>Project Rhubarb</div>
         <div>Thought Leading Human Capital Towards Trending Net Growth</div>
     </div>
-  </div>
     <div class="v-spacer"></div>
 </div>

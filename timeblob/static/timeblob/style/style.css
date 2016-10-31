@@ -85,20 +85,31 @@ select::after {
 }
 
 #stopwatch {
-    flex: none;
     display: inline-block;
     position: relative;
-    min-width: 256px;
-    min-height: 256px;
+    max-height: 65vh;
     box-sizing: border-box;
-    background-image: url('/static/timeblob/img/clock-face.svg');
-    background-size: 100%;
-    background-repeat: no-repeat;
     cursor: pointer;
 }
 
 .v-spacer {
     flex: auto;
+}
+
+#clock-face {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#clock-hand {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 #stopwatch-time {
@@ -114,23 +125,9 @@ select::after {
   color: rgba(255,255,255,1)
 }
 
-#clock-hand {
-    max-width: 400px;
-}
-
 #clock-hand-inner-glow, #clock-hand-big-back-glow {
     opacity: 0;
     transition: opacity 2s;
-}
-
-#stopwatch-message {
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-#stopwatch-message:hover {
-    color: white;
-    z-index: 100;
 }
 
 /* ================================
@@ -467,6 +464,9 @@ edit-entry-form form input:nth-child(3n) {
         margin: 0;
         padding: 0 2em;
     }
+    #stopwatch {
+        width: 100%;
+    }
     #current-form-area {
         padding: 0;
         bottom: -100%;
@@ -539,7 +539,7 @@ edit-entry-form form input:nth-child(3n) {
         box-sizing: border-box;
         width: 100%;
         margin: 0.25em 0;
-        padding: 0.5em 0;
+        padding: 1em 0;
         color: rgba(160,60,139,1);
         white-space: nowrap;
         overflow: hidden;
@@ -566,15 +566,5 @@ edit-entry-form form input:nth-child(3n) {
         display: block;
         opacity: 1;
         pointer-events: auto;
-    }
-    
-}
-
-@media only screen and (max-width: 400px) {
-    #stopwatch {
-        max-width: 100%;
-    }
-    #clock-hand {
-        max-width: 100%;
     }
 }
