@@ -306,12 +306,35 @@ select::after {
     box-shadow: 0px -10px 10px rgba(0,0,0,0.2);
     z-index: 1;
     display: none;
-    text-align: right;
+    text-align: center;
     transition: 0.2s;
+}
+
+.time-total {
+    padding: 0.5em;
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    margin: 0;
+}
+
+.time-total .total-time-digits, .time-total .total-time-tag {
+    font-size: 1.2em;
+    line-height: 1em;
+}
+
+.time-total .total-time-tag {
+    color: rgba(19,170,114,0.5);
 }
 
 .list-view-nav .nav-button:first-child {
     float: left;
+    clear: none;
+}
+
+.list-view-nav .nav-button {
+    float: right;
+    clear: none;
 }
 
 #list-view-button {
@@ -445,6 +468,39 @@ edit-entry-form form input:nth-child(3n) {
 
 #filters-menu form div.active label, #filters-menu form div.active input, #filters-menu form div.active select {
     color: rgba(239,175,227,1);
+}
+
+/* ================================
+    Pop-up Menu
+================================= */
+.popup-menu {
+    max-height: 0px;
+    position: absolute;
+    bottom: 2em;
+    right: 0.5em;
+    text-align: left;
+    padding: 0;
+    background-color: white;
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+.popup-menu.active {
+    max-height: 1000px;
+    padding: 0.5em 0;
+}
+
+.popup-menu-item {
+    padding: 0.5em 1em;
+}
+
+.popup-menu-item:hover {
+    background-color: lightblue;
+}
+
+.popup-menu-item svg {
+    vertical-align: middle;
+    padding-right: 0.5em;
 }
 
 /* ================================

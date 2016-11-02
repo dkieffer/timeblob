@@ -8,6 +8,7 @@ Only used in responsive
 */
 export class ListViewNav
 {
+  popupMenuActive: boolean
   toggleListViewNav()
   {
     this.onClose();
@@ -16,6 +17,11 @@ export class ListViewNav
   toggleFiltersMenu()
   {
     this.onFiltersToggle()
+    this.togglePopupMenu()
+  }
+  togglePopupMenu()
+  {
+    this.popupMenuActive = !this.popupMenuActive
   }
 
   onClose : any
