@@ -388,37 +388,13 @@ edit-entry-form form input:nth-child(3n) {
 ================================= */
 
 #filter-list-title-bar {
-    padding: 0.5em 2em;
+    display: inline-block;
+    padding: 0 1em;
     border-bottom: 1px solid rgba(19,170,114,0.2);
-    width: 4em;
     background-color: rgba(0,60,54,1);
     color: rgba(19,170,114,1);
     vertical-align: middle;
-    user-select: none;  
-}
-
-#filter-icon.active > rect, #filter-icon.active > line { 
-    stroke: white;
-} 
- 
-.filter-icon-box-fall { 
-    animation: 4s linear infinite box-drops; 
-    stroke: white; 
-} 
- 
-.filter-icon-box-fall-fade { 
-    animation: 4s linear infinite box-fade-out, 4s linear infinite box-drops; 
-    stroke: white; 
-} 
- 
-@keyframes box-drops { 
-    0% {transform: translateY(0px);} 
-    100% {transform: translateY(14px);} 
-} 
- 
-@keyframes box-fade-out { 
-    0%, 25% {opacity: 1;} 
-    50%, 100% {opacity: 0;} 
+    cursor: pointer;
 }
 
 #filters-menu {
