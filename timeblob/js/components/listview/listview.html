@@ -16,11 +16,28 @@
     <list-filters on-filter-toggle="$ctrl.toggleFiltersMenu()" filters-menu-active="$ctrl.filtersMenuActive"/>
 </div>
 
+<div class="column-expanding-spacer"></div>
 <ul id="sessions-list">
     <li class="date-line"><span></span>11/5<span></span></li>
     <li>
         <div class="list-entry" ng-click="$ctrl.editEntry()" ng-class="{'selected-entry': $ctrl.openEntryForEdit}">
             <span>Moonshinin'</span><span>31h</span>
+        </div>
+        <div class="edit" ng-class="{'active': $ctrl.openEntryForEdit}">
+            <edit-entry-form on-edit-toggle="$ctrl.editEntry()"/>
+        </div>
+    </li>
+    <li>
+        <div class="list-entry" ng-click="$ctrl.editEntry()" ng-class="{'selected-entry': $ctrl.openEntryForEdit}">
+            <span>Divining the Astral Planes</span><span>1m</span>
+        </div>
+        <div class="edit" ng-class="{'active': $ctrl.openEntryForEdit}">
+            <edit-entry-form on-edit-toggle="$ctrl.editEntry()"/>
+        </div>
+    </li>
+    <li>
+        <div class="list-entry" ng-click="$ctrl.editEntry()" ng-class="{'selected-entry': $ctrl.openEntryForEdit}">
+            <span>Thought Leading Human Capital Towards Trending Net Growth</span><span>2h 37m</span>
         </div>
         <div class="edit" ng-class="{'active': $ctrl.openEntryForEdit}">
             <edit-entry-form on-edit-toggle="$ctrl.editEntry()"/>

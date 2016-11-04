@@ -1,5 +1,5 @@
 <form>
-    <!-- Semantically we would use fieldset instead of div to group these items, but some browsers do not support flex display with the fieldset element -->
+    <!-- Semantically we would prefer to use fieldset instead of div to group these items, but some browsers do not support flex display with the fieldset element -->
     <div>
         <label for="input-edit-activity">Activity</label> 
         <input size="" title="" type="text" name="activity" value="Moonshinin" placeholder="" id="input-edit-activity">
@@ -31,6 +31,9 @@
         <input size="9" title="" type="text" name="end-date" value="11/5/94" placeholder="" id="input-edit-end-date">
     </div>
 </form>
-<div class="drawer-view-nav">
+<div class="actions-bar edit-options-bar">
+    <img class="nav-button" src="/static/timeblob/img/cancel.svg" ng-click="$ctrl.editEntry()">
+    <img class="nav-button" src="/static/timeblob/img/trash-can.svg" ng-click="">
+    <div class="actions-bar-center"></div>
     <img class="nav-button" src="/static/timeblob/img/checkmark.svg" ng-click="$ctrl.editEntry()">
 </div>

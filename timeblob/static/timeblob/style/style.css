@@ -14,17 +14,10 @@ body {
     overflow: hidden;
 }
 
-.drawer-view-nav {
+.edit-options-bar {
     border-top: 1px solid rgba(239,175,227,0.1);
     background-color: rgba(96,37,81,1);
-    user-select: none;
     overflow: hidden;
-    padding: 0 1em;
-    text-align: right
-}
-
-.drawer-view-nav .nav-button:first-child {
-    float: left;
 }
 
 .nav-button {
@@ -71,6 +64,19 @@ select::after {
 
 .component-wrapper {
     display: inline;
+}
+
+.actions-bar {
+    display: none;
+    width: 100%;
+    height: 2.5em;
+    flex-flow: row;
+    z-index: 1;
+}
+
+.actions-bar-center {
+    flex: 1 0 auto;
+    padding: 0.5em;
 }
 
 /* ================================
@@ -219,8 +225,8 @@ select::after {
     overflow: auto;
 }
 
-.list-view.display {
-    display: block;
+.column-expanding-spacer {
+    flex: 1 0 auto;
 }
 
 .nodisplay {
@@ -300,11 +306,10 @@ select::after {
 .list-view-nav {
     position: fixed;
     bottom: 0;
-    width: 100%;
+    width: 100vw;
     border-top: 1px solid rgba(19,170,114,0.5);
     background-color: rgba(0,60,54,1);
     box-shadow: 0px -10px 10px rgba(0,0,0,0.2);
-    z-index: 1;
     display: none;
     text-align: center;
     transition: 0.2s;
@@ -312,7 +317,7 @@ select::after {
 
 .time-total {
     padding: 0.5em;
-    display: inline-block;
+    flex: 1 0 auto;
     vertical-align: top;
     color: white;
     margin: 0;
@@ -325,16 +330,6 @@ select::after {
 
 .time-total .total-time-tag {
     color: rgba(19,170,114,0.5);
-}
-
-.list-view-nav .nav-button:first-child {
-    float: left;
-    clear: none;
-}
-
-.list-view-nav .nav-button {
-    float: right;
-    clear: none;
 }
 
 #list-view-button {
@@ -358,7 +353,7 @@ edit-entry-form form {
     padding: 1em;
 }
 
-edit-entry-form form div, #filters-menu form div {
+edit-entry-form form div, #filters-menu form .fieldset {
     display: flex;
     flex-flow: row;
 }
@@ -388,7 +383,7 @@ edit-entry-form form input:nth-child(3n) {
 ================================= */
 
 #filter-list-title-bar {
-    display: inline-block;
+    display: inline-flex;
     padding: 0 1em;
     border-bottom: 1px solid rgba(19,170,114,0.2);
     background-color: rgba(0,60,54,1);
@@ -408,12 +403,12 @@ edit-entry-form form input:nth-child(3n) {
     background: linear-gradient(to bottom, rgba(96,37,81,1), rgba(43,20,48,1) 33%);
 }
 
-#filters-menu form div {
+#filters-menu form .fieldset {
     padding: 0em 1em;
     position: relative;
 }
 
-#filters-menu form div.active label:before {
+#filters-menu form .fieldset.active label:before {
     content: '';
     position: absolute;
     display: block;
@@ -425,7 +420,7 @@ edit-entry-form form input:nth-child(3n) {
     background-image: url(/static/timeblob/img/checkmark.svg);
 }
 
-#filters-menu form div input, #filters-menu form div label {
+#filters-menu form .fieldset input, #filters-menu form .fieldset label {
     padding: 0.5em 0;
     flex: 1 1 auto;
     text-align: left;
@@ -433,16 +428,16 @@ edit-entry-form form input:nth-child(3n) {
     font-size: 1em;
 }
 
-#filters-menu form div select {
+#filters-menu form .fieldset select {
     color: rgba(160,60,139,1);
 }
 
-#filters-menu form div input {
+#filters-menu form .fieldset input {
     text-align: right;
     flex: 0 0 auto;
 }
 
-#filters-menu form div.active label, #filters-menu form div.active input, #filters-menu form div.active select {
+#filters-menu form .fieldset.active label, #filters-menu form .fieldset.active input, #filters-menu form .fieldset.active select {
     color: rgba(239,175,227,1);
 }
 
@@ -543,23 +538,26 @@ edit-entry-form form input:nth-child(3n) {
     }
     .list-view {
         position: absolute;
+        display: flex;
+        flex-flow: column;
         top: 0;
         right: 100%;
         width: 100%;
-        height: 100vh;
+        height: calc(100vh - 40px);
         background-color: rgba(45,14,38,0.8);
         padding: 0;
         background-image: url(/static/timeblob/img/diagonal-pinstripes.svg);
         transition: 0.2s;
     }
     .list-view.display {
+        display: flex;
         right: 0;
     }
     #list-view-button {
         display: inline-block;
     }
     .list-view-nav {
-        display: block;
+        display: flex;
         right: 100%;
     }
     .list-view.display div list-view-nav .list-view-nav {
@@ -581,7 +579,15 @@ edit-entry-form form input:nth-child(3n) {
         font-size: 0.8em;
         padding-bottom: 0.5em;
     }
-    
+    .edit {
+        position: fixed;
+        bottom: 0;
+        width: 100vw;
+        z-index: 1;
+    }
+    .edit.active .actions-bar {
+        display: flex;
+    }
     #filter-list-title-bar {
         display: none;
     }
