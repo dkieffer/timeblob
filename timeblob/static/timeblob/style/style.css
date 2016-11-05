@@ -66,7 +66,7 @@ select::after {
     display: inline;
 }
 
-.actions-bar {
+.action-bar {
     display: none;
     width: 100%;
     height: 2.5em;
@@ -74,7 +74,7 @@ select::after {
     z-index: 1;
 }
 
-.actions-bar-center {
+.action-bar-center {
     flex: 1 0 auto;
     padding: 0.5em;
 }
@@ -183,7 +183,6 @@ select::after {
     border-bottom: 1px solid rgba(90,90,90,0);
     color: rgba(255,149,77,1);
     font-family: Montserrat, Ubuntu, Verdana, sans-serif;
-    font-weight: 200;
     font-size: 1em;
     transition: border 0.5s, color 0.5s;
     text-overflow: ellipsis;
@@ -203,11 +202,9 @@ select::after {
 
 #entry-form-submit-button {
     font-family: Montserrat, Ubuntu, Verdana, sans-serif;
-    font-weight: 200;
     border: solid 2px rgba(160,60,139,0.5);
     color: rgba(160,60,139,1);
     background: none;
-    cursor: pointer;
     font-size: 1em;
     padding: 0.2em 1em;
     border-radius: 2px;
@@ -253,7 +250,7 @@ select::after {
 .list-entry:hover {
     background-color: rgba(106,47,91,1);
     color: white;
-    cursor: pointer;
+    //cursor: pointer;
 }
 
 .list-entry span:first-child {
@@ -316,7 +313,7 @@ select::after {
 }
 
 .time-total {
-    padding: 0.5em;
+    padding: 0.5rem;
     flex: 1 0 auto;
     vertical-align: top;
     color: white;
@@ -324,8 +321,7 @@ select::after {
 }
 
 .time-total .total-time-digits, .time-total .total-time-tag {
-    font-size: 1.2em;
-    line-height: 1em;
+    line-height: 1.5rem;
 }
 
 .time-total .total-time-tag {
@@ -395,12 +391,23 @@ edit-entry-form form input:nth-child(3n) {
 #filters-menu {
     z-index: 2;
     width: 100%;
-    color: rgba(160,60,139,1);
+    color: rgba(19,170,114,1);
+}
+
+#filters-menu h2 {
+    background-color: rgba(0,60,54,1);
+    border-top: 1px solid rgba(19,170,114,0.2);
+    color: rgba(19,170,114,1);
+    line-height: 1.5rem;
+    padding: 0.5rem;
+    margin: 0;
+    position: relative;
+    bottom: 0;
 }
 
 #filters-menu form {
     width: 100%;
-    background: linear-gradient(to bottom, rgba(96,37,81,1), rgba(43,20,48,1) 33%);
+    background: linear-gradient(to bottom, rgba(0,60,54,1), rgba(0,30,24,1) 33%);
 }
 
 #filters-menu form .fieldset {
@@ -429,7 +436,7 @@ edit-entry-form form input:nth-child(3n) {
 }
 
 #filters-menu form .fieldset select {
-    color: rgba(160,60,139,1);
+    color: white;
 }
 
 #filters-menu form .fieldset input {
@@ -438,7 +445,14 @@ edit-entry-form form input:nth-child(3n) {
 }
 
 #filters-menu form .fieldset.active label, #filters-menu form .fieldset.active input, #filters-menu form .fieldset.active select {
-    color: rgba(239,175,227,1);
+    color: rgba(19,170,114,1);
+}
+
+#filters-menu form.edit .action-bar {
+    background-color: rgba(0,60,54,1);
+    border-top: 1px solid rgba(19,170,114,0.2);
+    display: flex;
+    box-shadow: 0px 8px 8px black;
 }
 
 /* ================================
@@ -585,7 +599,7 @@ edit-entry-form form input:nth-child(3n) {
         width: 100vw;
         z-index: 1;
     }
-    .edit.active .actions-bar {
+    .edit.active .action-bar {
         display: flex;
     }
     #filter-list-title-bar {
