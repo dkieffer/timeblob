@@ -14,10 +14,19 @@ body {
     overflow: hidden;
 }
 
+.edit {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s;
+    box-shadow: 0px 12px 8px rgba(0,0,0,0.3);
+}
+
 .edit-options-bar {
     border-top: 1px solid rgba(239,175,227,0.1);
     background-color: rgba(96,37,81,1);
-    overflow: hidden;
+    //overflow: hidden;
+    position: relative;
+    z-index: 3;
 }
 
 .nav-button {
@@ -77,6 +86,10 @@ select::after {
 .action-bar-center {
     flex: 1 0 auto;
     padding: 0.5em;
+}
+
+.selected-entry .edit .action-bar {
+    display: flex;
 }
 
 /* ================================
@@ -217,7 +230,8 @@ select::after {
 
 .list-view {
     max-width: 36em;
-    margin: 0 auto 5em auto;
+    margin: 0 auto;
+    padding-bottom: 3em;
     text-align: center;
     overflow: auto;
 }
@@ -236,13 +250,12 @@ select::after {
     background-color: rgba(96,37,81,1);
     color: rgba(239,175,227,1);
     font-weight: 200;
-    padding: 1em 0;
+    padding: 1em 0 3em;
 }
 
 .list-entry {
     text-align: left;
     padding: 0.5em 1em;
-    transition: 0.2s;
     display: flex;
     flex-flow: row;
 }
@@ -250,7 +263,6 @@ select::after {
 .list-entry:hover {
     background-color: rgba(106,47,91,1);
     color: white;
-    //cursor: pointer;
 }
 
 .list-entry span:first-child {
@@ -265,22 +277,13 @@ select::after {
     text-align: right;
 }
 
-.edit {
-    max-height: 0px;
-    overflow: hidden;
-    transition: 0.2s max-height;
-}
-
-.edit.active {
+.selected-entry .edit, #filters-menu.fade-in form {
     max-height: 1000px;
     overflow: hidden;
 }
 
-.list-entry.selected-entry {
+.selected-entry .list-entry {
     background-color: rgba(106,47,91,1);
-    color: rgba(255,255,255,0);
-    cursor: pointer;
-    padding: 0 1em;
 }
 
 .date-line {
@@ -309,7 +312,6 @@ select::after {
     box-shadow: 0px -10px 10px rgba(0,0,0,0.2);
     display: none;
     text-align: center;
-    transition: 0.2s;
 }
 
 .time-total {
@@ -361,7 +363,7 @@ edit-entry-form form label {
 
 edit-entry-form form input {
     padding: 0.5em 0 0.5em 0.5em;
-    color: white;
+    color: rgba(239,175,227,1);
     border: none;
     font-family: Montserrat, Ubuntu, Verdana, sans-serif;
     font-size: 1em;
@@ -451,7 +453,6 @@ edit-entry-form form input:nth-child(3n) {
 #filters-menu form.edit .action-bar {
     background-color: rgba(0,60,54,1);
     border-top: 1px solid rgba(19,170,114,0.2);
-    display: flex;
     box-shadow: 0px 8px 8px black;
 }
 
@@ -467,7 +468,7 @@ edit-entry-form form input:nth-child(3n) {
     padding: 0;
     background-color: white;
     overflow: hidden;
-    transition: 0.2s;
+    transition: max-height 0.2s;
 }
 
 .popup-menu.active {
@@ -554,14 +555,15 @@ edit-entry-form form input:nth-child(3n) {
         position: absolute;
         display: flex;
         flex-flow: column;
+        box-sizing: border-box;
         top: 0;
         right: 100%;
         width: 100%;
-        height: calc(100vh - 40px);
+        height: 100vh;
         background-color: rgba(45,14,38,0.8);
         padding: 0;
         background-image: url(/static/timeblob/img/diagonal-pinstripes.svg);
-        transition: 0.2s;
+        transition: right 0.2s;
     }
     .list-view.display {
         display: flex;
@@ -593,13 +595,39 @@ edit-entry-form form input:nth-child(3n) {
         font-size: 0.8em;
         padding-bottom: 0.5em;
     }
-    .edit {
-        position: fixed;
-        bottom: 0;
+    #sessions-list li.selected-entry {
         width: 100vw;
         z-index: 1;
+        display: flex;
+        flex-flow: column;
+        position: fixed;
+        top: 0;
+        z-index: 1;
+        width: 100vw;
+        height: 100vh;
+        padding-bottom: 40px;
+        box-sizing: border-box;
+        overflow: auto;
     }
-    .edit.active .action-bar {
+    #sessions-list li.selected-entry::before {
+        content: '';
+        flex: 1 0 auto;
+        background-color: rgba(0,0,0,0.8);
+    }
+    #sessions-list li.selected-entry .list-entry {
+        border-top: 1px solid rgba(239,175,227,0.1);
+        flex: none;
+    }
+    .selected-entry .edit {
+        overflow: auto;
+        color: rgba(160,60,139,1);
+        flex: none;
+    }
+    .selected-entry .edit .action-bar {
+        position: fixed;
+        bottom: 0;
+    }
+    #filters-menu.fade-in .action-bar {
         display: flex;
     }
     #filter-list-title-bar {
@@ -618,5 +646,9 @@ edit-entry-form form input:nth-child(3n) {
         display: block;
         opacity: 1;
         pointer-events: auto;
+    }
+    .handheld-bottom-menu {
+        position: absolute;
+        bottom: 0;
     }
 }

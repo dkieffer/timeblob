@@ -19,30 +19,55 @@
 <div class="column-expanding-spacer"></div>
 <ul id="sessions-list">
     <li class="date-line"><span></span>11/5<span></span></li>
-    <li>
-        <div class="list-entry" ng-click="$ctrl.editEntry()" ng-class="{'selected-entry': $ctrl.openEntryForEdit}">
+    <li ng-class="{'selected-entry': $ctrl.openEntryForEdit}">
+        <div class="list-entry" ng-click="$ctrl.editEntry()">
             <span>Moonshinin'</span><span>31h</span>
         </div>
-        <div class="edit" ng-class="{'active': $ctrl.openEntryForEdit}">
+        <div class="edit">
             <edit-entry-form on-edit-toggle="$ctrl.editEntry()"/>
         </div>
     </li>
     <li>
-        <div class="list-entry" ng-click="$ctrl.editEntry()" ng-class="{'selected-entry': $ctrl.openEntryForEdit}">
+        <div class="list-entry" ng-click="$ctrl.editEntry()">
             <span>Divining the Astral Planes</span><span>1m</span>
         </div>
-        <div class="edit" ng-class="{'active': $ctrl.openEntryForEdit}">
+        <div class="edit">
             <edit-entry-form on-edit-toggle="$ctrl.editEntry()"/>
         </div>
     </li>
     <li>
-        <div class="list-entry" ng-click="$ctrl.editEntry()" ng-class="{'selected-entry': $ctrl.openEntryForEdit}">
+        <div class="list-entry" ng-click="$ctrl.editEntry()">
             <span>Thought Leading Human Capital Towards Trending Net Growth</span><span>2h 37m</span>
         </div>
-        <div class="edit" ng-class="{'active': $ctrl.openEntryForEdit}">
+        <div class="edit">
             <edit-entry-form on-edit-toggle="$ctrl.editEntry()"/>
         </div>
     </li>
+    <li>
+        <div class="list-entry" ng-click="$ctrl.editEntry()">
+            <span>Weeding the Garden</span><span>1h 27m</span>
+        </div>
+        <div class="edit">
+            <edit-entry-form on-edit-toggle="$ctrl.editEntry()"/>
+        </div>
+    </li>
+    <li>
+        <div class="list-entry" ng-click="$ctrl.editEntry()">
+            <span>Cleaning out the Gutters</span><span>2h 2m</span>
+        </div>
+        <div class="edit">
+            <edit-entry-form on-edit-toggle="$ctrl.editEntry()"/>
+        </div>
+    </li>
+    <li>
+        <div class="list-entry" ng-click="$ctrl.editEntry()">
+            <span>Laundry</span><span>27m</span>
+        </div>
+        <div class="edit">
+            <edit-entry-form on-edit-toggle="$ctrl.editEntry()"/>
+        </div>
+    </li>
+    <li class="date-line"><span></span>11/4<span></span></li>
 </ul>
 
 <div>
