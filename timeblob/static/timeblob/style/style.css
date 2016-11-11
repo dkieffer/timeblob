@@ -40,6 +40,7 @@ form, ul, fieldset, input {
     padding: 0;
     border: none;
     background-color: unset;
+    list-style: none;
 }
 
 select {
@@ -234,6 +235,51 @@ select::after {
     border-radius: 2px;
     margin-top: 1em;
 }
+
+/* ================================
+    Picker Window
+================================= */
+
+.picker-window {
+    display: block;
+    position: absolute;
+    background-color: rgba(45,14,38,0.9);
+    bottom: 1em;
+    left: 1em;
+    padding: 0 1em;
+    box-sizing: border-box;
+    width: calc(100% - 2em);
+    max-height: 0;
+    overflow: hidden;
+    z-index: 1;
+    transition: 0.2s;
+}
+
+.picker-window.active {
+    max-height: 70vh;
+    padding: 1em;
+    border:  1px solid rgba(255,149,77,0.5);
+    overflow: scroll;
+}
+
+.picker-window li {
+    color: rgba(255,149,77,0.8);
+    padding: 0.5em 1em;
+    width: calc(100% + 2em);
+    position: relative;
+    left: -1em;
+    box-sizing: border-box;
+    text-align: left;
+    transition: 0.2s;
+}
+
+.picker-window li:hover, .picker-window li:active {
+    color: rgba(255,149,77,1);
+    background-color: rgba(255,149,77,0.1);
+    border-right: 3px solid white;
+}
+
+
 
 /* ================================
     List View Styles
