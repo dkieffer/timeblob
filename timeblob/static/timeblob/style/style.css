@@ -159,6 +159,7 @@ select::after {
 #swap-icon {
     display: none;
     padding: 0.5em;
+    flex: 0 0 auto;
 }
 
 /* ================================
@@ -247,6 +248,7 @@ select::after {
     bottom: 1em;
     left: 1em;
     padding: 0 1em;
+    border-radius: 3px;
     box-sizing: border-box;
     width: calc(100% - 2em);
     max-height: 0;
@@ -258,7 +260,7 @@ select::after {
 .picker-window.active {
     max-height: 70vh;
     padding: 1em;
-    border:  1px solid rgba(255,149,77,0.5);
+    border:  1px solid rgba(160,60,139,0.5);;
     overflow: scroll;
 }
 
@@ -276,6 +278,7 @@ select::after {
 .picker-window li:hover, .picker-window li:active {
     color: rgba(255,149,77,1);
     background-color: rgba(255,149,77,0.1);
+    background: linear-gradient(to left, rgba(255,149,77,0.3), rgba(255,149,77,0.1) 15%);
     border-right: 3px solid white;
 }
 
@@ -570,6 +573,7 @@ edit-entry-form form input:nth-child(3n) {
     }
     #swap-icon {
         display: inline-block;
+        padding-bottom: 4em;
     }
     #current-form-area {
         padding: 0;
@@ -644,6 +648,7 @@ edit-entry-form form input:nth-child(3n) {
     }
     #current-entry-summary {
         display: block;
+        flex: 0 0 auto;
         box-sizing: border-box;
         width: 100%;
         margin: 0.5em 0 0;
