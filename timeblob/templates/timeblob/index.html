@@ -21,28 +21,8 @@
     <div class="component-wrapper">
         <current-entry-form/>
     </div>
-    <div class="nav-button" id="main-menu-button" ng-click="$ctrl.togglePopupMenu()">
-        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
-            <line fill="none" stroke="rgba(19,170,114,0.8)" stroke-width="4" stroke-linecap="round" x1="12" y1="5" x2="12" y2="5"/>
-            <line fill="none" stroke="rgba(19,170,114,0.8)" stroke-width="4" stroke-linecap="round" x1="12" y1="12" x2="12" y2="12"/>
-            <line fill="none" stroke="rgba(19,170,114,0.8)" stroke-width="4" stroke-linecap="round" x1="12" y1="19" x2="12" y2="19"/>
-        </svg>
-    </div>
-    <div class="popup-menu" ng-class="{'active': $ctrl.popupMenuActive}">
-        <div class="popup-menu-item">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
-                <line fill="none" stroke="rgba(160,60,139,1)" stroke-width="3" x1="12" y1="4" x2="12" y2="20"/>
-                <line fill="none" stroke="rgba(160,60,139,1)" stroke-width="3" x1="4" y1="12" x2="20" y2="12"/>
-            </svg>
-            Manage
-        </div>
-        <div class="popup-menu-item" ng-click="$ctrl.toggleFiltersMenu()">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
-                <line fill="none" stroke="rgba(160,60,139,1)" stroke-width="3" x1="12" y1="4" x2="12" y2="20"/>
-                <line fill="none" stroke="rgba(160,60,139,1)" stroke-width="3" x1="4" y1="12" x2="20" y2="12"/>
-            </svg>
-            Settings
-        </div>
+    <div class="component-wrapper">
+        <sub-menus/>
     </div>
     <div class="component-wrapper">
         <list-view/>

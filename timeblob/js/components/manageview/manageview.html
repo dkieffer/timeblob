@@ -1,1 +1,12 @@
-Manage View
+<div id="manage-view" class="full-screen" ng-class="{'display': $ctrl.manageViewActive}">
+    <div class="column-expanding-spacer"></div>
+    <ul>
+        <li>Projects</li>
+        <li>Clients</li>
+        <li>Organizations</li>
+    </ul>
+    <div class="action-bar">
+        <img class="nav-button" src="/static/timeblob/img/close-x.svg" ng-click="$ctrl.toggleManageView()">
+        <div class="action-bar-center"></div>
+    </div>
+</div>

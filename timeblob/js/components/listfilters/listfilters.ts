@@ -7,7 +7,7 @@ export class ListFilters
 
   toggleFiltersMenu()
   {
-    this.onFilterToggle()
+    this.onFilterToggle();
   }
 
   onFilterToggle : any

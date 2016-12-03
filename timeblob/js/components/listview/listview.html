@@ -65,6 +65,15 @@
         </div>
     </li>
     <li class="date-line"><span></span>11/4<span></span></li>
+    <li>
+        <div class="list-entry" ng-click="$ctrl.editEntry()">
+            <span>Laundry</span><span>27m</span>
+        </div>
+        <div class="edit">
+            <edit-entry-form on-edit-toggle="$ctrl.editEntry()"/>
+        </div>
+    </li>
+    <li class="list-view-end-message">7 Entries so far this week</li>
 </ul>
 
 <div>
