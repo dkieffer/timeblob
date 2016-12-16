@@ -1,12 +1,48 @@
-<div id="manage-view" class="full-screen" ng-class="{'display': $ctrl.manageViewActive}">
-    <div class="column-expanding-spacer"></div>
-    <ul>
-        <li>Projects</li>
-        <li>Clients</li>
-        <li>Organizations</li>
-    </ul>
-    <div class="action-bar">
-        <img class="nav-button" src="/static/timeblob/img/close-x.svg" ng-click="$ctrl.toggleManageView()">
+<div id="manage-view" ng-class="{'display': $ctrl.manageViewActive}">
+    <div class="full-screen fixed-background" ng-class="{'display': $ctrl.manageViewActive}"></div>
+    <div class="top-manage-list-area" ng-class="{'display': $ctrl.manageViewActive}">
+        <ul id="top-manage-list" class="manage-list">
+            <li ng-click="$ctrl.toggleSubLists(0)" ng-class="{'list-item-selected': $ctrl.projectListActive}">Projects</li>
+            <li ng-click="$ctrl.toggleSubLists(1)" ng-class="{'list-item-selected': $ctrl.clientListActive}">Clients</li>
+            <li ng-click="$ctrl.toggleSubLists(2)" ng-class="{'list-item-selected': $ctrl.orgListActive}">Organizations</li>
+        </ul>
+    </div>
+    <div class="sublists-area small-wrapper" ng-class="{'active': $ctrl.subListActive}">
+        <div class="column-expanding-spacer"></div>
+        <ul id="project-list" class="sublist" ng-class="{'display': $ctrl.projectListActive}">
+            <li>Brand Website Revamp</li>
+            <li>Time Blob</li>
+            <li>New Dashboard</li>
+        </ul>
+        <ul id="client-list" class="sublist" ng-class="{'display': $ctrl.clientListActive}">
+            <li>Supply Co.</li>
+            <li>General Inc.</li>
+            <li>National Corp.</li>
+            <li>National Packaging Partners</li>
+            <li>State Logistics LLC</li>
+            <li>International Products Inc.</li>
+            <li>Shipping Limited</li>
+            <li>Top Imports and Exports</li>
+            <li>Osgood and Sons</li>
+            <li>Reynholm Industries</li>
+            <li>Majestic 12</li>
+            <li>Maggie Chow</li>
+            <li>Page Industries</li>
+            <li>Versalife</li>
+            <li>Digitech</li>
+            <li>NASA</li>
+        </ul>
+        <ul id="organization-list" class="sublist" ng-class="{'display': $ctrl.orgListActive}">
+            <li>Freelance</li>
+            <li>Acme Industries</li>
+        </ul>
+    </div>
+
+    <div class="action-bar" ng-class="{'add-sublist-options': $ctrl.subListActive}">
+        <img class="nav-button" id="close-manage-view-button" src="/static/timeblob/img/close-x.svg" ng-click="$ctrl.toggleManageView(9)">
+        <img class="nav-button" id="cancel-manage-view-button" src="/static/timeblob/img/cancel.svg" ng-click="$ctrl.toggleSubLists()">
         <div class="action-bar-center"></div>
+        <img class="nav-button" id="save-manage-view-button" src="/static/timeblob/img/checkmark.svg" ng-click="$ctrl.toggleSubLists()">
+
     </div>
 </div>

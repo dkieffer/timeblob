@@ -18,6 +18,13 @@ body {
     overflow: hidden;
 }
 
+.small-wrapper {
+    max-width: 33.75em;
+    margin: 0 auto;
+    text-align: center;
+    overflow: hidden;
+}
+
 .edit {
     max-height: 0;
     overflow: hidden;
@@ -59,6 +66,10 @@ select {
    font-family: Montserrat, Ubuntu, Verdana, sans-serif;
 }
 
+scroll-bar-track-color {
+    background: blue;
+}
+
 select option {
     padding: 0.5em;
     text-align: right;
@@ -83,6 +94,24 @@ select::after {
 .full-screen {
     width: 100vw;
     height: 100vh;
+}
+
+.stretch-to-fill {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.fixed-background {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    background-color: rgba(45,14,38,1);
+    z-index: -1;
+}
+
+.fixed-background.display {
+    left: 0;
 }
 
 .action-bar {
@@ -285,7 +314,7 @@ select::after {
     transition: 0.2s;
 }
 
-.picker-window li:hover, .picker-window li:active {
+.picker-window li:hover, .picker-window li:active, .manage-list li:hover {
     color: rgba(255,149,77,1);
     background-color: rgba(255,149,77,0.1);
     background: linear-gradient(to left, rgba(255,149,77,0.3), rgba(255,149,77,0.1) 15%);
@@ -307,7 +336,11 @@ select::after {
 }
 
 .column-expanding-spacer {
-    flex: 1 0 auto;
+    flex: 1 1 auto;
+}
+
+.column-shrinking-spacer {
+    flex: 0 1 auto;
 }
 
 .nodisplay {
@@ -538,44 +571,79 @@ edit-entry-form form input:nth-child(3n) {
 /* ================================
     Manage View
 ================================= */
+
 #manage-view {
     display: block;
-    position: fixed;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    right: 100%;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(45,14,38,1);
-    background-image: unset;
-    left: 100%;
-    top: 0;
-    transition: left 0.2s;
-}
-
-#manage-view.display {
-    display: flex;
-    flex-flow: column;
     z-index: 1;
+}
+#manage-view.display {
+    right: 0;
+}
+.top-manage-list-area {
+    width: 11.25em;
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    left: 100%;
+    height: 100vh;
+}
+.top-manage-list-area.display {
     left: 0;
 }
-
-#manage-view ul {
-    width: 36em;
-    display: flex;
-    flex-flow: column;
-    margin: 0 auto 2em;
+#top-manage-list {
+    position: fixed;
+    margin: 0 0 3.5em 3.5em;
+    bottom: 0;
+    width: inherit;
 }
-
-#manage-view ul li {
+#top-manage-list li, .sublist.display li {
+    box-sizing: border-box;
     padding: 1em;
     text-align: left;
 }
-
-#manage-view .action-bar {
+.sublists-area {
+    max-width: 22.5em;
+    min-height: 100vh;
+    margin-left: 16em;
+    padding-top: 30vh;
     display: flex;
-    //position: absolute;
-    //right: 0;
-    //bottom: 0;
+    flex-flow: column;
+    position: relative;
+    top: 0;
+    box-sizing: border-box;
+}
+.sublist {
+    display: none;
+    padding-bottom: 3.5em;
+}
+.sublist.display {
+    display: block;
+}
+.list-item-selected {
+    color: rgba(255,149,77,1);
+    background-color: rgba(255,149,77,0.1);
+    //background: linear-gradient(to left, rgba(255,149,77,0.3), rgba(255,149,77,0.1) 15%);
+    border-right: 3px solid rgba(255,149,77,1);
+}
+#manage-view .action-bar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+#manage-view.display .action-bar {
+    display: flex;
 }
 
+#cancel-manage-view-button, #save-manage-view-button {
+    display: none;
+}
 
 /* ================================
     Pop-up Menu
@@ -780,7 +848,7 @@ edit-entry-form form input:nth-child(3n) {
     .list-view-end-message.active {
         max-height: 1000px;
     }
-    #filters-menu.fade-in .action-bar, #manage-view .action-bar {
+    #filters-menu.fade-in .action-bar {
         display: flex;
     }
     #filter-list-title-bar {
@@ -804,7 +872,38 @@ edit-entry-form form input:nth-child(3n) {
         position: absolute;
         bottom: 0;
     }
+    #manage-view {
+        flex-flow: column;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
     #manage-view ul {
         width: 100%;
+    }
+    .top-manage-list-area {
+        width: 100vw;
+    }
+    #top-manage-list {
+        margin: 0 0 3.5em;
+    }
+    .sublists-area {
+        margin: 0;
+        padding: 0;
+        left: 200%;
+        background-color: rgba(45,14,38,1);
+    }
+    .sublists-area.active {
+        left: 0;
+    }
+    #manage-view .action-bar {
+        height: auto;
+        float: none;
+        background-color: rgba(45,14,38,1);
+    }
+    #manage-view .action-bar.add-sublist-options #close-manage-view-button {
+        display: none;
+    }
+    .add-sublist-options  #cancel-manage-view-button, .add-sublist-options #save-manage-view-button {
+        display: inline;
     }
 }
