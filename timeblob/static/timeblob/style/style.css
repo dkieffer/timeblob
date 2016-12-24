@@ -186,13 +186,17 @@ select::after {
     transition: color 1s;
 }
 
-#stopwatch-time.running {
+#stopwatch.running #stopwatch-time {
   color: rgba(255,255,255,1)
 }
 
 #clock-hand-inner-glow, #clock-hand-big-back-glow {
     opacity: 0;
     transition: opacity 2s;
+}
+
+#stopwatch.running #clock-hand #clock-hand-inner-glow, #stopwatch.running #clock-hand #clock-hand-big-back-glow {
+        opacity: 1;
 }
 
 #swap-icon {

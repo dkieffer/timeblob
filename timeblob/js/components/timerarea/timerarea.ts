@@ -42,6 +42,30 @@ export class TimerArea extends CurrentEntrySensitiveComponent
 
   }
 
+// Scope is undefined here so the watch function does not work
+  toggleClock($scope) {
+      var rotateClock;
+      var ctrl = this;
+      var degree = 0;
+      var transRotation;
+      ctrl.isRunning = !ctrl.isRunning;
+      console.log('toggling clock');
+      rotateClock = setInterval(function(){
+          if(!ctrl.isRunning) {
+            console.log('Clock stopped');
+            clearInterval(rotateClock);
+            return;
+          } else {
+            degree = degree + 0.24;
+            console.log(degree);
+            ctrl.clockHandStyle = { 'transform': 'rotate(' + degree + 'deg)'};
+            $scope.$watch('number', function(degree){
+                transRotation = 'rotate('+ degree +'deg)';
+            });  
+          }
+      }, 40);
+  }
+
   updateClockHandle()
   {
     var ctrl = this;

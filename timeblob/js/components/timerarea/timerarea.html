@@ -1,7 +1,7 @@
 <div class="timer-area stopwatch-component">
     <div class="v-spacer"></div>
-    <div id="stopwatch" class="stopwatch-component" ng-click="$ctrl.updateClockHandle()">
-        <h1 id="stopwatch-time" class="stopwatch-component" ng-class="{running: $ctrl.isRunning}"><span  am-time-ago="$ctrl.startTime">Are you here?</span></h1>
+    <div id="stopwatch" class="stopwatch-component" ng-class="{'running': $ctrl.isRunning}" ng-click="$ctrl.toggleClock()">
+        <h1 id="stopwatch-time" class="stopwatch-component"><span am-time-ago="$ctrl.startTime">Are you here?</span></h1>
         <svg id="clock-face" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="400px" height="400px" viewBox="0 0 400 400" enable-background="new 0 0 400 400" xml:space="preserve">
             <circle fill="none" stroke="#602551" stroke-width="4" cx="200" cy="200" r="195"/>
             <circle fill="#602551" cx="200" cy="200" r="175"/>
@@ -28,8 +28,8 @@
             <filter id="blur-3" x="-80%" width="210%">
                 <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
             </filter>
-            <polygon id="clock-hand-big-back-glow" opacity="0.75" fill="#FF45DC" points="199.965,231.158 160.768,148.144 201.662,21.631 246.96,162.516 " filter="url(#blur-25)"/>
-            <polygon opacity="0.2" fill="#FF45DC" points="199.965,231.158 196.969,171.535 201.512,40.202 206.111,172.074 " filter="url(#blur-10)"/>
+            <polygon id="clock-hand-big-back-glow" ng-class="{'full-opacity': $ctrl.isRunning}" opacity="0.75" fill="#FF45DC" points="199.965,231.158 160.768,148.144 201.662,21.631 246.96,162.516 " filter="url(#blur-25)"/>
+            <polygon opacity="0.2" ng-class="{'full-opacity': $ctrl.isRunning}" fill="#FF45DC" points="199.965,231.158 196.969,171.535 201.512,40.202 206.111,172.074 " filter="url(#blur-10)"/>
             <polygon id="clock-hand-inner-glow" opacity="0.7" fill="#FFFFFF" points="199.965,231.158 196.969,171.535 201.512,40.202 206.111,172.074 " filter="url(#blur-3)"/>
         </svg>
         <!--
