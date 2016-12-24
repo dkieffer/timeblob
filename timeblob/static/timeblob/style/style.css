@@ -137,6 +137,20 @@ select::after {
     right: 0;
 }
 
+.click-catcher {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    display: none;
+    z-index: 1;
+}
+
+.click-catcher.active {
+    display: block;
+}
+
 /* ================================
     Stopwatch Styles
 ================================= */
@@ -654,6 +668,7 @@ edit-entry-form form input:nth-child(3n) {
 ================================= */
 .popup-menu {
     max-height: 0px;
+    z-index: 2;
     position: absolute;
     top: 2em;
     right: 0.5em;
