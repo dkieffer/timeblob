@@ -194,10 +194,11 @@ select::after {
 #stopwatch-time {
     color: rgba(160,60,139,0);
     text-align: center;
-    z-index: 50;
     position: absolute;
     margin: 0;
+    width: 100%;
     transition: color 1s;
+    top: calc(50% - 0.75em);
 }
 
 #stopwatch.running #stopwatch-time {
