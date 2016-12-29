@@ -13,7 +13,7 @@
     <list-filters on-filter-toggle="$ctrl.toggleFiltersMenu()" filters-menu-active="$ctrl.filtersMenuActive"/>
 </div>
 
-<div class="column-expanding-spacer"></div>
+<div class="column-expanding-spacer" ng-click="$ctrl.toggleListViewNav()"></div>
 <ul id="sessions-list">
     <li class="date-line"><span></span>11/5<span></span></li>
     <li ng-class="{'selected-entry': $ctrl.openEntryForEdit}">
