@@ -336,8 +336,7 @@ select::after {
 .picker-window li:hover, .picker-window li:active, .manage-list li:hover {
     color: rgba(255,149,77,1);
     background-color: rgba(255,149,77,0.1);
-    background: linear-gradient(to left, rgba(255,149,77,0.3), rgba(255,149,77,0.1) 15%);
-    border-right: 3px solid white;
+    border-right: 3px solid rgba(255,149,77,1);
 }
 
 
@@ -621,11 +620,35 @@ edit-entry-form form input:nth-child(3n) {
     bottom: 0;
     width: inherit;
 }
-#top-manage-list li, .sublist.display li {
+#top-manage-list li {
     box-sizing: border-box;
     padding: 1em;
     text-align: left;
 }
+
+.sublist.display li input {
+    text-align: left;
+    color: rgba(255,149,77,1);
+    box-sizing: border-box;
+    padding: 1em 0.5em 0.15em;
+    margin: 0 0 0.85em;
+    width: 100%;
+    font-size: 1em;
+    font-family: Montserrat, Ubuntu, Verdana, sans-serif;
+    font-weight: 300;
+    border-bottom: 1px solid rgba(255,149,77,0);
+    transition: 0.3s;
+}
+
+.sublist.display li input:focus {
+    color: rgba(255,255,255,1);
+    border-bottom: 1px solid rgba(255,149,77,0.5);
+}
+
+.sublist.display li input::-moz-selection, .sublist.display li input::selection  {
+    background-color: rgba(80,120,212,1);
+}
+
 .sublists-area {
     max-width: 22.5em;
     min-height: 100vh;
@@ -647,8 +670,8 @@ edit-entry-form form input:nth-child(3n) {
 .list-item-selected {
     color: rgba(255,149,77,1);
     background-color: rgba(255,149,77,0.1);
-    //background: linear-gradient(to left, rgba(255,149,77,0.3), rgba(255,149,77,0.1) 15%);
-    border-right: 3px solid rgba(255,149,77,1);
+    background: linear-gradient(to left, rgba(255,149,77,0.3), rgba(255,149,77,0.1) 15%);
+    border-right: 3px solid rgba(255,255,255,1);
 }
 #manage-view .action-bar {
     display: none;
