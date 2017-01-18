@@ -8,7 +8,7 @@ body {
     //background: linear-gradient(to top, rgba(35,14,28,1), rgba(45,14,38,1)50%);
     color: rgba(160,60,139,1);
     font-family: Montserrat, Ubuntu, Verdana, sans-serif;
-    font-weight: 300;
+    font-weight: 200;
 }
 
 .wrapper {
@@ -152,6 +152,27 @@ select::after {
 }
 
 /* ================================
+    Color Theme Control
+================================= */
+.primary-action-color {
+    fill: rgba(160,60,139,1);
+    stroke: rgba(160,60,139,1);
+    color: rgba(160,60,139,1);
+}
+
+.secondary-action-fill {
+    fill: rgba(85,181,135,1);
+}
+
+.secondary-action-stroke {
+    stroke: rgba(85,181,135,1);
+}
+
+.secondary-action-color {
+    color: rgba(85,181,135,1);
+}
+
+/* ================================
     Stopwatch Styles
 ================================= */
 
@@ -205,12 +226,12 @@ select::after {
   color: rgba(255,255,255,1)
 }
 
-#clock-hand-inner-glow, #clock-hand-big-back-glow {
+#clock-hand-inner-glow, #clock-hand-big-back-glow, #clock-face-inner {
     opacity: 0;
     transition: opacity 2s;
 }
 
-#stopwatch.running #clock-hand #clock-hand-inner-glow, #stopwatch.running #clock-hand #clock-hand-big-back-glow {
+#stopwatch.running #clock-hand #clock-hand-inner-glow, #stopwatch.running #clock-hand #clock-hand-big-back-glow,  #stopwatch.running #clock-face #clock-face-inner {
         opacity: 1;
 }
 
@@ -255,7 +276,7 @@ select::after {
     text-align: right;
     text-overflow: ellipsis;
     flex: 0 0 5em;
-    font-weight: 100em;
+    font-weight: 200;
 }
 
 #current-entry-form input {
@@ -265,7 +286,7 @@ select::after {
     box-sizing: border-box;
     border: none;
     border-bottom: 1px solid rgba(90,90,90,0);
-    color: rgba(255,149,77,1);
+    color: rgba(239,174,60,1);
     font-family: Montserrat, Ubuntu, Verdana, sans-serif;
     font-size: 1em;
     transition: border 0.5s, color 0.5s;
@@ -275,7 +296,7 @@ select::after {
 }
 
 #current-entry-form.focus input {
-    border-bottom: 1px solid rgba(255,149,77,0.5);
+    border-bottom: 1px solid rgba(239,174,60,0.5);
 }
 
 #current-entry-form.focus input:focus {
@@ -296,7 +317,7 @@ select::after {
 }
 
 /* ================================
-    Picker Window
+    Picker Window & Quick Swap
 ================================= */
 
 .picker-window {
@@ -323,7 +344,7 @@ select::after {
 }
 
 .picker-window li {
-    color: rgba(255,149,77,0.8);
+    color: rgba(239,80,80,0.8);
     padding: 0.5em 1em;
     width: calc(100% + 2em);
     position: relative;
@@ -334,9 +355,13 @@ select::after {
 }
 
 .picker-window li:hover, .picker-window li:active, .manage-list li:hover {
-    color: rgba(255,149,77,1);
-    background-color: rgba(255,149,77,0.1);
-    border-right: 3px solid rgba(255,149,77,1);
+    color: rgba(239,80,80,1);
+    background-color: rgba(239,80,80,0.1);
+    border-right: 3px solid rgba(239,174,60,1);
+}
+
+.picker-window p {
+    //color: rgba(85,181,135,1); 
 }
 
 
@@ -429,8 +454,8 @@ select::after {
     position: fixed;
     bottom: 0;
     width: 100vw;
-    border-top: 1px solid rgba(19,170,114,0.5);
-    background-color: rgba(0,60,54,1);
+    border-top: 1px solid rgba(85,181,135,0.2);
+    background-color: rgba(0,61,55,1);
     box-shadow: 0px -10px 10px rgba(0,0,0,0.2);
     display: none;
     text-align: center;
@@ -450,7 +475,7 @@ select::after {
 }
 
 .time-total .total-time-tag {
-    color: rgba(19,170,114,0.5);
+    color: rgba(85,181,135,0.5);
 }
 
 #list-view-button {
@@ -513,9 +538,9 @@ edit-entry-form form input:nth-child(3n) {
 #filter-list-title-bar {
     display: inline-flex;
     padding: 0 1em;
-    border-bottom: 1px solid rgba(19,170,114,0.2);
-    background-color: rgba(0,60,54,1);
-    color: rgba(19,170,114,1);
+    border-bottom: 1px solid rgba(85,181,135,0.2);
+    background-color: rgba(0,61,55,1);
+    color: rgba(85,181,135,1);
     vertical-align: middle;
     cursor: pointer;
 }
@@ -523,13 +548,13 @@ edit-entry-form form input:nth-child(3n) {
 #filters-menu {
     z-index: 2;
     width: 100%;
-    color: rgba(19,170,114,1);
+    color: rgba(85,181,135,1);
 }
 
 #filters-menu h2 {
-    background-color: rgba(0,60,54,1);
-    border-top: 1px solid rgba(19,170,114,0.2);
-    color: rgba(19,170,114,1);
+    background-color: rgba(0,61,55,1);
+    border-top: 1px solid rgba(85,181,135,0.2);
+    color: rgba(85,181,135,1);
     line-height: 1.5rem;
     padding: 0.5rem;
     margin: 0;
@@ -539,7 +564,7 @@ edit-entry-form form input:nth-child(3n) {
 
 #filters-menu form {
     width: 100%;
-    background: linear-gradient(to bottom, rgba(0,60,54,1), rgba(0,30,24,1) 33%);
+    background: linear-gradient(to bottom, rgba(0,61,55,1), rgba(0,30,24,1) 33%);
 }
 
 #filters-menu form .fieldset {
@@ -577,12 +602,12 @@ edit-entry-form form input:nth-child(3n) {
 }
 
 #filters-menu form .fieldset.active label, #filters-menu form .fieldset.active input, #filters-menu form .fieldset.active select {
-    color: rgba(19,170,114,1);
+    color: rgba(85,181,135,1);
 }
 
 #filters-menu form.edit .action-bar {
-    background-color: rgba(0,60,54,1);
-    border-top: 1px solid rgba(19,170,114,0.2);
+    background-color: rgba(0,61,55,1);
+    border-top: 1px solid rgba(85,181,135,0.2);
     box-shadow: 0px 8px 8px black;
 }
 
@@ -628,21 +653,21 @@ edit-entry-form form input:nth-child(3n) {
 
 .sublist.display li input {
     text-align: left;
-    color: rgba(255,149,77,1);
+    color: rgba(239,174,60,1);
     box-sizing: border-box;
     padding: 1em 0.5em 0.15em;
     margin: 0 0 0.85em;
     width: 100%;
     font-size: 1em;
     font-family: Montserrat, Ubuntu, Verdana, sans-serif;
-    font-weight: 300;
-    border-bottom: 1px solid rgba(255,149,77,0);
+    font-weight: 200;
+    border-bottom: 1px solid rgba(239,174,60,0);
     transition: 0.3s;
 }
 
 .sublist.display li input:focus {
     color: rgba(255,255,255,1);
-    border-bottom: 1px solid rgba(255,149,77,0.5);
+    border-bottom: 1px solid rgba(239,174,60,0.5);
 }
 
 .sublist.display li input::-moz-selection, .sublist.display li input::selection  {
@@ -668,9 +693,9 @@ edit-entry-form form input:nth-child(3n) {
     display: block;
 }
 .list-item-selected {
-    color: rgba(255,149,77,1);
-    background-color: rgba(255,149,77,0.1);
-    background: linear-gradient(to left, rgba(255,149,77,0.3), rgba(255,149,77,0.1) 15%);
+    color: rgba(239,174,60,1);
+    background-color: rgba(239,174,60,0.1);
+    background: linear-gradient(to left, rgba(239,174,60,0.3), rgba(239,174,60,0.1) 15%);
     border-right: 3px solid rgba(255,255,255,1);
 }
 #manage-view .action-bar {

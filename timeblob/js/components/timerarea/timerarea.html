@@ -3,7 +3,7 @@
     <div id="stopwatch" class="stopwatch-component" ng-class="{'running': $ctrl.isRunning}" ng-click="$ctrl.toggleClock()">
         <svg id="clock-face" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="400px" height="400px" viewBox="0 0 400 400" enable-background="new 0 0 400 400" xml:space="preserve">
             <circle fill="none" stroke="#602551" stroke-width="4" cx="200" cy="200" r="195"/>
-            <circle fill="#602551" cx="200" cy="200" r="175"/>
+            <circle id="clock-face-inner" fill="#602551" cx="200" cy="200" r="175"/>
             <line fill="none" stroke="#863EA2" opacity="0.2" stroke-width="4" x1="200" y1="64" x2="200" y2="36"/>
             <line fill="none" stroke="#863EA2" opacity="0.2" stroke-width="4" x1="132" y1="82.221" x2="118" y2="57.972"/>
             <line fill="none" stroke="#863EA2" opacity="0.2" stroke-width="4" x1="82.221" y1="132" x2="57.972" y2="118"/>
@@ -37,8 +37,8 @@
         -->
     </div>
     <div id="current-entry-summary" ng-click="$ctrl.toggleCurrentEntryForm()">
-        <div>Project Rhubarb</div>
-        <div>Thought Leading Human Capital Towards Trending Net Growth</div>
+        <div class="secondary-action-color">Project Rhubarb</div>
+        <div class="secondary-action-color">Thought Leading Human Capital Towards Trending Net Growth</div>
     </div>
     <div class="component-wrapper">
         <quick-swap />
