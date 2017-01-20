@@ -17,6 +17,7 @@ cd timeblob
 
 You need the following things installed:
 * Python 2.7
+* Node.js
 * GNU Make
 * GNU/Linux or Mac OS
 
