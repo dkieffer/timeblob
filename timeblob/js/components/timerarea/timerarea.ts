@@ -7,6 +7,7 @@ export class TimerArea extends CurrentEntrySensitiveComponent
 {
   private $interval : ng.IIntervalService
   isRunning : boolean
+  isStarting : boolean
   currentEntry: interfaces.ITimeEntry
   startTime: number
   lastUpdated: Date
@@ -48,6 +49,8 @@ export class TimerArea extends CurrentEntrySensitiveComponent
       var ctrl = this;
       var degree = 0;
       var transRotation;
+      //isStarting is for the period when the client starts the timer, but the server has not yet confirmed that the timer has been started. Below it toggles just for testing.
+      ctrl.isStarting = !ctrl.isStarting;
       ctrl.isRunning = !ctrl.isRunning;
       console.log('toggling clock');
       rotateClock = setInterval(function(){
