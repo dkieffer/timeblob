@@ -6,6 +6,8 @@ declare var TEMPLATE:any
 export class CurrentEntryForm {
     currentEntryFormActive: boolean
     isFocused: boolean
+    //notificationOn is for banner notifications.
+    notificationOn: boolean
     toggleCurrentEntryForm()
     {
         this.currentEntryFormActive = !this.currentEntryFormActive

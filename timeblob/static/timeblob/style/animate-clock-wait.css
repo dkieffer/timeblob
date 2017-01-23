@@ -1,44 +1,44 @@
 #stopwatch.starting #zero-tick {
-	animation: 1s infinite zero-tick;
+	animation: 2s infinite zero-tick;
 }
 #stopwatch.starting #one-tick {
-	animation: 1s infinite one-tick;
+	animation: 2s infinite one-tick;
 }
 #stopwatch.starting #two-tick {
-	animation: 1s infinite two-tick;
+	animation: 2s infinite two-tick;
 }
 #stopwatch.starting #three-tick {
-	animation: 1s infinite three-tick;
+	animation: 2s infinite three-tick;
 }
 #stopwatch.starting #four-tick {
-	animation: 1s infinite four-tick;
+	animation: 2s infinite four-tick;
 }
 #stopwatch.starting #five-tick {
-	animation: 1s infinite five-tick;
+	animation: 2s infinite five-tick;
 }
 #stopwatch.starting #six-tick {
-	animation: 1s infinite six-tick;
+	animation: 2s infinite six-tick;
 }
 #stopwatch.starting #clock-face #seven-tick {
-	animation: 1s infinite seven-tick;
+	animation: 2s infinite seven-tick;
 }
 #stopwatch.starting #clock-face #eight-tick {
-	animation: 1s infinite eight-tick;
+	animation: 2s infinite eight-tick;
 }
 #stopwatch.starting #clock-face #nine-tick {
-	animation: 1s infinite nine-tick;
+	animation: 2s infinite nine-tick;
 }
 #stopwatch.starting #clock-face #ten-tick {
-	animation: 1s infinite ten-tick;
+	animation: 2s infinite ten-tick;
 }
 #stopwatch.starting #clock-face #eleven-tick {
-	animation: 1s infinite eleven-tick;
+	animation: 2s infinite eleven-tick;
 }
 
 @keyframes zero-tick {
 	0% {opacity: 0.2}
-	7% {opacity: 0.5}
-	14% {opacity: 0.2}
+	14% {opacity: 0.5}
+	28% {opacity: 0.2}
 
 	100% {opacity: 0.2}
 }
@@ -48,8 +48,8 @@
     0% {opacity: 0.2}
 
     7% {opacity: 0.2}
-    14% {opacity: 0.5}
-    21% {opacity: 0.2}
+    21% {opacity: 0.5}
+    35% {opacity: 0.2}
 
     100% {opacity: 0.2}
 }
@@ -58,8 +58,8 @@
     0% {opacity: 0.2}
 
     14% {opacity: 0.2}
-    21% {opacity: 0.5}
-    28% {opacity: 0.2}
+    28% {opacity: 0.5}
+    42% {opacity: 0.2}
 
     100% {opacity: 0.2}
 }
@@ -68,8 +68,8 @@
     0% {opacity: 0.2}
 
     21% {opacity: 0.2}
-    28% {opacity: 0.5}
-    35% {opacity: 0.2}
+    35% {opacity: 0.5}
+    50% {opacity: 0.2}
 
     100% {opacity: 0.2}
 }
@@ -78,8 +78,8 @@
     0% {opacity: 0.2}
 
     28% {opacity: 0.2}
-    35% {opacity: 0.5}
-    42% {opacity: 0.2}
+    42% {opacity: 0.5}
+    57% {opacity: 0.2}
 
     100% {opacity: 0.2}
 }
@@ -88,8 +88,8 @@
     0% {opacity: 0.2}
 
     35% {opacity: 0.2}
-    42% {opacity: 0.5}
-    50% {opacity: 0.2}
+    50% {opacity: 0.5}
+    64% {opacity: 0.2}
 
     100% {opacity: 0.2}
 }
@@ -98,8 +98,8 @@
     0% {opacity: 0.2}
 
     42% {opacity: 0.2}
-    50% {opacity: 0.5}
-    57% {opacity: 0.2}
+    57% {opacity: 0.5}
+    71% {opacity: 0.2}
 
     100% {opacity: 0.2}
 }
@@ -108,8 +108,8 @@
     0% {opacity: 0.2}
 
     50% {opacity: 0.2}
-    57% {opacity: 0.5}
-    64% {opacity: 0.2}
+    64% {opacity: 0.5}
+    78% {opacity: 0.2}
 
     100% {opacity: 0.2}
 }
@@ -118,8 +118,8 @@
     0% {opacity: 0.2}
 
     57% {opacity: 0.2}
-    64% {opacity: 0.5}
-    71% {opacity: 0.2}
+    71% {opacity: 0.5}
+    85% {opacity: 0.2}
 
     100% {opacity: 0.2}
 }
@@ -128,8 +128,8 @@
     0% {opacity: 0.2}
 
     64% {opacity: 0.2}
-    71% {opacity: 0.5}
-    78% {opacity: 0.2}
+    78% {opacity: 0.5}
+    92% {opacity: 0.2}
 
     100% {opacity: 0.2}
 }
@@ -138,26 +138,23 @@
     0% {opacity: 0.2}
 
     71% {opacity: 0.2}
-    78% {opacity: 0.5}
-    85% {opacity: 0.2}
-
+    85% {opacity: 0.5}
     100% {opacity: 0.2}
 }
 
 @keyframes ten-tick {
-    0% {opacity: 0.2}
+    0% {opacity: 0.3}
+    7% {opacity: 0.2}
 
     78% {opacity: 0.2}
-    85% {opacity: 0.5}
-    92% {opacity: 0.2}
-
-    100% {opacity: 0.2}
+    92% {opacity: 0.5}
+    100% {opacity: 0.3}
 }
 
 @keyframes eleven-tick {
-    0% {opacity: 0.2}
+    0% {opacity: 0.5}
+    14% {opacity: 0.2}
 
     85% {opacity: 0.2}
-    92% {opacity: 0.5}
-    100% {opacity: 0.2}
+    100% {opacity: 0.5}
 }

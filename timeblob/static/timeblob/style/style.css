@@ -353,6 +353,29 @@ select::after {
     overflow: scroll;
 }
 
+.notification-banner {
+    display: block;
+    position: absolute;
+    background-color: rgba(45,14,38,0.9);
+    top: 1em;
+    left: 1em;
+    padding: 0 1em;
+    border-radius: 3px;
+    box-sizing: border-box;
+    width: calc(100% - 2em);
+    max-height: 0;
+    overflow: hidden;
+    z-index: 1;
+    transition: 0.2s;
+}
+
+.notification-banner.active {
+    max-height: 70vh;
+    padding: 1em;
+    border:  1px solid rgba(160,60,139,0.5);;
+    //overflow: scroll;
+}
+
 .picker-window li {
     color: rgba(85,181,135,0.8);
     padding: 0.5em 1em;
