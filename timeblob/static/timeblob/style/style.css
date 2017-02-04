@@ -688,6 +688,19 @@ edit-entry-form form input:nth-child(3n) {
     text-align: left;
 }
 
+#top-manage-list li.list-item-selected:hover::before {
+    content: '';
+    background-image: url(/static/timeblob/img/close-x.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 100% 50%;
+    position: absolute;
+    display: inline-block;
+    width: calc(100% - 2em);
+    height: 1.3em;
+    color: white;
+}
+
 .sublist.display li input {
     text-align: left;
     color: rgba(85,181,135,1);
