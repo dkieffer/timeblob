@@ -26,17 +26,19 @@ body {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s;
-    box-shadow: 0px 12px 8px rgba(0,0,0,0.3);
+    box-shadow: 0px 12px 24px rgba(0,0,0,0.4);
 }
 
 .edit-options-bar {
     border-top: 1px solid rgba(239,175,227,0.1);
-    background-color: rgba(96,37,81,1);
+    /*background-color: rgba(96,37,81,1);*/
+    background: linear-gradient(to bottom, rgba(45,14,38,1), rgba(196,37,81,1));
     position: relative;
     z-index: 3;
 }
 
 .nav-button {
+    color: white;
     padding: 1em;
     display: inline-block;
     cursor: pointer;
@@ -234,7 +236,7 @@ select::after {
 }
 
 #stopwatch.running #clock-hand #clock-hand-inner-glow, #stopwatch.running #clock-hand #clock-hand-big-back-glow,  #stopwatch.running #clock-face #clock-face-inner {
-        opacity: 1;
+    opacity: 1;
 }
 
 #swap-icon {
@@ -249,16 +251,14 @@ select::after {
 
 /* This is a new thing where I am trying to unify the style of the entry forms */
 
-edit-entry-form form {
+form.edit-form {
     text-align: left;
     padding: 0.5em 0 1em;
+}
+edit-entry-form form {
     background: linear-gradient(to bottom, rgba(96,37,81,1), rgba(43,20,48,1) 33%);
 }
-
-edit-entry-form div {
-}
-
-edit-entry-form form label {
+form.edit-form label {
     padding: 0.65rem 1rem 0;
     font-size: 0.7rem;
     display: block;
@@ -268,8 +268,7 @@ edit-entry-form form label {
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
-
-edit-entry-form form input {
+form.edit-form input {
     padding: 0 1em 0.35em;
     color: rgba(239,175,227,1);
     border: none;
@@ -280,14 +279,12 @@ edit-entry-form form input {
     border-bottom: 1px solid rgba(239,174,60,0);
     transition: 0.2s;
 }
-edit-entry-form form input:focus {
+form.edit-form input:focus, form.edit-form input:focus + input {
     color: white;
-    border-bottom: 1px solid rgba(239,174,60,0.5);
+    border-bottom: 1px solid rgba(196,37,81,1);
 }
 #input-edit-end-date, #input-edit-start-date {
     display: block;
-    //max-height: 0;
-    //transition: max-height 0.2s;
 }
 .form-time-line {
     display: flex;
@@ -298,10 +295,6 @@ edit-entry-form form input:focus {
 .form-time-line div input {
     padding-right: 0;
 }
-.form-time-line div input:focus + #input-edit-end-date, .form-time-line div input:focus + #input-edit-start-date, #input-edit-start-date:focus, #input-edit-end-date:focus {
-    //max-height: 1000px;
-}
-
 
 /* ================================
 ================================= */
@@ -324,20 +317,17 @@ edit-entry-form form input:focus {
     vertical-align: middle;
     box-sizing: border-box;
 }
-
+/*
 #current-entry-form {
     width: 100%;
 }
-
 #current-form-area .drawer-view-nav {
     display: none;
 }
-
 #current-entry-form div {
     display: flex;
     flex-flow: row;
 }
-
 #current-entry-form label {
     box-sizing: border-box;
     padding: 0.5em 0;
@@ -347,7 +337,6 @@ edit-entry-form form input:focus {
     font-weight: 200;
     color: rgba(160,60,139,1);
 }
-
 #current-entry-form input {
     padding: 0.5em 0.25em 0.15em;
     margin: 0 0.5em 0.35em 0.5em;
@@ -363,17 +352,15 @@ edit-entry-form form input:focus {
     flex: 1 1;
     min-width: 0;
 }
-
 #current-entry-form.focus input {
     border-bottom: 1px solid rgba(239,174,60,0.5);
 }
-
 #current-entry-form.focus input:focus {
     border-bottom: 1px solid rgba(255,255,255,1);
     color: rgba(255,255,255,1);
     outline: none;
 }
-
+*/
 #entry-form-submit-button {
     font-family: Montserrat, Ubuntu, Verdana, sans-serif;
     border: solid 2px rgba(160,60,139,0.5);
@@ -548,7 +535,6 @@ edit-entry-form form input:focus {
     border-bottom: solid 1px rgba(239,175,227,0.32);
     flex: auto;
 }
-
 .list-view-nav {
     position: fixed;
     bottom: 0;
@@ -560,7 +546,6 @@ edit-entry-form form input:focus {
     text-align: center;
     transition: right 0.2s;
 }
-
 .time-total {
     padding: 1rem;
     flex: 1 0 auto;
@@ -568,15 +553,12 @@ edit-entry-form form input:focus {
     color: white;
     margin: 0;
 }
-
 .time-total .total-time-digits, .time-total .total-time-tag {
     line-height: 1.5rem;
 }
-
 .time-total .total-time-tag {
     color: rgba(85,181,135,0.5);
 }
-
 #list-view-button {
     display: none;
     padding: 1em;
@@ -586,36 +568,38 @@ edit-entry-form form input:focus {
     left: 0;
     cursor: pointer;
 }
-
 .list-view-end-message {
     padding: 1.5em;
     box-sizing: border-box;
     font-size: 0.9em;
     opacity: 0.5;
 }
+.selected-entry .edit edit-entry-form .edit-options-bar {
+    background: linear-gradient(to bottom, rgba(43,20,48,1), rgba(63,40,48,1));
+}
 
 /* ================================
     Edit Entry Form Styles
 
 
-edit-entry-form form {
+form.edit-form {
     font-size: 0.9em;
     background: linear-gradient(to bottom, rgba(96,37,81,1), rgba(43,20,48,1) 33%);
     text-align: left;
     padding: 1em;
 }
 
-edit-entry-form form div, #filters-menu form .fieldset {
+form.edit-form div, #filters-menu form .fieldset {
     display: flex;
     flex-flow: row;
 }
 
-edit-entry-form form label {
+form.edit-form label {
     padding: 0.5em 0;
     flex: 0 1;
 }
 
-edit-entry-form form input {
+form.edit-form input {
     padding: 0.5em 0 0.5em 0.5em;
     color: rgba(239,175,227,1);
     border: none;
@@ -626,7 +610,7 @@ edit-entry-form form input {
     flex: 1 1;
 }
 
-edit-entry-form form input:nth-child(3n) {
+form.edit-form input:nth-child(3n) {
     flex: 0 1;
 }
 
@@ -911,13 +895,15 @@ edit-entry-form form input:nth-child(3n) {
     #current-form-area.display {
         bottom: 0%;
         display: block;
+        z-index: 1;
     }
     #current-entry-form {
         border-top: 1px solid rgba(239,175,227,0.1);
         box-sizing: border-box;
-        padding: 1em;
+        padding: 1em 0;
         width: 100vw;
     }
+    /*
     #current-entry-form div {
         display: flex;
         flex-flow: row;
@@ -933,8 +919,9 @@ edit-entry-form form input:nth-child(3n) {
         padding: 0.5em 0 0.15em 0;
         min-width: 0;
     }
-    #current-form-area .drawer-view-nav {
-        display: block;
+    */
+    #current-form-area .action-bar {
+        display: flex;
         box-sizing: border-box;
         width: 100vw;
     }
