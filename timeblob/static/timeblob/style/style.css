@@ -128,6 +128,9 @@ select::after {
     display: block;
     background-color: rgba(0,0,0,0.4);
 }
+.primary-action-stroke {
+    stroke: rgba(85,181,135,1);
+}
 
 /* ================================
     Stopwatch Styles
@@ -249,7 +252,7 @@ form.edit-form input:focus, form.edit-form input:focus + input {
     color: rgba(85,181,135,1);
 }
 #current-form-area {
-    padding: 1em;
+    padding: 4em 0 1em;
     max-width: 32em;
     display: inline-block;
     vertical-align: middle;
@@ -338,7 +341,7 @@ form.edit-form input:focus, form.edit-form input:focus + input {
 .list-view {
     max-width: 36em;
     margin: 0 auto;
-    padding-bottom: 3em;
+    padding: 3em 0;
     text-align: center;
     overflow: auto;
 }
@@ -367,7 +370,7 @@ form.edit-form input:focus, form.edit-form input:focus + input {
     flex-flow: row;
 }
 .list-entry:hover {
-    background-color: rgba(106,47,91,1);
+    background-color: rgba(106,47,91,0.5);
     color: white;
 }
 .list-entry span:first-child {
@@ -397,6 +400,7 @@ form.edit-form input:focus, form.edit-form input:focus + input {
     padding: 0.5em 1em;
     display: flex;
     flex-flow: row;
+    letter-spacing: 0.1em;
 }
 .date-line span {
     position: relative;
@@ -411,6 +415,7 @@ form.edit-form input:focus, form.edit-form input:focus + input {
     width: 100vw;
     border-top: 1px solid rgba(85,181,135,0.2);
     background-color: rgba(0,61,55,1);
+    background: linear-gradient(to bottom, rgba(0,61,55,1), rgba(63,40,48,1));
     box-shadow: 0px -10px 10px rgba(0,0,0,0.2);
     display: none;
     text-align: center;
@@ -445,7 +450,7 @@ form.edit-form input:focus, form.edit-form input:focus + input {
     opacity: 0.5;
 }
 .selected-entry .edit edit-entry-form .edit-options-bar {
-    background: linear-gradient(to bottom, rgba(43,20,48,1), rgba(63,40,48,1));
+    background: linear-gradient(to bottom, rgba(96,37,81,1), rgba(63,40,48,1));
 }
 
 /* ================================
@@ -456,6 +461,7 @@ form.edit-form input:focus, form.edit-form input:focus + input {
     padding: 0 1em;
     border-bottom: 1px solid rgba(85,181,135,0.2);
     background-color: rgba(0,61,55,1);
+    background: linear-gradient(to bottom, rgba(0,61,55,1), rgba(63,40,48,1));
     color: rgba(85,181,135,1);
     vertical-align: middle;
     cursor: pointer;
@@ -467,6 +473,7 @@ form.edit-form input:focus, form.edit-form input:focus + input {
 }
 #filters-menu h2 {
     background-color: rgba(0,61,55,1);
+    background: linear-gradient(to bottom, rgba(0,61,55,1), rgba(63,40,48,1));
     border-top: 1px solid rgba(85,181,135,0.2);
     color: rgba(85,181,135,1);
     line-height: 1.5rem;
@@ -477,7 +484,7 @@ form.edit-form input:focus, form.edit-form input:focus + input {
 }
 #filters-menu form {
     width: 100%;
-    background: linear-gradient(to bottom, rgba(0,61,55,1), rgba(0,30,24,1) 33%);
+    background: linear-gradient(to bottom, rgba(16,35,33,1), rgba(63,40,48,1));
 }
 #filters-menu form .fieldset {
     padding: 0em 1em;
@@ -513,8 +520,12 @@ form.edit-form input:focus, form.edit-form input:focus + input {
 }
 #filters-menu form.edit .action-bar {
     background-color: rgba(0,61,55,1);
+    background: linear-gradient(to bottom, rgba(0,61,55,1), rgba(63,40,48,1));
     border-top: 1px solid rgba(85,181,135,0.2);
     box-shadow: 0px 8px 8px black;
+}
+list-filters .click-catcher.active {
+    display: none;
 }
 
 /* ================================
@@ -814,17 +825,14 @@ form.edit-form input:focus, form.edit-form input:focus + input {
     }
     #filters-menu {
         position: fixed;
-        top: 0px;
-        height: 100%;
-        background-color: rgba(0,0,0,0.8);
-        opacity: 0;
+        bottom: 0;
         transition: 0.5s opacity;
-        pointer-events: none;
     }
     #filters-menu.fade-in {
+        display: flex;
+    }
+    list-filters .click-catcher.active {
         display: block;
-        opacity: 1;
-        pointer-events: auto;
     }
     .handheld-bottom-menu {
         position: absolute;

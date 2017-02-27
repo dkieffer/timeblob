@@ -3,11 +3,11 @@ Notification Banner
 </div>
 
 <!-- Remove ! from logic here after done styling -->
-<div class="click-catcher" ng-click="$ctrl.toggleCurrentEntryForm()" ng-class="{'active': !$ctrl.currentEntryFormActive}">
+<div class="click-catcher" ng-click="$ctrl.toggleCurrentEntryForm()" ng-class="{'active': $ctrl.currentEntryFormActive}">
 </div>
 
 <!-- Remove ! from logic here after done styling -->
-<div id="current-form-area" ng-class="{'display': !$ctrl.currentEntryFormActive}">
+<div id="current-form-area" ng-class="{'display': $ctrl.currentEntryFormActive}">
 <form class="edit-form" id="current-entry-form" ng-class="{'focus': $ctrl.isFocused}">
     <div>
         <label for="input-activity">Activity</label>
