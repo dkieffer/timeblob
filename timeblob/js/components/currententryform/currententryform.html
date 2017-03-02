@@ -5,7 +5,7 @@ Notification Banner
 <div class="click-catcher" ng-click="$ctrl.toggleCurrentEntryForm()" ng-class="{'active': $ctrl.currentEntryFormActive}">
 </div>
 
-<div id="current-form-area" ng-class="{'display': !$ctrl.currentEntryFormActive}">
+<div id="current-form-area" ng-class="{'display': $ctrl.currentEntryFormActive}">
 <form class="edit-form" id="current-entry-form">
     <div>
         <label for="input-activity">Activity</label>
