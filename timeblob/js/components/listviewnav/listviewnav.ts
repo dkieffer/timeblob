@@ -17,7 +17,9 @@ export class ListViewNav
   toggleFiltersMenu()
   {
     this.onFiltersToggle()
-    this.togglePopupMenu()
+    if (this.popupMenuActive) {
+      this.togglePopupMenu()
+    }
   }
   togglePopupMenu()
   {
