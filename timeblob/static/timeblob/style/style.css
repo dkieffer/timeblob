@@ -248,6 +248,10 @@ form.edit-form input:focus, form.edit-form input:focus + input {
     margin-right: 0.25rem;
 }
 
+.form-time-line div:last-child {
+    overflow: hidden;
+}
+
 /* ================================
     Current Entry Form
 ================================= */
