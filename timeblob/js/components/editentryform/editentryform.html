@@ -1,34 +1,36 @@
-<form>
+<form class="edit-form">
     <!-- Semantically we would prefer to use fieldset instead of div to group these items, but some browsers do not support flex display with the fieldset element -->
     <div>
         <label for="input-edit-activity">Activity</label> 
-        <input size="" title="" type="text" name="activity" value="Moonshinin" placeholder="" id="input-edit-activity">
-    </div>
-    <div>
-        <label for="input-edit-total-time">Time</label> 
-        <input size="" title="" type="text" name="total-time" value="31h" placeholder="" id="input-edit-total-time"> 
+        <input size="" title="" type="text" name="activity" value="Fathoming the depths of Moria" placeholder="" id="input-edit-activity">
     </div>
     <div>
         <label for="input-edit-project">Project</label> 
-        <input size="" title="" type="text" name="project" value="Hootinanny" placeholder="" id="input-edit-project"> 
+        <input size="" title="" type="text" name="project" value="Gimli is Cool" placeholder="" id="input-edit-project"> 
     </div>
     <div>
         <label for="input-edit-client">Client</label> 
-        <input size="" title="" type="text" name="client" value="Granpappy" placeholder="" id="input-edit-client"> 
+        <input size="" title="" type="text" name="client" value="Elrond" placeholder="" id="input-edit-client"> 
     </div>
     <div>
         <label for="input-edit-organization">Org.</label> 
-        <input size="" title="" type="text" name="organization" value="" placeholder="" id="input-edit-organization"> 
+        <input size="" title="" type="text" name="organization" value="The Fellowship Support Group" placeholder="" id="input-edit-organization"> 
     </div>
-    <div>
-        <label for="input-edit-start-time">Start</label> 
-        <input size="9" title="" type="text" name="start-time" value="17:30" placeholder="" id="input-edit-start-time"> 
-        <input size="9" title="" type="text" name="start-date" value="11/3/94" placeholder="" id="input-edit-start-date"> 
-    </div>
-    <div>
-        <label for="input-edit-end-time">End</label> 
-        <input size="9" title="" type="text" name="end-time" value="00:30" placeholder="" id="input-edit-end-time"> 
-        <input size="9" title="" type="text" name="end-date" value="11/5/94" placeholder="" id="input-edit-end-date">
+    <div class="form-time-line">
+        <div>
+            <label for="input-edit-start-time">Start</label> 
+            <input size="9" title="" type="text" name="start-time" value="17:30" placeholder="" id="input-edit-start-time"> 
+            <input size="9" title="" type="text" name="start-date" value="Mar 1" placeholder="" id="input-edit-start-date"> 
+        </div>
+        <div>
+            <label for="input-edit-end-time">End</label> 
+            <input size="9" title="" type="text" name="end-time" value="00:30" placeholder="" id="input-edit-end-time"> 
+            <input size="9" title="" type="text" name="end-date" value="Mar 2" placeholder="" id="input-edit-end-date">
+        </div>
+        <div>
+            <label for="input-edit-total-time">Time</label> 
+            <input size="9" title="" type="text" name="total-time" value="31h" placeholder="" id="input-edit-total-time"> 
+        </div>
     </div>
 </form>
 <div class="edit-options-bar action-bar">

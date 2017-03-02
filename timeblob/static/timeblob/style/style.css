@@ -4,44 +4,40 @@ body {
     padding: 0px;
     background-color: rgba(45,14,38,1);
     color: rgba(85,181,135,1);
-    font-family: Montserrat, Ubuntu, Verdana, sans-serif;
+    font-family: 'Open Sans', Ubuntu, Verdana, sans-serif;
     font-weight: 200;
 }
-
 .wrapper {
     max-width: 62em;
     margin: 0 auto;
     text-align: center;
     overflow: hidden;
 }
-
 .small-wrapper {
     max-width: 33.75em;
     margin: 0 auto;
     text-align: center;
     overflow: hidden;
 }
-
 .edit {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s;
-    box-shadow: 0px 12px 8px rgba(0,0,0,0.3);
+    box-shadow: 0px 12px 24px rgba(0,0,0,0.4);
 }
-
 .edit-options-bar {
     border-top: 1px solid rgba(239,175,227,0.1);
-    background-color: rgba(96,37,81,1);
+    /*background-color: rgba(96,37,81,1);*/
+    background: linear-gradient(to bottom, rgba(45,14,38,1), rgba(196,37,81,1));
     position: relative;
     z-index: 3;
 }
-
 .nav-button {
+    color: white;
     padding: 1em;
     display: inline-block;
     cursor: pointer;
 }
-
 form, ul, fieldset, input {
     margin: 0;
     padding: 0;
@@ -49,7 +45,6 @@ form, ul, fieldset, input {
     background-color: unset;
     list-style: none;
 }
-
 select {
    -webkit-appearance: none;
    -moz-appearance: none;
@@ -59,18 +54,15 @@ select {
    color: white;
    font-size: 1em;
    text-align: right;
-   font-family: Montserrat, Ubuntu, Verdana, sans-serif;
+   font-family: 'Open Sans', Ubuntu, Verdana, sans-serif;
 }
-
 scroll-bar-track-color {
     background: blue;
 }
-
 select option {
     padding: 0.5em;
     text-align: right;
 }
-
 select::after {
     content: '';
     background-color: black;
@@ -82,22 +74,18 @@ select::after {
     background-size: cover;
     background-image: url(/static/timeblob/img/white-menu-triangle.svg);
 }
-
 .component-wrapper {
     display: inline;
 }
-
 .full-screen {
     width: 100vw;
     height: 100vh;
 }
-
 .stretch-to-fill {
     width: 100%;
     height: 100%;
     display: block;
 }
-
 .fixed-background {
     position: fixed;
     top: 0;
@@ -105,18 +93,15 @@ select::after {
     background-color: rgba(45,14,38,1);
     z-index: -1;
 }
-
 .fixed-background.display {
     left: 0;
 }
-
 .action-bar {
     display: none;
     width: 100%;
     flex-flow: row;
     z-index: 1;
 }
-
 .action-bar-center {
     flex: 1 0 auto;
     padding: 0.5em;
@@ -125,13 +110,11 @@ select::after {
 .selected-entry .edit .action-bar {
     display: flex;
 }
-
 #main-menu-button {
     position: fixed;
     bottom: 0;
     right: 0;
 }
-
 .click-catcher {
     position: fixed;
     width: 100vw;
@@ -141,50 +124,23 @@ select::after {
     display: none;
     z-index: 1;
 }
-
 .click-catcher.active {
     display: block;
     background-color: rgba(0,0,0,0.4);
 }
-
-/* ================================
-    Color Theme Control
-================================= */
-.primary-action-color {
-    color: rgba(85,181,135,1);
-}
-
-.primary-action-fill {
-    fill: rgba(85,181,135,1);
-}
-
 .primary-action-stroke {
-    stroke: rgba(85,181,135,1); 
-}
-
-.secondary-action-fill {
-    fill: rgba(160,60,139,1);
-}
-
-.secondary-action-stroke {
-    stroke: rgba(160,60,139,1);
-}
-
-.secondary-action-color {
-    color: rgba(160,60,139,1);
+    stroke: rgba(85,181,135,1);
 }
 
 /* ================================
     Stopwatch Styles
 ================================= */
-
 .timer-area {
     margin: 2em;
     display: inline-flex;
     flex-flow: column;
     vertical-align: middle;
 }
-
 #stopwatch {
     display: inline-block;
     position: relative;
@@ -192,11 +148,9 @@ select::after {
     box-sizing: border-box;
     cursor: pointer;
 }
-
 .v-spacer {
     flex: auto;
 }
-
 #clock-face {
     position: relative;
     top: 0;
@@ -204,7 +158,6 @@ select::after {
     width: 100%;
     height: 100%;
 }
-
 #clock-hand {
     position: absolute;
     pointer-events: none;
@@ -213,9 +166,9 @@ select::after {
     width: 100%;
     height: 100%;
 }
-
 #stopwatch-time {
     color: rgba(160,60,139,0);
+    font-family: Montserrat, Ubuntu, Verdana, sans-serif;
     text-align: center;
     position: absolute;
     margin: 0;
@@ -223,20 +176,16 @@ select::after {
     transition: color 1s;
     top: calc(50% - 0.75em);
 }
-
 #stopwatch.running #stopwatch-time {
   color: rgba(255,255,255,1)
 }
-
 #clock-hand-inner-glow, #clock-hand-big-back-glow, #clock-face-inner {
     opacity: 0;
     transition: opacity 2s;
 }
-
 #stopwatch.running #clock-hand #clock-hand-inner-glow, #stopwatch.running #clock-hand #clock-hand-big-back-glow,  #stopwatch.running #clock-face #clock-face-inner {
-        opacity: 1;
+    opacity: 1;
 }
-
 #swap-icon {
     display: none;
     padding: 0.5em;
@@ -244,77 +193,84 @@ select::after {
 }
 
 /* ================================
-    Current Entry Form Styles
+    Entry Form Styles
 ================================= */
+form.edit-form {
+    text-align: left;
+    padding: 0.5em 0 1em;
+}
+edit-entry-form form {
+    background: linear-gradient(to bottom, rgba(96,37,81,1), rgba(43,20,48,1) 33%);
+}
+form.edit-form label {
+    padding: 0.65rem 1rem 0.35rem;
+    font-size: 0.7rem;
+    display: block;
+    color: rgba(239,175,227,0.5);
+    border: none;
+    text-align: left;
+    font-family: Montserrat, Ubuntu, Verdana, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+form.edit-form input {
+    padding: 0 1rem 0.5rem;
+    color: rgba(239,175,227,1);
+    border: none;
+    width: 100%;
+    font-family: 'Open Sans', Ubuntu, Verdana, sans-serif;
+    font-weight: 100;
+    font-size: 1rem;
+    text-overflow: ellipsis;
+    border-bottom: 1px solid rgba(239,174,60,0);
+    transition: 0.3s;
+}
 
+form.edit-form input.ng-empty {
+    border-bottom: 1px solid rgba(196,37,81,1);
+}
+
+form.edit-form input:focus, form.edit-form input:focus + input {
+    color: white;
+    border-bottom: 1px solid rgba(196,37,81,1);
+}
+#input-edit-end-date, #input-edit-start-date {
+    display: block;
+}
+.form-time-line {
+    display: flex;
+}
+.form-time-line div {
+    flex: 1 0.5 auto;
+}
+.form-time-line div input {
+    padding-right: 0;
+    margin-right: 0.25rem;
+}
+
+.form-time-line div:last-child {
+    overflow: hidden;
+}
+
+/* ================================
+    Current Entry Form
+================================= */
 #current-entry-summary {
     display: none;
 }
-
 #current-entry-summary div {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
     color: rgba(85,181,135,1);
 }
-
 #current-form-area {
-    padding: 1em;
+    padding: 4em 0 1em;
     max-width: 32em;
     display: inline-block;
     vertical-align: middle;
     box-sizing: border-box;
 }
-
-#current-entry-form {
-    width: 100%;
-}
-
-#current-form-area .drawer-view-nav {
-    display: none;
-}
-
-#current-entry-form div {
-    display: flex;
-    flex-flow: row;
-}
-
-#current-entry-form label {
-    box-sizing: border-box;
-    padding: 0.5em 0;
-    text-align: right;
-    text-overflow: ellipsis;
-    flex: 0 0 5em;
-    font-weight: 200;
-    color: rgba(160,60,139,1);
-}
-
-#current-entry-form input {
-    padding: 0.5em 0.25em 0.15em;
-    margin: 0 0.5em 0.35em 0.5em;
-    text-align: left;
-    box-sizing: border-box;
-    border: none;
-    border-bottom: 1px solid rgba(90,90,90,0);
-    color: rgba(85,181,135,1);
-    font-family: Montserrat, Ubuntu, Verdana, sans-serif;
-    font-size: 1em;
-    transition: border 0.5s, color 0.5s;
-    text-overflow: ellipsis;
-    flex: 1 1;
-    min-width: 0;
-}
-
-#current-entry-form.focus input {
-    border-bottom: 1px solid rgba(239,174,60,0.5);
-}
-
-#current-entry-form.focus input:focus {
-    border-bottom: 1px solid rgba(255,255,255,1);
-    color: rgba(255,255,255,1);
-    outline: none;
-}
-
 #entry-form-submit-button {
     font-family: Montserrat, Ubuntu, Verdana, sans-serif;
     border: solid 2px rgba(160,60,139,0.5);
@@ -329,7 +285,6 @@ select::after {
 /* ================================
     Picker Window & Quick Swap
 ================================= */
-
 .picker-window {
     display: block;
     position: absolute;
@@ -345,14 +300,12 @@ select::after {
     z-index: 1;
     transition: 0.2s;
 }
-
 .picker-window.active {
     max-height: 70vh;
     padding: 1em;
     border:  1px solid rgba(160,60,139,0.5);;
     overflow: scroll;
 }
-
 .notification-banner {
     display: block;
     position: absolute;
@@ -368,14 +321,11 @@ select::after {
     z-index: 1;
     transition: 0.2s;
 }
-
 .notification-banner.active {
     max-height: 70vh;
     padding: 1em;
     border:  1px solid rgba(160,60,139,0.5);;
-    //overflow: scroll;
 }
-
 .picker-window li {
     color: rgba(85,181,135,0.8);
     padding: 0.5em 1em;
@@ -386,99 +336,93 @@ select::after {
     text-align: left;
     transition: 0.2s;
 }
-
 .picker-window li:hover, .picker-window li:active, .manage-list li:hover {
     color: rgba(85,181,135,1);
     background-color: rgba(85,181,135,0.2);
     border-right: 3px solid rgba(255,255,255,1);
 }
-
 .picker-window p {
     color: rgba(160,60,139,1);
 }
-
 .picker-window svg {
     padding-bottom: 1em;
 }
 
-
-
 /* ================================
     List View Styles
 ================================= */
-
 .list-view {
     max-width: 36em;
     margin: 0 auto;
-    padding-bottom: 3em;
+    padding: 3em 0;
     text-align: center;
     overflow: auto;
 }
-
 .column-expanding-spacer {
     flex: 1 1 auto;
 }
-
 .column-shrinking-spacer {
     flex: 0 1 auto;
 }
-
 .nodisplay {
     display: none;
 }
-
 #sessions-list {
     list-style: none;
     width: 100%;
     background-color: rgba(96,37,81,1);
     background: linear-gradient(to bottom, rgba(96,37,81,1), rgba(63,40,48,1));
-    color: rgba(239,175,227,1);
+    border-top: 1px solid rgba(110,51,96,1);
+    /* this color shows up wrong
+    border-top: 1px solid rgba(85,181,135,0.2);
+    */
+    box-sizing: border-box;
+    //color: rgba(239,175,227,1);
+    color: rgba(219,165,197,1);
     font-weight: 200;
     padding: 1em 0;
 }
-
 .list-entry {
     text-align: left;
     padding: 0.5em 1em;
     display: flex;
     flex-flow: row;
+    transition: background-color 0.3s;
 }
-
 .list-entry:hover {
-    background-color: rgba(106,47,91,1);
+    background-color: rgba(0,0,0,0.1);
     color: white;
 }
-
 .list-entry span:first-child {
     flex: auto;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
 .list-entry span:nth-child(2n) {
     flex: 0 0 4em;
     text-align: right;
 }
-
 .selected-entry .edit, #filters-menu.fade-in form {
     max-height: 1000px;
     overflow: hidden;
 }
-
-.selected-entry .list-entry {
+.selected-entry .list-entry, .selected-entry:hover .list-entry {
+    color: rgba(239,175,227,0);
     background-color: rgba(106,47,91,1);
+    max-height: 0;
+    overflow: hidden;
 }
-
 .date-line {
     text-align: center;
+    font-family: Montserrat, Ubuntu, Verdana, sans-serif;
     color: rgba(239,175,227,0.32);
     font-size: 0.875em;
     padding: 0.5em 1em;
     display: flex;
     flex-flow: row;
+    letter-spacing: 0.1em;
 }
-
 .date-line span {
     position: relative;
     top: -0.5em;
@@ -486,35 +430,32 @@ select::after {
     border-bottom: solid 1px rgba(239,175,227,0.32);
     flex: auto;
 }
-
 .list-view-nav {
     position: fixed;
     bottom: 0;
     width: 100vw;
     border-top: 1px solid rgba(85,181,135,0.2);
     background-color: rgba(0,61,55,1);
+    background: linear-gradient(to bottom, rgba(0,61,55,1), rgba(63,40,48,1));
     box-shadow: 0px -10px 10px rgba(0,0,0,0.2);
     display: none;
     text-align: center;
     transition: right 0.2s;
 }
-
 .time-total {
+    font-family: Montserrat, Ubuntu, Verdana, sans-serif;
     padding: 1rem;
     flex: 1 0 auto;
     vertical-align: top;
     color: white;
     margin: 0;
 }
-
 .time-total .total-time-digits, .time-total .total-time-tag {
     line-height: 1.5rem;
 }
-
 .time-total .total-time-tag {
-    color: rgba(85,181,135,0.5);
+    color: rgba(85,181,135,1);
 }
-
 #list-view-button {
     display: none;
     padding: 1em;
@@ -524,91 +465,54 @@ select::after {
     left: 0;
     cursor: pointer;
 }
-
 .list-view-end-message {
     padding: 1.5em;
     box-sizing: border-box;
     font-size: 0.9em;
     opacity: 0.5;
 }
-
-/* ================================
-    Edit Entry Form Styles
-================================= */
-
-edit-entry-form form {
-    font-size: 0.9em;
-    background: linear-gradient(to bottom, rgba(96,37,81,1), rgba(43,20,48,1) 33%);
-    text-align: left;
-    padding: 1em;
-}
-
-edit-entry-form form div, #filters-menu form .fieldset {
-    display: flex;
-    flex-flow: row;
-}
-
-edit-entry-form form label {
-    padding: 0.5em 0;
-    flex: 0 1;
-}
-
-edit-entry-form form input {
-    padding: 0.5em 0 0.5em 0.5em;
-    color: rgba(239,175,227,1);
-    border: none;
-    font-family: Montserrat, Ubuntu, Verdana, sans-serif;
-    font-size: 1em;
-    text-align: right;
-    text-overflow: ellipsis;
-    flex: 1 1;
-}
-
-edit-entry-form form input:nth-child(3n) {
-    flex: 0 1;
+.selected-entry .edit edit-entry-form .edit-options-bar {
+    background: linear-gradient(to bottom, rgba(96,37,81,1), rgba(63,40,48,1));
 }
 
 /* ================================
     List Filters Styles
 ================================= */
-
 #filter-list-title-bar {
     display: inline-flex;
+    font-family: Montserrat, Ubuntu, Verdana, sans-serif;
     padding: 0 1em;
-    border-bottom: 1px solid rgba(85,181,135,0.2);
+    border-top: 1px solid rgba(85,181,135,0.2);
     background-color: rgba(0,61,55,1);
+    background: linear-gradient(to bottom, rgba(0,61,55,1), rgba(63,40,48,1));
     color: rgba(85,181,135,1);
     vertical-align: middle;
     cursor: pointer;
 }
-
 #filters-menu {
     z-index: 2;
     width: 100%;
     color: rgba(85,181,135,1);
 }
-
 #filters-menu h2 {
     background-color: rgba(0,61,55,1);
+    background: linear-gradient(to bottom, rgba(0,61,55,1), rgba(63,40,48,1));
     border-top: 1px solid rgba(85,181,135,0.2);
     color: rgba(85,181,135,1);
-    line-height: 1.5rem;
     padding: 0.5rem;
     margin: 0;
     position: relative;
     bottom: 0;
 }
-
 #filters-menu form {
     width: 100%;
-    background: linear-gradient(to bottom, rgba(0,61,55,1), rgba(0,30,24,1) 33%);
+    background: linear-gradient(to bottom, rgba(16,35,33,1), rgba(63,40,48,1));
 }
-
 #filters-menu form .fieldset {
     padding: 0em 1em;
     position: relative;
+    display: flex;
 }
-
 #filters-menu form .fieldset.active label:before {
     content: '';
     position: absolute;
@@ -620,38 +524,36 @@ edit-entry-form form input:nth-child(3n) {
     background-size: cover;
     background-image: url(/static/timeblob/img/checkmark.svg);
 }
-
 #filters-menu form .fieldset input, #filters-menu form .fieldset label {
     padding: 0.5em 0;
     flex: 1 1 auto;
     text-align: left;
-    font-family: Montserrat, Ubuntu, Verdana, sans-serif;
+    font-family: 'Open Sans', Ubuntu, Verdana, sans-serif;
     font-size: 1em;
 }
-
 #filters-menu form .fieldset select {
     color: white;
 }
-
 #filters-menu form .fieldset input {
     text-align: right;
     flex: 0 0 auto;
 }
-
 #filters-menu form .fieldset.active label, #filters-menu form .fieldset.active input, #filters-menu form .fieldset.active select {
     color: rgba(85,181,135,1);
 }
-
 #filters-menu form.edit .action-bar {
     background-color: rgba(0,61,55,1);
+    background: linear-gradient(to bottom, rgba(0,61,55,1), rgba(63,40,48,1));
     border-top: 1px solid rgba(85,181,135,0.2);
     box-shadow: 0px 8px 8px black;
+}
+list-filters .click-catcher.active {
+    display: none;
 }
 
 /* ================================
     Manage View
 ================================= */
-
 #manage-view {
     display: block;
     margin: 0 auto;
@@ -687,7 +589,6 @@ edit-entry-form form input:nth-child(3n) {
     padding: 1em;
     text-align: left;
 }
-
 #top-manage-list li.list-item-selected:hover::before {
     content: '';
     background-image: url(/static/timeblob/img/close-x.svg);
@@ -700,7 +601,6 @@ edit-entry-form form input:nth-child(3n) {
     height: 1.3em;
     color: white;
 }
-
 .sublist.display li input {
     text-align: left;
     color: rgba(85,181,135,1);
@@ -709,21 +609,18 @@ edit-entry-form form input:nth-child(3n) {
     margin: 0 0 0.85em;
     width: 100%;
     font-size: 1em;
-    font-family: Montserrat, Ubuntu, Verdana, sans-serif;
+    font-family: 'Open Sans', Ubuntu, Verdana, sans-serif;
     font-weight: 200;
     border-bottom: 1px solid rgba(239,174,60,0);
     transition: 0.3s;
 }
-
 .sublist.display li input:focus {
     color: rgba(255,255,255,1);
     border-bottom: 1px solid rgba(239,174,60,0.5);
 }
-
 .sublist.display li input::-moz-selection, .sublist.display li input::selection  {
     background-color: rgba(80,120,212,1);
 }
-
 .sublists-area {
     max-width: 22.5em;
     min-height: 100vh;
@@ -777,20 +674,16 @@ edit-entry-form form input:nth-child(3n) {
     overflow: hidden;
     transition: max-height 0.2s;
 }
-
 .popup-menu.active {
     max-height: 1000px;
     padding: 0.5em 0;
 }
-
 .popup-menu-item {
     padding: 0.5em 1em;
 }
-
 .popup-menu-item:hover {
     background-color: lightblue;
 }
-
 .popup-menu-item svg {
     vertical-align: middle;
     padding-right: 0.5em;
@@ -804,7 +697,6 @@ edit-entry-form form input:nth-child(3n) {
 /* ================================
     Responsive Extras
 ================================= */
-
 @media only screen and (max-width: 540px) {
     .wrapper {
         position: fixed;
@@ -847,30 +739,16 @@ edit-entry-form form input:nth-child(3n) {
     #current-form-area.display {
         bottom: 0%;
         display: block;
+        z-index: 1;
     }
     #current-entry-form {
         border-top: 1px solid rgba(239,175,227,0.1);
         box-sizing: border-box;
-        padding: 1em;
+        padding: 1em 0;
         width: 100vw;
     }
-    #current-entry-form div {
+    #current-form-area .action-bar {
         display: flex;
-        flex-flow: row;
-    }
-    #current-entry-form div label {
-        flex: 0 0;
-        padding: 0.5em 0;
-    }
-    #current-entry-form div input {
-        flex: 1 1;
-        text-align: right;
-        margin: 0 0 0.35em 1em;
-        padding: 0.5em 0 0.15em 0;
-        min-width: 0;
-    }
-    #current-form-area .drawer-view-nav {
-        display: block;
         box-sizing: border-box;
         width: 100vw;
     }
@@ -970,17 +848,14 @@ edit-entry-form form input:nth-child(3n) {
     }
     #filters-menu {
         position: fixed;
-        top: 0px;
-        height: 100%;
-        background-color: rgba(0,0,0,0.8);
-        opacity: 0;
+        bottom: 0;
         transition: 0.5s opacity;
-        pointer-events: none;
     }
     #filters-menu.fade-in {
+        display: flex;
+    }
+    list-filters .click-catcher.active {
         display: block;
-        opacity: 1;
-        pointer-events: auto;
     }
     .handheld-bottom-menu {
         position: absolute;
