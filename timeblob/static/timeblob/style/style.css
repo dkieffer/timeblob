@@ -220,7 +220,7 @@ form.edit-form input {
     width: 100%;
     font-family: 'Open Sans', Ubuntu, Verdana, sans-serif;
     font-weight: 100;
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-overflow: ellipsis;
     border-bottom: 1px solid rgba(239,174,60,0);
     transition: 0.3s;
@@ -377,7 +377,8 @@ form.edit-form input:focus, form.edit-form input:focus + input {
     border-top: 1px solid rgba(85,181,135,0.2);
     */
     box-sizing: border-box;
-    color: rgba(239,175,227,1);
+    //color: rgba(239,175,227,1);
+    color: rgba(219,165,197,1);
     font-weight: 200;
     padding: 1em 0;
 }
@@ -389,7 +390,7 @@ form.edit-form input:focus, form.edit-form input:focus + input {
     transition: background-color 0.3s;
 }
 .list-entry:hover {
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.1);
     color: white;
 }
 .list-entry span:first-child {
@@ -453,7 +454,7 @@ form.edit-form input:focus, form.edit-form input:focus + input {
     line-height: 1.5rem;
 }
 .time-total .total-time-tag {
-    color: rgba(85,181,135,0.5);
+    color: rgba(85,181,135,1);
 }
 #list-view-button {
     display: none;
