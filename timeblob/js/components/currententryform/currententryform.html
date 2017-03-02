@@ -2,43 +2,41 @@
 Notification Banner
 </div>
 
-<!-- Remove ! from logic here after done styling -->
 <div class="click-catcher" ng-click="$ctrl.toggleCurrentEntryForm()" ng-class="{'active': $ctrl.currentEntryFormActive}">
 </div>
 
-<!-- Remove ! from logic here after done styling -->
-<div id="current-form-area" ng-class="{'display': $ctrl.currentEntryFormActive}">
-<form class="edit-form" id="current-entry-form" ng-class="{'focus': $ctrl.isFocused}">
+<div id="current-form-area" ng-class="{'display': !$ctrl.currentEntryFormActive}">
+<form class="edit-form" id="current-entry-form">
     <div>
         <label for="input-activity">Activity</label>
-        <input size="" title="" type="text" name="activity" value="" placeholder="" ng-model="$ctrl.currentEntry.description" ng-focus="$ctrl.currentEntryFormFocus()" ng-blur="$ctrl.currentEntryFormFocus()">
+        <input size="" title="" type="text" name="activity" value="" placeholder="" ng-model="$ctrl.currentEntry.description">
     </div>
     <div>
         <label for="input-project">Project</label>
-        <input size="" title="" type="text" name="project" value="" placeholder="" ng-model="$ctrl.currentEntry.project" ng-focus="$ctrl.currentEntryFormFocus()" ng-blur="$ctrl.currentEntryFormFocus()">
+        <input size="" title="" type="text" name="project" value="" placeholder="" ng-model="$ctrl.currentEntry.project">
     </div>
     <div>
         <label for="input-client">Client</label>
-        <input size="" title="" type="text" name="client" value="" placeholder="" id="input-client" ng-focus="$ctrl.currentEntryFormFocus()" ng-blur="$ctrl.currentEntryFormFocus()">
+        <input size="" title="" type="text" name="client" value="" placeholder="" id="input-client">
     </div>
     <div>
         <label for="input-activity">Org.</label>
-        <input size="" title="" type="text" name="organization" value="" placeholder="" id="input-organization" ng-focus="$ctrl.currentEntryFormFocus()" ng-blur="$ctrl.currentEntryFormFocus()">
+        <input size="" title="" type="text" name="organization" value="" placeholder="" id="input-organization">
     </div>
     <div class="form-time-line">
         <div>
             <label for="input-start-time">Start</label>
-            <input size="" title="" type="text" name="start-time" value="" placeholder="" id="input-start-time" ng-focus="$ctrl.currentEntryFormFocus()" ng-blur="$ctrl.currentEntryFormFocus()">
-            <input size="" title="" type="text" name="start-date" value="" placeholder="" id="input-start-date" ng-focus="$ctrl.currentEntryFormFocus()" ng-blur="$ctrl.currentEntryFormFocus()">
+            <input size="" title="" type="text" name="start-time" value="" placeholder="" id="input-start-time">
+            <input size="" title="" type="text" name="start-date" value="" placeholder="" id="input-start-date">
         </div>
         <div>
             <label for="input-end-time">End</label>
-            <input size="" title="" type="text" name="end-time" value="" placeholder="" id="input-end-time" ng-focus="$ctrl.currentEntryFormFocus()" ng-blur="$ctrl.currentEntryFormFocus()">
-            <input size="" title="" type="text" name="end-date" value="" placeholder="" id="input-end-date" ng-focus="$ctrl.currentEntryFormFocus()" ng-blur="$ctrl.currentEntryFormFocus()">
+            <input size="" title="" type="text" name="end-time" value="" placeholder="" id="input-end-time">
+            <input size="" title="" type="text" name="end-date" value="" placeholder="" id="input-end-date">
         </div>
         <div>
             <label for="input-total-time">Time</label>
-            <input size="" title="" type="text" name="total-time" value="" placeholder="" id="input-total-time" ng-focus="$ctrl.currentEntryFormFocus()" ng-blur="$ctrl.currentEntryFormFocus()">
+            <input size="" title="" type="text" name="total-time" value="" placeholder="" id="input-total-time">
         </div>
     </div>
     <button type="submit" value="Send" id="entry-form-submit-button">Add Now</button>
