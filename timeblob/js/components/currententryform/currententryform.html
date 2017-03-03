@@ -9,7 +9,7 @@ Notification Banner
 <form class="edit-form" id="current-entry-form">
     <div>
         <label for="input-activity">Activity</label>
-        <input size="" title="" type="text" name="activity" value="" placeholder="" ng-model="$ctrl.currentEntry.description">
+        <input size="" title="" type="text" name="activity" value="" ng-model="$ctrl.currentEntry.description">
     </div>
     <div>
         <label for="input-project">Project</label>
@@ -26,7 +26,7 @@ Notification Banner
     <div class="form-time-line">
         <div>
             <label for="input-start-time">Start</label>
-            <input size="" title="" type="text" name="start-time" value="" placeholder="" id="input-start-time">
+            <input size="" title="" type="text" name="start-time" value="" placeholder="" id="input-start-time" ng-attr-placeholder="{{currentTime}}">
             <input size="" title="" type="text" name="start-date" value="" placeholder="" id="input-start-date">
         </div>
         <div>

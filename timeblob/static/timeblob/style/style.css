@@ -203,25 +203,27 @@ edit-entry-form form {
     background: linear-gradient(to bottom, rgba(96,37,81,1), rgba(43,20,48,1) 33%);
 }
 form.edit-form label {
-    padding: 0.65rem 1rem 0.35rem;
-    font-size: 0.7rem;
+    padding: 0.5rem 1rem 0;
+    font-size: 0.65rem;
     display: block;
     color: rgba(239,175,227,0.5);
     border: none;
     text-align: left;
     font-family: Montserrat, Ubuntu, Verdana, sans-serif;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.2em;
 }
 form.edit-form input {
-    padding: 0 1rem 0.5rem;
+    padding: 0 1rem 0;
+    margin-bottom: 1rem;
     color: rgba(239,175,227,1);
     border: none;
     width: 100%;
+    font-size: 1rem;
     font-family: 'Open Sans', Ubuntu, Verdana, sans-serif;
     font-weight: 100;
-    font-size: 1rem;
     text-overflow: ellipsis;
+    box-sizing: border-box;
     border-bottom: 1px solid rgba(239,174,60,0);
     transition: 0.3s;
 }
@@ -232,7 +234,16 @@ form.edit-form input.ng-empty {
 
 form.edit-form input:focus, form.edit-form input:focus + input {
     color: white;
+    border-left: 3px solid white;
     border-bottom: 1px solid rgba(196,37,81,1);
+}
+form.edit-form input + input {
+    opacity: 0;
+    transition: opacity 2s;
+}
+form.edit-form input:focus + input, form.edit-form input + input:focus {
+    opacity: 1;
+    transition: opacity 0.3s;
 }
 #input-edit-end-date, #input-edit-start-date {
     display: block;
@@ -283,7 +294,7 @@ form.edit-form input:focus, form.edit-form input:focus + input {
 }
 
 /* ================================
-    Picker Window & Quick Swap
+    Picker Window, Quick Swap, Notification Banner
 ================================= */
 .picker-window {
     display: block;
@@ -370,7 +381,7 @@ form.edit-form input:focus, form.edit-form input:focus + input {
 #sessions-list {
     list-style: none;
     width: 100%;
-    background-color: rgba(96,37,81,1);
+    //background-color: rgba(96,37,81,1);
     background: linear-gradient(to bottom, rgba(96,37,81,1), rgba(63,40,48,1));
     border-top: 1px solid rgba(110,51,96,1);
     /* this color shows up wrong
@@ -792,8 +803,14 @@ list-filters .click-catcher.active {
         margin: 0.5em 0 0;
         padding: 0.5em 0;
     }
+    #current-entry-summary div:last-child {
+        color: white;
+    }
     #current-entry-summary div:first-child {
-        font-size: 0.8em;
+        font-size: 0.65rem;
+        font-family: Montserrat, Ubuntu, Verdana, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
         padding-bottom: 0.5em;
     }
     #sessions-list{
