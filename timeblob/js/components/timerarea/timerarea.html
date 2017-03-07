@@ -24,14 +24,15 @@
             <filter id="blur-25" x="-40%" width="180%">
                 <feGaussianBlur in="SourceGraphic" stdDeviation="25" />
             </filter>
-            <filter id="blur-3" x="-80%" width="210%">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
+            <filter id="blur-3" x="-100%" width="200%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
             </filter>
             <polygon id="clock-hand-big-back-glow" ng-class="{'full-opacity': $ctrl.isRunning}" opacity="0.75" fill="#FF45DC" points="199.965,231.158 160.768,148.144 201.662,21.631 246.96,162.516 " filter="url(#blur-25)"/>
-            <polygon opacity="0.2" ng-class="{'full-opacity': $ctrl.isRunning}" fill="#FF45DC" points="199.965,231.158 196.969,171.535 201.512,40.202 206.111,172.074 " filter="url(#blur-10)"/>
+            <polygon opacity="0.2" ng-class="{'full-opacity': $ctrl.isRunning}" fill="#FF45DC" points="199.965,231.158 196.969,171.535 201.512,40.202 206.111,172.074 " filter="url(#blur-3)"/>
             <polygon id="clock-hand-inner-glow" opacity="0.7" fill="#FFFFFF" points="199.965,231.158 196.969,171.535 201.512,40.202 206.111,172.074 " filter="url(#blur-3)"/>
         </svg>
         <h1 id="stopwatch-time" class="stopwatch-component"><span am-time-ago="$ctrl.startTime">Time Elapsed</span></h1>
+        <div id="start-timer-message">Tap to Start</div>
         <!--
         <p id="stopwatch-message" class="stopwatch-component"><span ng-if="$ctrl.isRunning" ng-click="$ctrl.stop()">tap to finish</span><span ng-if="!$ctrl.isRunning" ng-click="$ctrl.start()">tap to start</span></p>
         -->

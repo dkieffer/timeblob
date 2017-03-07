@@ -48,6 +48,7 @@ export class TimerArea extends CurrentEntrySensitiveComponent
     var rotateClock;
     var ctrl = this;
     var degree = 0;
+    this.onToggleClock();
     ctrl.isRunning = !ctrl.isRunning;
     rotateClock = this.$interval(function() {
       if(!ctrl.isRunning) {
@@ -65,6 +66,11 @@ export class TimerArea extends CurrentEntrySensitiveComponent
     }, 40);
   }
 
+  toggleCurrentEntryForm()
+  {
+    this.onToggleCurrentEntryForm()
+  }
+
   updateClockHandle()
   {
     var ctrl = this;
@@ -76,10 +82,17 @@ export class TimerArea extends CurrentEntrySensitiveComponent
         ctrl.clockHandStyle = { 'transform': 'rotate(' + degree + 'deg)'};
     }
   }
+
+  onToggleClock: any
+  onToggleCurrentEntryForm: any
 }
 
 ng.module("app").component('timerArea',
 {
   controller: TimerArea,
-  templateUrl: TEMPLATE.TIMERAREA
+  templateUrl: TEMPLATE.TIMERAREA,
+  bindings: {
+    onToggleClock: '&',
+    onToggleCurrentEntryForm: '&'
+  }
 });
