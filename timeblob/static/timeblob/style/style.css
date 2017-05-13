@@ -27,7 +27,6 @@ body {
 }
 .edit-options-bar {
     border-top: 1px solid rgba(239,175,227,0.1);
-    /*background-color: rgba(96,37,81,1);*/
     background: linear-gradient(to bottom, rgba(45,14,38,1), rgba(196,37,81,1));
     position: relative;
     z-index: 3;
@@ -177,21 +176,22 @@ select::after {
     top: calc(50% - 0.75em);
 }
 #start-timer-message {
-    color: rgba(160,60,139,1);
+    color: #602551;
     font-family: Montserrat, Ubuntu, Verdana, sans-serif;
-    text-transform: uppercase;
-    font-size: 0.65rem;
-    letter-spacing: 0.2rem;
-    //opacity: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    opacity: 0;
     text-align: center;
     position: absolute;
     margin: 0;
     width: 100%;
-    //transition: color 1s;
-    top: calc(50% + 4em);
+    top: calc(50% + 2em);
 }
 #stopwatch:not(.running) #start-timer-message { 
+    /*
+    this pulses the 'tap to start' message on the stopwatch but, holy mackerel, this is an expensive animation
     animation: 3s pulser alternate-reverse infinite;
+    */
 }
 @keyframes pulser {0% {opacity: 0} 100%{opacity:1}}
 #stopwatch.running #stopwatch-time {
@@ -215,25 +215,29 @@ select::after {
 ================================= */
 form.edit-form {
     text-align: left;
-    padding: 0.5em 0 1em;
+    padding: 1em 0;
 }
 edit-entry-form form {
     background: linear-gradient(to bottom, rgba(96,37,81,1), rgba(43,20,48,1) 33%);
 }
 form.edit-form label {
-    padding: 0.5rem 1rem 0;
+    position: relative;
+    top: -2.5rem;
+    height: 0;
+    padding: 0 1rem 0;
     font-size: 0.65rem;
     display: block;
-    color: rgba(239,175,227,0.5);
+    color: rgba(239,175,227,0.6);
     border: none;
     text-align: left;
     font-family: Montserrat, Ubuntu, Verdana, sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.2em;
+    transition: top 0.3s, font-size 0.3s;
 }
 form.edit-form input {
-    padding: 0 1rem 0;
-    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
     color: rgba(239,175,227,1);
     border: none;
     width: 100%;
@@ -242,24 +246,26 @@ form.edit-form input {
     font-weight: 100;
     text-overflow: ellipsis;
     box-sizing: border-box;
-    border-bottom: 1px solid rgba(239,174,60,0);
+    border-bottom: 1px solid rgba(196,37,81,0.5);
     transition: 0.3s;
 }
-
-form.edit-form input.ng-empty {
-    border-bottom: 1px solid rgba(196,37,81,1);
-}
-
 form.edit-form input:focus, form.edit-form input:focus + input {
-    color: white;
-    border-left: 3px solid white;
     border-bottom: 1px solid rgba(196,37,81,1);
+    color: white;
 }
-form.edit-form input + input {
+form.edit-form input:focus + label, form.edit-form input.ng-not-empty + label  {
+    top: -3.5rem;
+    color: rgba(239,175,227,0.3);
+}
+form.edit-form input:focus, form.edit-form input:focus + input {
+    border-left: 3px solid white;
+}
+form.edit-form input ~ input {
     opacity: 0;
     transition: opacity 2s;
+    margin-top: 0;
 }
-form.edit-form input:focus + input, form.edit-form input + input:focus {
+form.edit-form input:focus ~ input, form.edit-form input ~ input:focus {
     opacity: 1;
     transition: opacity 0.3s;
 }
@@ -276,7 +282,6 @@ form.edit-form input:focus + input, form.edit-form input + input:focus {
     padding-right: 0;
     margin-right: 0.25rem;
 }
-
 .form-time-line div:last-child {
     overflow: hidden;
 }
@@ -466,8 +471,6 @@ form.edit-form input:focus + input, form.edit-form input + input:focus {
     border-top: 1px solid rgba(85,181,135,0.001);
     background-color: rgba(0,61,55,1);
     background: linear-gradient(to top, rgba(0,61,55,1), rgba(63,40,48,1));
-    //background: linear-gradient(to bottom, rgba(45,14,38,1), rgba(196,37,81,1));
-    //background: linear-gradient(to top, rgba(96,37,81,1), rgba(63,40,48,1));
     box-shadow: 0px -10px 10px rgba(0,0,0,0.2);
     display: none;
     text-align: center;
@@ -684,7 +687,6 @@ list-filters .click-catcher.active {
 #manage-view.display .action-bar {
     display: flex;
 }
-
 #cancel-manage-view-button, #save-manage-view-button {
     display: none;
 }
@@ -775,7 +777,7 @@ list-filters .click-catcher.active {
     #current-entry-form {
         border-top: 1px solid rgba(239,175,227,0.1);
         box-sizing: border-box;
-        padding: 1em 0;
+        //padding: 1em 0;
         width: 100vw;
     }
     #current-form-area .action-bar {

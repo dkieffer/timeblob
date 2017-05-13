@@ -8,35 +8,35 @@ Notification Banner
 <div id="current-form-area" ng-class="{'display': $ctrl.currentEntryFormActive}">
 <form class="edit-form" id="current-entry-form">
     <div>
+        <input size="" title="" type="text" name="activity" value="" id="input-activity" ng-model="$ctrl.currentEntry.description">
         <label for="input-activity">Activity</label>
-        <input size="" title="" type="text" name="activity" value="" ng-model="$ctrl.currentEntry.description">
     </div>
     <div>
+        <input size="" title="" type="text" name="project" value="" placeholder="" id="input-project" ng-model="$ctrl.currentEntry.project">
         <label for="input-project">Project</label>
-        <input size="" title="" type="text" name="project" value="" placeholder="" ng-model="$ctrl.currentEntry.project">
     </div>
     <div>
+        <input size="" title="" type="text" name="client" value="" placeholder="" id="input-client" ng-model="$ctrl.currentEntry.client">
         <label for="input-client">Client</label>
-        <input size="" title="" type="text" name="client" value="" placeholder="" id="input-client">
     </div>
     <div>
-        <label for="input-activity">Org.</label>
-        <input size="" title="" type="text" name="organization" value="" placeholder="" id="input-organization">
+        <input size="" title="" type="text" name="organization" value="" placeholder="" id="input-organization" ng-model="$ctrl.currentEntry.organization">
+        <label for="input-organization">Org.</label>
     </div>
     <div class="form-time-line">
         <div>
+            <input size="" title="" type="text" name="start-time" value="" placeholder="" id="input-start-time" ng-attr-placeholder="{{currentTime}}" ng-model="$ctrl.currentEntry.start-time">
             <label for="input-start-time">Start</label>
-            <input size="" title="" type="text" name="start-time" value="" placeholder="" id="input-start-time" ng-attr-placeholder="{{currentTime}}">
-            <input size="" title="" type="text" name="start-date" value="" placeholder="" id="input-start-date">
+            <input size="" title="" type="text" name="start-date" value="" placeholder="" id="input-start-date" ng-model="$ctrl.currentEntry.start-date">
         </div>
         <div>
+            <input size="" title="" type="text" name="end-time" value="" placeholder="" id="input-end-time" ng-model="$ctrl.currentEntry.end-time">
             <label for="input-end-time">End</label>
-            <input size="" title="" type="text" name="end-time" value="" placeholder="" id="input-end-time">
-            <input size="" title="" type="text" name="end-date" value="" placeholder="" id="input-end-date">
+            <input size="" title="" type="text" name="end-date" value="" placeholder="" id="input-end-date" ng-model="$ctrl.currentEntry.end-date">
         </div>
         <div>
+            <input size="" title="" type="text" name="total-time" value="" placeholder="" id="input-total-time" ng-model="$ctrl.currentEntry.total-time">
             <label for="input-total-time">Time</label>
-            <input size="" title="" type="text" name="total-time" value="" placeholder="" id="input-total-time">
         </div>
     </div>
     <button type="submit" value="Send" id="entry-form-submit-button" ng-click="">Add Now</button>
